@@ -13,7 +13,7 @@ const SideNavigation = () => (
         {
           menuLinks.map(link =>
             <li>
-              <a href={link.to}>
+              <a href={link.to} className={ link.text === 'Activity' ? "selected" : ""}>
                 <i className={`fa fa-${link.icon}`} aria-hidden="true"/>
                 {link.text}
               </a>

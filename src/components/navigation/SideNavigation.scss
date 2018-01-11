@@ -32,6 +32,12 @@
         a {
           text-decoration: none;
           color: $color-white;
+          opacity: 0.5;
+          text-transform: uppercase;
+        }
+
+        .selected {
+          opacity: 1;
         }
 
         i {
@@ -52,10 +58,18 @@
       border: 2px solid $color-white;
       font-family: $font-primary, sans-serif;
       font-weight: 500;
-      font-size: 1.2em;
+      font-size: 1.1em;
       letter-spacing: 5px;
-      padding: 20px;
-      margin-left: 2.4em;
+      padding: 20px 30px;
+      border-radius: 50px;
+      margin-left: 2.5em;
+
+
+      &:hover {
+        color: $color-primary;
+        background-color: $color-white;
+        transition: all 0.5s ease;
+      }
     }
   }
 }

@@ -6,7 +6,7 @@
     margin-top: 0;
     padding-top: 50px;
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif, sans-serif;
     font-size: 0.6em;
     font-weight: 300;
     color: white; }
@@ -17,12 +17,16 @@
       list-style-type: none; }
     .SideNavigation nav li {
       padding-bottom: 1.5em;
-      font-family: 'Montserrat', sans-serif;
+      font-family: Montserrat, sans-serif, sans-serif;
       font-weight: 500;
       font-size: 1.2em; }
       .SideNavigation nav li a {
         text-decoration: none;
-        color: white; }
+        color: white;
+        opacity: 0.5;
+        text-transform: uppercase; }
+      .SideNavigation nav li .selected {
+        opacity: 1; }
       .SideNavigation nav li i {
         width: 30px; }
   .SideNavigation .footer {
@@ -34,9 +38,14 @@
       color: white;
       background-color: transparent;
       border: 2px solid white;
-      font-family: Montserrat, sans-serif;
+      font-family: Montserrat, sans-serif, sans-serif;
       font-weight: 500;
-      font-size: 1.2em;
+      font-size: 1.1em;
       letter-spacing: 5px;
-      padding: 20px;
-      margin-left: 2.4em; }
+      padding: 20px 30px;
+      border-radius: 50px;
+      margin-left: 2.5em; }
+      .SideNavigation .footer button:hover {
+        color: #1AB5FF;
+        background-color: white;
+        transition: all 0.5s ease; }
