@@ -34,15 +34,16 @@
     text-align: center; }
     .SideNavigation .footer button {
       color: white;
-      background-color: transparent;
+      background-color: #1AB5FF;
       border: 2px solid white;
       font-family: Montserrat, sans-serif, sans-serif;
       font-weight: 500;
       font-size: 1.1em;
-      letter-spacing: 5px;
-      padding: 20px 30px;
-      border-radius: 50px; }
+      letter-spacing: 2px;
+      padding: 20px 32px;
+      border-radius: 500px;
+      transition: all 0.2s ease; }
       .SideNavigation .footer button:hover {
         color: #1AB5FF;
         background-color: white;
-        transition: all 0.5s ease; }
+        transition: all 0.3s ease; }

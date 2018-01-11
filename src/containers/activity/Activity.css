@@ -1,0 +1,25 @@
+.Activity {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+  .Activity p {
+    font-family: Montserrat, sans-serif;
+    font-size: 1.7em;
+    color: black; }
+  .Activity button {
+    color: white;
+    background-color: #1AB5FF;
+    border: 2px solid #1AB5FF;
+    font-family: Montserrat, sans-serif, sans-serif;
+    font-weight: 500;
+    font-size: 1.1em;
+    letter-spacing: 2px;
+    padding: 20px 32px;
+    border-radius: 500px;
+    transition: all 0.2s ease; }
+    .Activity button:hover {
+      color: #1AB5FF;
+      background-color: white;
+      transition: all 0.3s ease; }

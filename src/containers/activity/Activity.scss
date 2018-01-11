@@ -1,0 +1,19 @@
+@import "../../components/common/Common.scss";
+
+.Activity {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  p {
+    font-family: $font-primary;
+    font-size: 1.7em;
+    color: $color-black;
+  }
+
+  button {
+    @include rounded-button($color-primary, $color-white, $color-primary);
+  }
+}

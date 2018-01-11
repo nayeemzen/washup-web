@@ -1,4 +1,4 @@
-@import "../common/Variables.scss";
+@import "../common/Common.scss";
 
 .SideNavigation {
     width: 340px;
@@ -19,6 +19,7 @@
 
     nav {
       margin-left: 2.8em;
+
       ul {
         list-style-type: none;
       }
@@ -48,24 +49,8 @@
 
   .footer {
     text-align: center;
-
     button {
-      color: $color-white;
-      background-color: transparent;
-      border: 2px solid $color-white;
-      font-family: $font-primary, sans-serif;
-      font-weight: 500;
-      font-size: 1.1em;
-      letter-spacing: 5px;
-      padding: 20px 30px;
-      border-radius: 50px;
-
-
-      &:hover {
-        color: $color-primary;
-        background-color: $color-white;
-        transition: all 0.5s ease;
-      }
+      @include rounded-button($color-primary, $color-white, $color-white);
     }
   }
 }
