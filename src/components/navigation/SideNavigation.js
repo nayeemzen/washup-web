@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Logo from '../../resources/logo.svg';
 import './SideNavigation.css';
 
 const SideNavigation = () => (
   <div className="SideNavigation">
     <div className="header">
-      <img src={Logo}/>
+      <img src={Logo} alt="WashUp"/>
       <h1>JOHN DOE</h1>
     </div>
     <nav>
       <ul>
         {
-          menuLinks.map(link =>
-            <li>
-              <a href={link.to} className={ link.text === 'Activity' ? "selected" : ""}>
+          menuLinks.map((link, idx) =>
+            <li key={idx}>
+              <NavLink to={link.to} activeStyle={{ opacity: 1 }}>
                 <i className={`fa fa-${link.icon}`} aria-hidden="true"/>
                 {link.text}
-              </a>
+              </NavLink>
             </li>
           )
         }
@@ -32,32 +33,32 @@ const SideNavigation = () => (
 const menuLinks = [
   {
     text: "Activity",
-    to: "#",
+    to: "/activity",
     icon: "history"
   },
   {
     text: "Preferences",
-    to: "#",
+    to: "/preferences",
     icon: "cog"
   },
   {
     text: "Pricing",
-    to: "#",
+    to: "/pricing",
     icon: "dollar"
   },
   {
     text: "Account",
-    to: "#",
+    to: "/account",
     icon: "user"
   },
   {
     text: "Contact Us",
-    to: "#",
+    to: "/contact",
     icon: "phone"
   },
   {
     text: "Log Out",
-    to: "#",
+    to: "/logout",
     icon: "power-off"
   },
 ];

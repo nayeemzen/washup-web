@@ -26,8 +26,6 @@
         color: white;
         opacity: 0.5;
         text-transform: uppercase; }
-      .SideNavigation nav li .selected {
-        opacity: 1; }
       .SideNavigation nav li i {
         width: 30px; }
   .SideNavigation .footer {
