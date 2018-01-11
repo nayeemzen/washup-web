@@ -4,6 +4,8 @@ $color-primary: #1AB5FF;
 $color-background: #F7F7F7;
 $color-white: white;
 $color-black: black;
+$color-gray-dark: #707070;
+$color-gray-light: #909090;
 
 @mixin rounded-button($backgroundColor, $textColor, $borderColor){
   color: $textColor;

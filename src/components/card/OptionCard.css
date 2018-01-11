@@ -1,0 +1,17 @@
+.OptionCard {
+  background-color: white;
+  border-radius: 5px;
+  width: 380px;
+  padding-top: 30px;
+  padding-bottom: 5px;
+  text-align: center; }
+  .OptionCard h1 {
+    font-family: Montserrat, sans-serif;
+    font-size: 1em;
+    color: #707070;
+    font-weight: 600; }
+  .OptionCard p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.8em;
+    color: #909090;
+    font-weight: 500; }

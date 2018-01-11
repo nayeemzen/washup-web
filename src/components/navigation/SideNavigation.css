@@ -1,5 +1,5 @@
 .SideNavigation {
-  width: 340px;
+  min-width: 340px;
   height: 100vh;
   background-color: #1AB5FF;
   display: flex;
