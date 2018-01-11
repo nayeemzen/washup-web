@@ -11,7 +11,14 @@ const SideNavigation = () => (
     <nav>
       <ul>
         {
-          menuLinks.map(link => <li><a href={link.to}><i className={`fa fa-${link.icon}`} aria-hidden="true"/>{link.text}</a></li>)
+          menuLinks.map(link =>
+            <li>
+              <a href={link.to}>
+                <i className={`fa fa-${link.icon}`} aria-hidden="true"/>
+                {link.text}
+              </a>
+            </li>
+          )
         }
       </ul>
     </nav>

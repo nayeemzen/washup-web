@@ -1,0 +1,61 @@
+@import "../common/Variables.scss";
+
+.SideNavigation {
+    width: 340px;
+    height: 100vh;
+    background-color: $color-primary;
+
+    .header {
+        margin-top: 0;
+        padding-top: 50px;
+        text-align: center;
+        font-family: $font-secondary, sans-serif;
+        font-size: 0.6em;
+        font-weight: 300;
+        color: $color-white;
+    }
+
+    nav {
+      margin-top: 40%;
+      margin-left: 2.8em;
+
+      ul {
+        list-style-type: none;
+      }
+
+      li {
+        padding-bottom: 1.5em;
+        font-family: $font-primary, sans-serif;
+        font-weight: 500;
+        font-size: 1.2em;
+
+        a {
+          text-decoration: none;
+          color: $color-white;
+        }
+
+        i {
+          width: 30px;
+        }
+      }
+    }
+
+  .footer {
+    margin-bottom: 3em;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+
+    button {
+      color: $color-white;
+      background-color: transparent;
+      border: 2px solid $color-white;
+      font-family: $font-primary, sans-serif;
+      font-weight: 500;
+      font-size: 1.2em;
+      letter-spacing: 5px;
+      padding: 20px;
+      margin-left: 2.4em;
+    }
+  }
+}
