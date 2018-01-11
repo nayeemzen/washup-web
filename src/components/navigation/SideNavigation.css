@@ -1,17 +1,18 @@
 .SideNavigation {
   width: 340px;
   height: 100vh;
-  background-color: #1AB5FF; }
+  background-color: #1AB5FF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; }
   .SideNavigation .header {
     margin-top: 0;
-    padding-top: 50px;
     text-align: center;
     font-family: "Open Sans", sans-serif, sans-serif;
     font-size: 0.6em;
     font-weight: 300;
     color: white; }
   .SideNavigation nav {
-    margin-top: 40%;
     margin-left: 2.8em; }
     .SideNavigation nav ul {
       list-style-type: none; }
@@ -30,9 +31,6 @@
       .SideNavigation nav li i {
         width: 30px; }
   .SideNavigation .footer {
-    margin-bottom: 3em;
-    position: fixed;
-    bottom: 0;
     text-align: center; }
     .SideNavigation .footer button {
       color: white;
@@ -43,8 +41,7 @@
       font-size: 1.1em;
       letter-spacing: 5px;
       padding: 20px 30px;
-      border-radius: 50px;
-      margin-left: 2.5em; }
+      border-radius: 50px; }
       .SideNavigation .footer button:hover {
         color: #1AB5FF;
         background-color: white;
