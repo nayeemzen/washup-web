@@ -12,15 +12,25 @@
   .Activity button {
     color: white;
     background-color: #1AB5FF;
-    border: 2px solid #1AB5FF;
+    border: 2px solid transparent;
     font-family: Montserrat, sans-serif, sans-serif;
     font-weight: 500;
     font-size: 1.1em;
     letter-spacing: 2px;
     padding: 20px 32px;
     border-radius: 500px;
-    transition: all 0.2s ease; }
+    transition: all 0.2s ease;
+    animation-name: pulse-grow;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate; }
     .Activity button:hover {
-      color: #1AB5FF;
-      background-color: white;
+      color: white;
+      background-color: #1aa5ee;
       transition: all 0.3s ease; }
+
+@keyframes pulse-grow {
+  to {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05); } }

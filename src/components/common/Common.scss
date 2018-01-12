@@ -1,6 +1,7 @@
 $font-primary: Montserrat, sans-serif;
 $font-secondary: 'Open Sans', sans-serif;
 $color-primary: #1AB5FF;
+$color-primary-dark: #1aa5ee;
 $color-background: #F7F7F7;
 $color-white: white;
 $color-black: black;
@@ -9,7 +10,7 @@ $color-gray-light: #909090;
 
 $sidebar-width: 340px;
 
-@mixin rounded-button($backgroundColor, $textColor, $borderColor){
+@mixin rounded-button($backgroundColor, $textColor, $borderColor, $hoverBackgroundColor, $hoverTextColor){
   color: $textColor;
   background-color: $backgroundColor;
   border: 2px solid $borderColor;
@@ -25,8 +26,8 @@ $sidebar-width: 340px;
   transition: all 0.2s ease;
 
   &:hover {
-    color: $backgroundColor;
-    background-color: $textColor;
+    color: $hoverTextColor;
+    background-color: $hoverBackgroundColor;
     transition: all 0.3s ease;
   }
 }

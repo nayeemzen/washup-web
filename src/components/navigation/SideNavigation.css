@@ -33,7 +33,7 @@
     text-align: center; }
     .SideNavigation .footer button {
       color: white;
-      background-color: #1AB5FF;
+      background-color: transparent;
       border: 2px solid white;
       font-family: Montserrat, sans-serif, sans-serif;
       font-weight: 500;
