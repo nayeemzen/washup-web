@@ -1,0 +1,50 @@
+@import "../common/Common.scss";
+
+.PricingInfo {
+  margin-left: 60px;
+  margin-bottom: 20px;
+
+  .categoryName {
+    font-family: $font-primary;
+    text-transform: uppercase;
+    color: $color-gray-light;
+    font-weight: 500;
+    font-size: 1.1em;
+  }
+
+  .PricingCard {
+    ul {
+      list-style:none;
+      padding-left:0;
+    }
+
+    li {
+      background-color: $color-white;
+      border-radius: 5px;
+      width: 380px;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-bottom: 5px;
+      font-size: 1.1em;
+
+      .PricingItem {
+        display: flex;
+        justify-content: space-between;
+        padding-right: 5px;
+        padding-left: 5px;
+
+        p {
+          font-family: $font-secondary;
+          font-weight: 600;
+          letter-spacing: 1px;
+          color: $color-gray-dark;
+          font-size: 1em;
+        }
+
+        .itemPrice {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}

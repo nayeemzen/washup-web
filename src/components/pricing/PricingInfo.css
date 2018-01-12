@@ -1,0 +1,33 @@
+.PricingInfo {
+  margin-left: 60px;
+  margin-bottom: 20px; }
+  .PricingInfo .categoryName {
+    font-family: Montserrat, sans-serif;
+    text-transform: uppercase;
+    color: #909090;
+    font-weight: 500;
+    font-size: 1.1em; }
+  .PricingInfo .PricingCard ul {
+    list-style: none;
+    padding-left: 0; }
+  .PricingInfo .PricingCard li {
+    background-color: white;
+    border-radius: 5px;
+    width: 380px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+    font-size: 1.1em; }
+    .PricingInfo .PricingCard li .PricingItem {
+      display: flex;
+      justify-content: space-between;
+      padding-right: 5px;
+      padding-left: 5px; }
+      .PricingInfo .PricingCard li .PricingItem p {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: #707070;
+        font-size: 1em; }
+      .PricingInfo .PricingCard li .PricingItem .itemPrice {
+        color: #1AB5FF; }

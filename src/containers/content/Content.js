@@ -1,11 +1,11 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Activity from '../activity/Activity';
-import Preferences from '../preferences/Preferences';
-import Pricing from '../pricing/Pricing';
-import Account from '../account/Account';
-import Contact from '../contact/Contact';
-import Logout from '../logout/Logout';
+import Activity from '../../components/activity/Activity';
+import Preferences from '../../components/preferences/Preferences';
+import Pricing from '../../components/pricing/Pricing';
+import Account from '../../components/account/Account';
+import Contact from '../../components/contact/Contact';
+import Logout from '../../components/logout/Logout';
 import './Content.css';
 
 const Content = () => (

@@ -1,5 +1,5 @@
 import React from 'react';
-import OptionCard from '../../components/card/OptionCard';
+import OptionCard from '../card/OptionCard';
 import './Preferences.css';
 
 const Preferences = () => (
