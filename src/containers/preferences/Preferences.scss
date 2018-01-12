@@ -1,19 +1,21 @@
 @import "../../components/common/Common.scss";
 
 .Preferences {
-  width: 75%;
-  margin: 0 auto;
-  justify-content: center;
+  max-width: 1000px;
+  justify-content: flex-start;
   align-self: center;
   display: flex;
   flex-wrap: wrap;
+  margin-left: 60px;
+  overflow: auto;
 
   .Preference {
-    margin: 15px;
+    margin: 12px;
     color: $color-gray-light;
     font-family: $font-primary;
     font-weight: 500;
     text-transform: uppercase;
     font-size: 0.9em;
+    flex-basis: 40%;
   }
 }

@@ -1,6 +1,7 @@
 .SideNavigation {
   min-width: 340px;
-  height: 100vh;
+  height: 100%;
+  position: fixed;
   background-color: #1AB5FF;
   display: flex;
   flex-direction: column;

@@ -35,7 +35,13 @@ const preferencesList = [
     header: "Text Reminder",
     title: "Laundry Day Reminder",
     subtitle: "We will remind you weekly about doing laundry."
+  },
+  {
+    header: "Starch",
+    title: "Laundry Day Reminder",
+    subtitle: "We will remind you weekly about doing laundry."
   }
+
 ];
 
 export default Preferences;

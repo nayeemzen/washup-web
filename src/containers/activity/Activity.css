@@ -7,7 +7,8 @@
   .Activity p {
     font-family: Montserrat, sans-serif;
     font-size: 1.7em;
-    color: black; }
+    color: black;
+    text-align: center; }
   .Activity button {
     color: white;
     background-color: #1AB5FF;

@@ -7,6 +7,8 @@ $color-black: black;
 $color-gray-dark: #707070;
 $color-gray-light: #909090;
 
+$sidebar-width: 340px;
+
 @mixin rounded-button($backgroundColor, $textColor, $borderColor){
   color: $textColor;
   background-color: $backgroundColor;

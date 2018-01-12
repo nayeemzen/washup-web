@@ -1,8 +1,9 @@
 @import "../common/Common.scss";
 
 .SideNavigation {
-    min-width: 340px;
-    height: 100vh;
+    min-width: $sidebar-width;
+    height: 100%;
+    position: fixed;
     background-color: $color-primary;
     display: flex;
     flex-direction: column;
