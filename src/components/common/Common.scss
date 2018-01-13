@@ -31,3 +31,21 @@ $sidebar-width: 340px;
     transition: all 0.3s ease;
   }
 }
+
+@mixin rectangular-button($backgroundColor, $hoverBackgroundColor) {
+  color: $color-white;
+  border-radius: 5px;
+  outline: none;
+  border-color: transparent;
+  background-color: $backgroundColor;
+  font-family: $font-primary;
+  font-size: 0.8em;
+  width: 50%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  &:hover {
+    background-color: $hoverBackgroundColor;
+    transition: all 0.3s ease;
+  }
+}
