@@ -1,6 +1,6 @@
-@import "../common/Common.scss";
+@import "../common/Common";
 
-.PricingInfo {
+.CardListWrapper {
   margin-left: 30px;
   margin-right: 30px;
   margin-bottom: 20px;
@@ -13,7 +13,7 @@
     font-size: 1.1em;
   }
 
-  .PricingCard {
+  .CardList {
     ul {
       list-style:none;
       padding-left:0;
@@ -28,7 +28,7 @@
       margin-bottom: 5px;
       font-size: 1.1em;
 
-      .PricingItem {
+      .CardItem {
         display: flex;
         justify-content: space-between;
         padding-right: 5px;
@@ -42,7 +42,7 @@
           font-size: 1em;
         }
 
-        .itemPrice {
+        .itemValue {
           color: $color-primary;
         }
       }

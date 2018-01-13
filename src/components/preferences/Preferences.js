@@ -1,5 +1,5 @@
 import React from 'react';
-import OptionCard from '../card/OptionCard';
+import Card from '../card/Card';
 import TabSelector from '../../components/common/TabSelector';
 import Switch from 'react-switchery';
 import './Preferences.css';
@@ -9,12 +9,11 @@ const Preferences = () => (
       {
         preferencesList.map(preference => (
           <div className="Preference">
-            <p>{preference.header.toUpperCase()}</p>
-            <OptionCard>
+            <Card header={preference.header.toUpperCase()}>
               <div>{renderOptions(preference.options)}</div>
               <h1>{preference.title.toUpperCase()}</h1>
               <p>{preference.subtitle}</p>
-            </OptionCard>
+            </Card>
           </div>
         ))
       }

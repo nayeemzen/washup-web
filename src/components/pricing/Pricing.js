@@ -1,14 +1,24 @@
 import React from 'react';
 import './Pricing.css';
-import PricingInfo from "./PricingInfo";
+import Formatter from '../common/CurrencyFormatter';
+import CardList from "../card/CardList";
 
 const Pricing = () => (
   <div className="Pricing">
     {
-      prices.map(price => <PricingInfo className="PricingInfo" categoryName={price.category.name} items={price.items}/>)
+      prices.map(price =>
+        <CardList
+          categoryName={price.category.name}
+          items={price.items.map(item => toCardItem(item) )}
+        />)
     }
   </div>
 );
+
+let toCardItem = (item) => ({
+    name: item.name,
+    value: Formatter.format(item.price_cents / 100)
+});
 
 const prices = [
   {

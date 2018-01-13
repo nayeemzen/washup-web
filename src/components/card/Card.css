@@ -1,4 +1,4 @@
-.OptionCard {
+.Card {
   background-color: white;
   border-radius: 5px;
   width: 360px;
@@ -7,12 +7,12 @@
   padding-left: 15px;
   padding-right: 15px;
   text-align: center; }
-  .OptionCard h1 {
+  .Card h1 {
     font-family: Montserrat, sans-serif;
     font-size: 0.9em;
     color: #707070;
     font-weight: 600; }
-  .OptionCard p {
+  .Card p {
     font-family: Montserrat, sans-serif;
     font-size: 0.9em;
     color: #b0b0b0;

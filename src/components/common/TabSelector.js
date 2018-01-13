@@ -5,7 +5,11 @@ const TabSelector = ({options}) => (
   <div className="TabSelector">
       {
         options.map((option, idx) =>
-          <li key={idx} className={option.enabled ? "enabled" : "disabled"}>{option.name}</li>)
+          <li
+            key={idx}
+            className={option.enabled ? "enabled" : "disabled"}>
+            {option.name}
+          </li>)
       }
   </div>
 );
