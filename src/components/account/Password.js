@@ -4,7 +4,7 @@ import './Password.css';
 
 const Password = () => (
   <div className="Password">
-    <Card header="PASSWORD">
+    <Card header="Password">
       <button>CHANGE PASSWORD</button>
     </Card>
   </div>

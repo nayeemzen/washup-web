@@ -1,5 +1,15 @@
 @import "../common/Common.scss";
 
+.CardWrapper {
+  h1.header {
+    color: $color-gray-light;
+    font-family: $font-primary;
+    font-weight: 500;
+    font-size: 1em;
+    text-transform: uppercase;
+  }
+}
+
 .Card {
   background-color: $color-white;
   border-radius: 5px;
@@ -9,7 +19,6 @@
   padding-left: 15px;
   padding-right: 15px;
   text-align: center;
-
 
   h1 {
     font-family: $font-primary;

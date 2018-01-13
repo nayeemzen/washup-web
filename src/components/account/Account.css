@@ -1,0 +1,7 @@
+.Account {
+  max-width: 1000px;
+  justify-content: flex-start;
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 60px; }

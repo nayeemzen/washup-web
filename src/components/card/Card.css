@@ -1,3 +1,10 @@
+.CardWrapper h1.header {
+  color: #b0b0b0;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 1em;
+  text-transform: uppercase; }
+
 .Card {
   background-color: white;
   border-radius: 5px;

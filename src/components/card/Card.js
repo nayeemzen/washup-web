@@ -3,7 +3,7 @@ import './Card.css';
 
 const Card = ({header, children}) => (
   <div className="CardWrapper">
-    <p>{header}</p>
+    <h1 className="header">{header}</h1>
     <div className="Card">
       { children }
     </div>

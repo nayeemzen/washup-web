@@ -1,4 +1,4 @@
-@import "../common/Common";
+@import "../common/Common.scss";
 
 .CardListWrapper {
   margin-left: 30px;
@@ -10,7 +10,7 @@
     text-transform: uppercase;
     color: $color-gray-light;
     font-weight: 500;
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
   .CardList {
