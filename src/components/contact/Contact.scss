@@ -1,3 +1,16 @@
+@import "../common/Common.scss";
+
 .Contact {
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 0 auto;
+
+  .Description {
+    font-family: $font-primary;
+    text-align: center;
+    font-size: 1.2em;
+  }
 
 }

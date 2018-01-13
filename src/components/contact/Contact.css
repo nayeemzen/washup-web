@@ -1,0 +1,10 @@
+.Contact {
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 0 auto; }
+  .Contact .Description {
+    font-family: Montserrat, sans-serif;
+    text-align: center;
+    font-size: 1.2em; }
