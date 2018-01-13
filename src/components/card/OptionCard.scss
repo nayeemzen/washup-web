@@ -3,22 +3,24 @@
 .OptionCard {
   background-color: $color-white;
   border-radius: 5px;
-  width: 380px;
+  width: 360px;
   padding-top: 30px;
   padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
   text-align: center;
 
 
   h1 {
     font-family: $font-primary;
-    font-size: 1em;
+    font-size: 0.9em;
     color: $color-gray-dark;
     font-weight: 600;
   }
 
   p {
-    font-family: $font-secondary;
-    font-size: 0.8em;
+    font-family: $font-primary;
+    font-size: 0.9em;
     color: $color-gray-light;
     font-weight: 500;
   }
