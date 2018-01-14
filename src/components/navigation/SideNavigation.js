@@ -14,7 +14,17 @@ const SideNavigation = () => (
         {
           menuLinks.map((link, idx) =>
             <li key={idx}>
-              <NavLink to={link.to} activeStyle={{ opacity: 1 }}>
+              <NavLink
+                to={link.to}
+                activeStyle={{
+                  border: "1px solid rgba(255,255,255, 0.47)",
+                  borderRadius: "50px",
+                  paddingTop: "10px",
+                  paddingBottom: "10px",
+                  paddingLeft: "15px",
+                  paddingRight: "60px",
+                  marginLeft: "-16px",
+                }}>
                 <i className={`fa fa-${link.icon}`} aria-hidden="true"/>
                 {link.text}
               </NavLink>
