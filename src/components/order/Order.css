@@ -39,7 +39,9 @@
     display: flex;
     margin-left: 12%; }
     .Order .DateSelectorWrapper .DateSelector i {
-      margin: auto -430px;
+      position: fixed;
+      margin-top: 20px;
+      margin-left: 20px;
       z-index: 0;
       color: #1AB5FF;
       font-weight: 500;

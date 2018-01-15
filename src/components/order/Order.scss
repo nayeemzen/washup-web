@@ -37,7 +37,9 @@
       margin-left: 12%;
 
       i {
-        margin: auto -430px;
+        position: fixed;
+        margin-top: 20px;
+        margin-left: 20px;
         z-index: 0;
         color: $color-primary;
         font-weight: 500;
