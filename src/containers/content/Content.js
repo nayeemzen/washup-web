@@ -6,6 +6,7 @@ import Pricing from '../../components/pricing/Pricing';
 import Account from '../../components/account/Account';
 import Contact from '../../components/contact/Contact';
 import Logout from '../../components/logout/Logout';
+import Order from '../../components/order/Order';
 import './Content.css';
 
 const Content = () => (
@@ -18,6 +19,7 @@ const Content = () => (
       <Route exact path="/account" component={Account}/>
       <Route exact path="/contact" component={Contact}/>
       <Route exact path="/logout" component={Logout}/>
+      <Route exact path="/order" component={Order}/>
     </Switch>
   </div>
 );

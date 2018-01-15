@@ -1,0 +1,37 @@
+
+<svg width="105px" height="115px" viewBox="0 0 105 115" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="95" height="105" rx="10"></rect>
+        <rect id="path-2" x="0" y="0" width="95" height="105" rx="10"></rect>
+    </defs>
+    <g id="Order-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-753.000000, -258.000000)">
+            <g id="Shirt" transform="translate(763.000000, 268.000000)">
+                <g id="Rectangle-7">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#BDBDBD" stroke-width="3" x="1.5" y="1.5" width="92" height="102" rx="10"></rect>
+                </g>
+                <path d="M23.5,2.5 L47.5,35.5" id="Line" stroke="#BDBDBD" stroke-width="3" stroke-linecap="square"></path>
+                <circle id="Oval-1" fill="#BDBDBD" cx="58" cy="44" r="2"></circle>
+                <path d="M48.5,35.5 L48.5,102.5" id="Line" stroke="#BDBDBD" stroke-width="3" stroke-linecap="square"></path>
+                <path d="M49.5,2.5 L73.5,35.5" id="Line" stroke="#BDBDBD" stroke-width="3" stroke-linecap="square" transform="translate(61.500000, 19.000000) scale(-1, 1) translate(-61.500000, -19.000000) "></path>
+                <circle id="Oval-1" fill="#BDBDBD" cx="58" cy="64" r="2"></circle>
+                <circle id="Oval-1" fill="#BDBDBD" cx="58" cy="84" r="2"></circle>
+            </g>
+            <g id="Shirt" transform="translate(753.000000, 258.000000)">
+                <g id="Rectangle-7">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <rect stroke="#BDBDBD" stroke-width="3" x="1.5" y="1.5" width="92" height="102" rx="10"></rect>
+                </g>
+                <path d="M23.5,2.5 L47.5,35.5" id="Line" stroke="#BDBDBD" stroke-width="3" stroke-linecap="square"></path>
+                <circle id="Oval-1" fill="#BDBDBD" cx="58" cy="44" r="2"></circle>
+                <path d="M48.5,35.5 L48.5,102.5" id="Line" stroke="#BDBDBD" stroke-width="3" stroke-linecap="square"></path>
+                <path d="M49.5,2.5 L73.5,35.5" id="Line" stroke="#BDBDBD" stroke-width="3" stroke-linecap="square" transform="translate(61.500000, 19.000000) scale(-1, 1) translate(-61.500000, -19.000000) "></path>
+                <circle id="Oval-1" fill="#BDBDBD" cx="58" cy="64" r="2"></circle>
+                <circle id="Oval-1" fill="#BDBDBD" cx="58" cy="84" r="2"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

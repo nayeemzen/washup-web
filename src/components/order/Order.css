@@ -1,0 +1,80 @@
+.Order {
+  text-align: center; }
+  .Order .orderButton {
+    color: white;
+    background-color: #1AB5FF;
+    border: 2px solid transparent;
+    font-family: Montserrat, sans-serif, sans-serif;
+    font-weight: 500;
+    font-size: 1.1em;
+    letter-spacing: 2px;
+    padding: 20px 32px;
+    border-radius: 500px;
+    transition: all 0.2s ease;
+    margin-top: 40px; }
+    .Order .orderButton:hover {
+      color: white;
+      background-color: #1aa5ee;
+      transition: all 0.3s ease; }
+  .Order .closeButton {
+    text-decoration: none;
+    color: #707070;
+    position: fixed;
+    top: 20px;
+    right: 40px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    font-size: 2em; }
+  .Order .DateSelectorWrapper .PickupDate, .Order .DateSelectorWrapper .DropOffDate {
+    margin: 12px 0;
+    padding: 12px 200px 12px 80px;
+    border: 2px solid #e2e2e2;
+    font-size: 0.9em;
+    font-family: Montserrat, sans-serif;
+    color: #707070;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    text-transform: uppercase; }
+  .Order .DateSelectorWrapper .DateSelector {
+    display: flex;
+    margin-left: 12%; }
+    .Order .DateSelectorWrapper .DateSelector i {
+      margin: auto -430px;
+      z-index: 0;
+      color: #1AB5FF;
+      font-weight: 500;
+      font-size: 1.2em;
+      border-right: 1px solid #e2e2e2;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      padding-right: 20px; }
+  .Order .OrderTypeSelector {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    color: #b0b0b0;
+    font-family: Montserrat, sans-serif; }
+    .Order .OrderTypeSelector i {
+      margin-top: 18px;
+      color: #b0b0b0;
+      font-size: 1.7em; }
+    .Order .OrderTypeSelector .selected {
+      color: #1AB5FF; }
+      .Order .OrderTypeSelector .selected i {
+        color: #1AB5FF; }
+      .Order .OrderTypeSelector .selected .svg rect, .Order .OrderTypeSelector .selected .svg path, .Order .OrderTypeSelector .selected .svg circle {
+        stroke: #1AB5FF; }
+    .Order .OrderTypeSelector h1 {
+      font-size: 1.5em;
+      text-align: center;
+      font-weight: 300;
+      text-transform: uppercase; }
+    .Order .OrderTypeSelector .DryClean {
+      border-right: 1px solid #e2e2e2; }
+    .Order .OrderTypeSelector .DryClean, .Order .OrderTypeSelector .WashAndFold {
+      padding: 0 50px;
+      margin-bottom: 50px; }
+      .Order .OrderTypeSelector .DryClean img, .Order .OrderTypeSelector .WashAndFold img {
+        min-height: 220px;
+        margin-bottom: 5px; }
