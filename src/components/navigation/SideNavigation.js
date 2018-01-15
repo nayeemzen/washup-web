@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import  { withRouter } from 'react-router-dom';
 import Logo from '../../resources/logo.svg';
 import './SideNavigation.css';
 
-const SideNavigation = () => (
+const SideNavigation = withRouter(({ history }) => (
   <div className="SideNavigation">
     <div className="header">
       <img src={Logo} alt="WashUp"/>
@@ -34,10 +35,10 @@ const SideNavigation = () => (
       </ul>
     </nav>
     <div className="footer">
-      <button>START ORDER</button>
+      <button onClick={() => { history.push('/order') }}>START ORDER</button>
     </div>
   </div>
-);
+));
 
 
 const menuLinks = [
