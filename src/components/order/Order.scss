@@ -22,7 +22,7 @@
   .DateSelectorWrapper {
     .PickupDate, .DropOffDate {
       margin: 12px 0;
-      padding: 12px 200px 12px 80px;
+      padding: 12px 180px 12px 80px;
       border: 2px solid $color-gray-extra-light;
       font-size: 0.9em;
       font-family: $font-primary;
@@ -34,10 +34,10 @@
 
     .DateSelector {
       display: flex;
-      margin-left: 12%;
+      margin-left: 2%;
 
       i {
-        position: fixed;
+        position: absolute;
         margin-top: 20px;
         margin-left: 20px;
         z-index: 0;
@@ -78,7 +78,7 @@
     }
 
     h1 {
-      font-size: 1.5em;
+      font-size: 1.2em;
       text-align: center;
       font-weight: 300;
       text-transform: uppercase;
@@ -93,7 +93,7 @@
       margin-bottom: 50px;
 
       img {
-        min-height: 220px;
+        min-height: 150px;
         margin-bottom: 5px;
       }
     }

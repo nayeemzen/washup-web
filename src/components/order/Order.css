@@ -27,7 +27,7 @@
     font-size: 2em; }
   .Order .DateSelectorWrapper .PickupDate, .Order .DateSelectorWrapper .DropOffDate {
     margin: 12px 0;
-    padding: 12px 200px 12px 80px;
+    padding: 12px 180px 12px 80px;
     border: 2px solid #e2e2e2;
     font-size: 0.9em;
     font-family: Montserrat, sans-serif;
@@ -37,9 +37,9 @@
     text-transform: uppercase; }
   .Order .DateSelectorWrapper .DateSelector {
     display: flex;
-    margin-left: 12%; }
+    margin-left: 2%; }
     .Order .DateSelectorWrapper .DateSelector i {
-      position: fixed;
+      position: absolute;
       margin-top: 20px;
       margin-left: 20px;
       z-index: 0;
@@ -68,7 +68,7 @@
       .Order .OrderTypeSelector .selected .svg rect, .Order .OrderTypeSelector .selected .svg path, .Order .OrderTypeSelector .selected .svg circle {
         stroke: #1AB5FF; }
     .Order .OrderTypeSelector h1 {
-      font-size: 1.5em;
+      font-size: 1.2em;
       text-align: center;
       font-weight: 300;
       text-transform: uppercase; }
@@ -78,5 +78,5 @@
       padding: 0 50px;
       margin-bottom: 50px; }
       .Order .OrderTypeSelector .DryClean img, .Order .OrderTypeSelector .WashAndFold img {
-        min-height: 220px;
+        min-height: 150px;
         margin-bottom: 5px; }
