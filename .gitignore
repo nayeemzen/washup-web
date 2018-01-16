@@ -21,4 +21,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # intellij
-.idea/workspace.xml **/.idea/tasks.xml
+.idea/workspace.xml
+src/**/*.css

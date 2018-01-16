@@ -58,7 +58,6 @@ class Order extends Component {
   };
 
   selectOption = (option) => {
-    console.log(option);
     this.setState((prevState) => {
       return this.isSelectedOption(option)
         ? { selectedOptions: prevState.selectedOptions.filter(o => o !== option) }
