@@ -12,7 +12,7 @@ const OrderList = ({ orders }) => (
         <div className="OrderItem" key={idx}>
           <div className="orderItemProp orderType">
             <img
-              src={ order.type === WASH_AND_FOLD ? WashAndFoldSelectedSvg : DryCleanSelectedSvg}
+              src={ order.type === WASH_AND_FOLD.type ? WashAndFoldSelectedSvg : DryCleanSelectedSvg}
               alt={ order.name}/>
             {order.name}
           </div>
