@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
-import moment from 'moment';
-import Enum from '../common/Enum';
-
+import { DRY_CLEAN, WASH_AND_FOLD } from './OrderType';
 import 'react-datepicker/dist/react-datepicker.css';
 import DryCleanSvg from '../../resources/dryclean.svg';
 import DryCleanSelectedSvg from '../../resources/dryclean_selected.svg';
@@ -16,11 +14,6 @@ import './Order.css';
 class Order extends Component {
   constructor() {
     super();
-
-    this.options = Enum.of([
-      "DRY_CLEAN",
-      "WASH_AND_FOLD",
-    ]);
 
     this.state = {
       pickupDate: null,
@@ -61,15 +54,15 @@ class Order extends Component {
 
         <div className="OrderTypeSelector">
 
-          <div onClick={this.selectDryClean} className={`DryClean ${(this.isSelectedOption(this.options.DRY_CLEAN) ? "selected" : "")}`}>
-            <img src={`${this.isSelectedOption(this.options.DRY_CLEAN) ? DryCleanSelectedSvg : DryCleanSvg}`} alt="Dry Clean"/>
+          <div onClick={this.selectDryClean} className={`DryClean ${(this.isSelectedOption(DRY_CLEAN) ? "selected" : "")}`}>
+            <img src={`${this.isSelectedOption(DRY_CLEAN) ? DryCleanSelectedSvg : DryCleanSvg}`} alt="Dry Clean"/>
             <h1>Dry Clean</h1>
             <i className="fa fa-check-circle" aria-hidden="true"/>
           </div>
 
 
-          <div onClick={this.selectWashAndFold} className={`WashAndFold ${(this.isSelectedOption(this.options.WASH_AND_FOLD) ? "selected" : "")}`}>
-            <img src={`${this.isSelectedOption(this.options.WASH_AND_FOLD) ? WashAndFoldSelectedSvg : WashAndFoldSvg}`} alt="Dry Clean"/>
+          <div onClick={this.selectWashAndFold} className={`WashAndFold ${(this.isSelectedOption(WASH_AND_FOLD) ? "selected" : "")}`}>
+            <img src={`${this.isSelectedOption(WASH_AND_FOLD) ? WashAndFoldSelectedSvg : WashAndFoldSvg}`} alt="Dry Clean"/>
             <h1>Wash & Fold</h1>
             <i className="fa fa-check-circle" aria-hidden="true"/>
           </div>
@@ -115,16 +108,15 @@ class Order extends Component {
   };
 
   isSelectedOption = (option) => {
-    console.log(option, this.state);
     return this.state.selectedOptions.indexOf(option) !== -1;
   };
 
   selectWashAndFold = () => {
-    this.selectOption(this.options.WASH_AND_FOLD);
+    this.selectOption(WASH_AND_FOLD);
   };
 
   selectDryClean = () => {
-    this.selectOption(this.options.DRY_CLEAN);
+    this.selectOption(DRY_CLEAN);
   };
 
   selectOption = (option) => {

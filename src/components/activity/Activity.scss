@@ -1,31 +1,84 @@
 @import "../common/Common.scss";
 
-.Activity {
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 
-  p {
+.NoOrders {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    p {
+      font-family: $font-primary;
+      font-size: 1.7em;
+      color: $color-black;
+      text-align: center;
+    }
+
+    button {
+      @include rounded-button($color-primary, $color-white, transparent, $color-primary-dark, $color-white);
+      animation-name: pulse-grow;
+      animation-duration: 0.5s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+    @keyframes pulse-grow {
+      to {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+      }
+    }
+}
+
+.OrderList {
+  width: 100%;
+  margin-top: 70px;
+
+  h1 {
+    margin-left: 50px;
+    margin-bottom: 20px;
+    color: $color-gray-light;
     font-family: $font-primary;
-    font-size: 1.7em;
-    color: $color-black;
-    text-align: center;
+    font-weight: 500;
+    font-size: 1em;
+    text-transform: uppercase;
   }
 
-  button {
-    @include rounded-button($color-primary, $color-white, transparent, $color-primary-dark, $color-white);
-    animation-name: pulse-grow;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-  }
-  @keyframes pulse-grow {
-    to {
-      -webkit-transform: scale(1.05);
-      transform: scale(1.05);
+  .OrderItem {
+    padding-left: 50px;
+    background-color: $color-white;
+    margin-bottom: 2px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .orderItemProp {
+      flex-basis: 20%;
+      font-family: $font-secondary;
+      font-size: 1em;
+    }
+
+    .orderPrice {
+      color: $color-primary;
+    }
+
+    .orderDate, .orderStatus {
+      color: $color-gray-light;
+    }
+
+    .orderType {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      img {
+        width: 50px;
+        margin-right: 20px;
+      }
     }
   }
 }
