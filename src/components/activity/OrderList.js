@@ -16,7 +16,7 @@ const OrderList = ({ orders }) => (
               alt={ order.name}/>
             {order.name}
           </div>
-          <div className="orderItemProp orderDate">{order.date}</div>
+          <div className="orderItemProp orderDate">{order.date.format('LL')}</div>
           <div className="orderItemProp orderStatus">{order.status}</div>
           <div className="orderItemProp orderPrice">{order.price}</div>
         </div>
