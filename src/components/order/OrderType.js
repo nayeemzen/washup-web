@@ -1,6 +1,6 @@
 import Enum from '../common/Enum';
 
-export const OrderType = Enum.of([
+const OrderType = Enum.of([
   "DRY_CLEAN",
   "WASH_AND_FOLD",
 ]);

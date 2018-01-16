@@ -1,43 +1,20 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
-import { DRY_CLEAN, WASH_AND_FOLD } from './OrderType';
-import 'react-datepicker/dist/react-datepicker.css';
-import DryCleanSvg from '../../resources/dryclean.svg';
-import DryCleanSelectedSvg from '../../resources/dryclean_selected.svg';
-import WashAndFoldSvg from '../../resources/washandfold.svg';
-import WashAndFoldSelectedSvg from '../../resources/washandfold_selected.svg';
+
+import OrderTypeSelector from "./OrderTypeSelector";
+import DateSelector from "./DateSelector";
 import './Order.css';
 
 
 class Order extends Component {
   constructor() {
     super();
-
     this.state = {
       pickupDate: null,
       dropOffDate: null,
       focusedInput: null,
       selectedOptions: []
-    };
-
-    this.modalStyles = {
-      overlay : {
-        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-      },
-      content: {
-        border: "0",
-        borderRadius: "0",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        top                        : '0px',
-        left                       : '0px',
-        right                      : '0px',
-        bottom                     : '0px',
-      }
     };
   }
 
@@ -46,53 +23,22 @@ class Order extends Component {
   }
 
   render() {
-    return <Modal
-      isOpen={ true }
-      style={this.modalStyles}>
-      <div className="Order">
-        <Link className="closeButton" to="/activity">⨉</Link>
-
-        <div className="OrderTypeSelector">
-
-          <div onClick={this.selectDryClean} className={`DryClean ${(this.isSelectedOption(DRY_CLEAN) ? "selected" : "")}`}>
-            <img src={`${this.isSelectedOption(DRY_CLEAN) ? DryCleanSelectedSvg : DryCleanSvg}`} alt="Dry Clean"/>
-            <h1>Dry Clean</h1>
-            <i className="fa fa-check-circle" aria-hidden="true"/>
-          </div>
-
-
-          <div onClick={this.selectWashAndFold} className={`WashAndFold ${(this.isSelectedOption(WASH_AND_FOLD) ? "selected" : "")}`}>
-            <img src={`${this.isSelectedOption(WASH_AND_FOLD) ? WashAndFoldSelectedSvg : WashAndFoldSvg}`} alt="Dry Clean"/>
-            <h1>Wash & Fold</h1>
-            <i className="fa fa-check-circle" aria-hidden="true"/>
-          </div>
-
-        </div>
-
-        <div className="DateSelectorWrapper">
-          <div className="DateSelector">
-            <DatePicker
-              className="PickupDate"
-              selected={this.state.pickupDate}
-              onChange={this.selectPickupDate}
-              placeholderText={"Pick up date"}
-            />
-            <i className="fa fa-calendar" aria-hidden="true"/>
-          </div>
-          <div className="DateSelector">
-            <DatePicker
-              className="DropOffDate"
-              selected={this.state.dropOffDate}
-              onChange={this.selectDropOffDate}
-              placeholderText={"Drop off date"}
-            />
-            <i className="fa fa-calendar" aria-hidden="true"/>
-          </div>
-
+    return (
+      <Modal isOpen={true} style={modalStyles}>
+        <div className="Order">
+          <Link className="closeButton" to="/activity">⨉</Link>
+          <OrderTypeSelector
+            selectOption={this.selectOption}
+            selectedOptions={this.state.selectedOptions}/>
+          <DateSelector
+            pickupDate={this.state.pickupDate}
+            dropOffDate={this.state.dropOffDate}
+            selectPickupDate={this.selectPickupDate}
+            selectDropOffDate={this.selectDropOffDate}/>
           <button className="orderButton">PLACE ORDER</button>
         </div>
-      </div>
-    </Modal>
+      </Modal>
+    );
   }
 
   selectPickupDate = (date) => {
@@ -111,15 +57,8 @@ class Order extends Component {
     return this.state.selectedOptions.indexOf(option) !== -1;
   };
 
-  selectWashAndFold = () => {
-    this.selectOption(WASH_AND_FOLD);
-  };
-
-  selectDryClean = () => {
-    this.selectOption(DRY_CLEAN);
-  };
-
   selectOption = (option) => {
+    console.log(option);
     this.setState((prevState) => {
       return this.isSelectedOption(option)
         ? { selectedOptions: prevState.selectedOptions.filter(o => o !== option) }
@@ -128,5 +67,22 @@ class Order extends Component {
   };
 }
 
+const modalStyles = {
+  overlay : {
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+  },
+  content: {
+    border: "0",
+    borderRadius: "0",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    top                        : '0px',
+    left                       : '0px',
+    right                      : '0px',
+    bottom                     : '0px',
+  }
+};
 
 export default Order;

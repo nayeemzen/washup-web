@@ -11,7 +11,9 @@ const OrderList = ({ orders }) => (
       orders.map((order, idx) =>
         <div className="OrderItem" key={idx}>
           <div className="orderItemProp orderType">
-            <img src={ order.type === WASH_AND_FOLD ? WashAndFoldSelectedSvg : DryCleanSelectedSvg}/>
+            <img
+              src={ order.type === WASH_AND_FOLD ? WashAndFoldSelectedSvg : DryCleanSelectedSvg}
+              alt={ order.name}/>
             {order.name}
           </div>
           <div className="orderItemProp orderDate">{order.date}</div>
