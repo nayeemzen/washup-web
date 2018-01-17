@@ -21,7 +21,7 @@ const DateSelector = ({pickupDate, dropOffDate, selectPickupDate, selectDropOffD
 const DateSelectorItem = ({ className, selectedDate, selectDate, placeholder }) => (
   <div className="DateSelector">
     <DatePicker
-      className={className}
+      className={`${className} ${selectedDate && "selected"}`}
       selected={selectedDate}
       onChange={selectDate}
       placeholderText={placeholder}/>
