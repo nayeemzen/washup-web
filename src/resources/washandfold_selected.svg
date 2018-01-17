@@ -11,26 +11,26 @@
             <g id="Shirt" transform="translate(763.000000, 268.000000)">
                 <g id="Rectangle-7">
                     <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
-                    <rect stroke="#1AB5FF" stroke-width="3" x="1.5" y="1.5" width="92" height="102" rx="10"></rect>
+                    <rect stroke="#27b7d7" stroke-width="3" x="1.5" y="1.5" width="92" height="102" rx="10"></rect>
                 </g>
-                <path d="M23.5,2.5 L47.5,35.5" id="Line" stroke="#1AB5FF" stroke-width="3" stroke-linecap="square"></path>
-                <circle id="Oval-1" fill="#1AB5FF" cx="58" cy="44" r="2"></circle>
-                <path d="M48.5,35.5 L48.5,102.5" id="Line" stroke="#1AB5FF" stroke-width="3" stroke-linecap="square"></path>
-                <path d="M49.5,2.5 L73.5,35.5" id="Line" stroke="#1AB5FF" stroke-width="3" stroke-linecap="square" transform="translate(61.500000, 19.000000) scale(-1, 1) translate(-61.500000, -19.000000) "></path>
-                <circle id="Oval-1" fill="#1AB5FF" cx="58" cy="64" r="2"></circle>
-                <circle id="Oval-1" fill="#1AB5FF" cx="58" cy="84" r="2"></circle>
+                <path d="M23.5,2.5 L47.5,35.5" id="Line" stroke="#27b7d7" stroke-width="3" stroke-linecap="square"></path>
+                <circle id="Oval-1" fill="#27b7d7" cx="58" cy="44" r="2"></circle>
+                <path d="M48.5,35.5 L48.5,102.5" id="Line" stroke="#27b7d7" stroke-width="3" stroke-linecap="square"></path>
+                <path d="M49.5,2.5 L73.5,35.5" id="Line" stroke="#27b7d7" stroke-width="3" stroke-linecap="square" transform="translate(61.500000, 19.000000) scale(-1, 1) translate(-61.500000, -19.000000) "></path>
+                <circle id="Oval-1" fill="#27b7d7" cx="58" cy="64" r="2"></circle>
+                <circle id="Oval-1" fill="#27b7d7" cx="58" cy="84" r="2"></circle>
             </g>
             <g id="Shirt" transform="translate(753.000000, 258.000000)">
                 <g id="Rectangle-7">
                     <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
-                    <rect stroke="#1AB5FF" stroke-width="3" x="1.5" y="1.5" width="92" height="102" rx="10"></rect>
+                    <rect stroke="#27b7d7" stroke-width="3" x="1.5" y="1.5" width="92" height="102" rx="10"></rect>
                 </g>
-                <path d="M23.5,2.5 L47.5,35.5" id="Line" stroke="#1AB5FF" stroke-width="3" stroke-linecap="square"></path>
-                <circle id="Oval-1" fill="#1AB5FF" cx="58" cy="44" r="2"></circle>
-                <path d="M48.5,35.5 L48.5,102.5" id="Line" stroke="#1AB5FF" stroke-width="3" stroke-linecap="square"></path>
-                <path d="M49.5,2.5 L73.5,35.5" id="Line" stroke="#1AB5FF" stroke-width="3" stroke-linecap="square" transform="translate(61.500000, 19.000000) scale(-1, 1) translate(-61.500000, -19.000000) "></path>
-                <circle id="Oval-1" fill="#1AB5FF" cx="58" cy="64" r="2"></circle>
-                <circle id="Oval-1" fill="#1AB5FF" cx="58" cy="84" r="2"></circle>
+                <path d="M23.5,2.5 L47.5,35.5" id="Line" stroke="#27b7d7" stroke-width="3" stroke-linecap="square"></path>
+                <circle id="Oval-1" fill="#27b7d7" cx="58" cy="44" r="2"></circle>
+                <path d="M48.5,35.5 L48.5,102.5" id="Line" stroke="#27b7d7" stroke-width="3" stroke-linecap="square"></path>
+                <path d="M49.5,2.5 L73.5,35.5" id="Line" stroke="#27b7d7" stroke-width="3" stroke-linecap="square" transform="translate(61.500000, 19.000000) scale(-1, 1) translate(-61.500000, -19.000000) "></path>
+                <circle id="Oval-1" fill="#27b7d7" cx="58" cy="64" r="2"></circle>
+                <circle id="Oval-1" fill="#27b7d7" cx="58" cy="84" r="2"></circle>
             </g>
         </g>
     </g>

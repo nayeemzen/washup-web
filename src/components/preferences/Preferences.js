@@ -22,7 +22,7 @@ const Preferences = () => (
 
 const renderOptions = (options) => (
   (options.length === 1)
-    ? <Switch onChange={this.onChange} options={{color: '#1AB5FF', size: 'small'}} checked/>
+    ? <Switch onChange={this.onChange} options={{color: '#27b7d7', size: 'small'}} checked/>
     : <TabSelector options={options}/>
 );
 

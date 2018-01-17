@@ -17,7 +17,7 @@ class Order extends Component {
     super();
     this.state = {
       modalOpen: true,
-      pickupDate: moment(),
+      pickupDate: null,
       dropOffDate: null,
       focusedInput: null,
       selectedOptions: []
