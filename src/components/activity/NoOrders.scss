@@ -9,8 +9,8 @@
 
   p {
     font-family: $font-primary;
-    font-size: 1.7em;
-    color: $color-black;
+    font-size: 1.4em;
+    color: $color-gray-dark;
     text-align: center;
   }
 
@@ -24,8 +24,8 @@
   }
   @keyframes pulse-grow {
     to {
-      -webkit-transform: scale(1.05);
-      transform: scale(1.05);
+      -webkit-transform: scale(1.03);
+      transform: scale(1.03);
     }
   }
 }

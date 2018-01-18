@@ -18,6 +18,10 @@
         color: $color-white;
     }
 
+    h1 {
+      font-weight: normal;
+    }
+
     nav {
       margin-left: 2.8em;
 
@@ -26,10 +30,10 @@
       }
 
       li {
-        padding-bottom: 1.5em;
+        padding-bottom: 2em;
         font-family: $font-primary, sans-serif;
         font-weight: 500;
-        font-size: 1.05em;
+        font-size: 1em;
 
         a {
           text-decoration: none;

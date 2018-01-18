@@ -66,29 +66,6 @@ const preferencesList = [
         enabled: false
       },
     ]
-  },
-  {
-    header: "Starch",
-    title: "Starch (Laundered & Press Items)",
-    subtitle: "Dry cleaned cloths will be starched based on the above option where applicable.",
-    options: [
-      { 
-        name: "None",
-        enabled: true
-      },
-      {
-        name: "Light",
-        enabled: false
-      },
-      {
-        name: "Medium",
-        enabled: false
-      },
-      {
-        name: "Heavy",
-        enabled: false
-      },
-    ]
   }
 
 ];
