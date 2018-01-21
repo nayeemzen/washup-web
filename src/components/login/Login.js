@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Logo from '../../resources/logo_horizontal.svg';
 import './Login.css';
+import userService from '../../services/UserService';
 
 class Login extends Component {
   constructor() {
@@ -26,8 +27,20 @@ class Login extends Component {
   }
 
   logIn = () => {
-    this.props.setAuthenticated(true);
-    this.props.history.push('/activity');
+    if (!this.state.email || !this.state.password) {
+      alert("Please fill in your email and password");
+      return;
+    }
+
+    userService.login({
+      email: this.state.email,
+      password: this.state.password
+    }).then(() => {
+      this.props.setAuthenticated(true);
+      this.props.history.push('/activity');
+    }).catch(() => {
+      alert('Login failed.');
+    });
   };
 
   onEmailInput = (e) => {

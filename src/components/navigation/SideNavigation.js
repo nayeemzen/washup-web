@@ -7,7 +7,7 @@ import NavLinks from './NavLinks';
 import Logo from '../../resources/logo.svg';
 import './SideNavigation.css';
 
-const SideNavigation = withRouter(({history, sidebarEnabled}) => {
+const SideNavigation =({history, sidebarEnabled}) => {
   return sidebarEnabled ? (
       <div className="SideNavigation">
         <NavHeader logo={Logo} fullName={"John Doe"}/>
@@ -15,6 +15,6 @@ const SideNavigation = withRouter(({history, sidebarEnabled}) => {
         <NavFooter onClick={ () => history.push('/order') }/>
       </div>
     ) : (null);
-  }
-);
-export default SideNavigation;
+};
+
+export default  withRouter(SideNavigation);
