@@ -1,42 +1,31 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {Redirect, Route} from 'react-router-dom';
 
-const AuthenticatedRoute = ({ component: Component, render, path, isAuthenticated, ...rest }) => {
+const AuthenticatedRoute = ({component: Component, render, path, isAuthenticated, ...rest}) => {
   return <Route {...rest} render={props => {
-    if (!isAuthenticated) {
-      if (path.startsWith('/login')) {
-        return <Component {...props}/>;
-      }
-
-      return (
-        <Redirect to={{
-          pathname: '/login',
-          state: {from: props.location}
-        }}/>
-      );
+    if (isAuthenticated && !path.startsWith('/login')) {
+      return render ? render() : <Component {...props}/>;
     }
 
     if (path.startsWith('/login')) {
-      return (
-        <Redirect to={{
-          pathname: '/activity',
-          state: {from: props.location}
-        }}/>
-      );
+      return isAuthenticated
+        ? <Redirect to={{pathname: '/activity', state: {from: props.location}}}/>
+        : <Component {...props}/>;
     }
 
-    if (render) {
-      return render();
-    }
-
-    return <Component {...props}/>;
-  }}/>;
+    return (
+      <Redirect to={{
+        pathname: '/login',
+        state: {from: props.location}
+      }}/>
+    );
+  }}/>
 };
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: true
+    isAuthenticated: state.user.isAuthenticated
   }
 };
 

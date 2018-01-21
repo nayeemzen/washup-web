@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 import Activity from '../../components/activity/Activity';
 import Preferences from '../../components/preferences/Preferences';
 import Pricing from '../../components/pricing/Pricing';
