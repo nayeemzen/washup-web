@@ -7,21 +7,30 @@ import Account from '../../components/account/Account';
 import Contact from '../../components/contact/Contact';
 import Logout from '../../components/logout/Logout';
 import Order from '../../components/order/Order';
+import AuthenticatedRoute from "../../components/routes/AuthenticatedRoute";
+import Login from "../../components/login/Login";
 import './Content.css';
 
-const Content = () => (
-  <div className="Content">
+const Content = ({ sidebarEnabled }) => (
+  <div className="Content" style={contentStyle(sidebarEnabled)}>
     <Switch>
-      <Route exact path="/" render={() => <Redirect to="/activity"/>}/>
-      <Route exact path="/activity" component={Activity}/>
-      <Route exact path="/preferences" component={Preferences}/>
-      <Route exact path="/pricing" component={Pricing}/>
-      <Route exact path="/account" component={Account}/>
-      <Route exact path="/contact" component={Contact}/>
-      <Route exact path="/logout" component={Logout}/>
-      <Route exact path="/order" component={Order}/>
+      <AuthenticatedRoute exact path="/login" component={Login}/>
+      <AuthenticatedRoute exact path="/" render={() => <Redirect to="/activity"/>}/>
+      <AuthenticatedRoute exact path="/activity" component={Activity}/>
+      <AuthenticatedRoute exact path="/preferences" component={Preferences}/>
+      <AuthenticatedRoute exact path="/pricing" component={Pricing}/>
+      <AuthenticatedRoute exact path="/account" component={Account}/>
+      <AuthenticatedRoute exact path="/contact" component={Contact}/>
+      <AuthenticatedRoute exact path="/logout" component={Logout}/>
+      <AuthenticatedRoute exact path="/order" component={Order}/>
     </Switch>
   </div>
 );
+
+const contentStyle = (sidebarEnabled) => {
+ return {
+   marginLeft: sidebarEnabled ? "340px" : "0"
+ }
+};
 
 export default Content;

@@ -1,13 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import SideNavigation from '../../components/navigation/SideNavigation';
 import Content from '../content/Content';
 import './App.css';
 
-const App = () => (
+const App = ({ isAuthenticated }) => (
     <div className="App">
-      <SideNavigation/>
-      <Content/>
+      <SideNavigation sidebarEnabled={isAuthenticated}/>
+      <Content sidebarEnabled={isAuthenticated}/>
     </div>
 );
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.isAuthenticated
+  }
+};
+
+export default withRouter(connect(mapStateToProps, {})(App));
