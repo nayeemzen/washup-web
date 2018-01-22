@@ -1,6 +1,6 @@
 import ApiService from "./ApiService";
-import axios from 'axios';
-import LoginFailedException from "./exceptions/LoginFailedException";
+import LoginFailedException from "../exceptions/LoginFailedException";
+import Authenticator from "./Authenticator";
 
 class UserService extends ApiService {
   constructor() {
@@ -8,7 +8,7 @@ class UserService extends ApiService {
   }
 
   login = (credentials) => {
-    return axios.post(this.apiUrl('/login'), credentials)
+    return this.api.post('/login', credentials)
       .then(response => {
         let authorizationHeader = response.headers.authorization;
         if (response.status === 200 && authorizationHeader) {
@@ -18,7 +18,7 @@ class UserService extends ApiService {
         throw new LoginFailedException(response);
       })
       .then(token => {
-        localStorage.setItem('auth_token', token);
+        Authenticator.setAuthToken(token);
         return token;
       });
   }
