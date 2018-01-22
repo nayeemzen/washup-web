@@ -2,13 +2,15 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect, Route} from 'react-router-dom';
 
+const whitelist = new Set(['/', '/login']);
+
 const AuthenticatedRoute = ({component: Component, render, path, isAuthenticated, ...rest}) => {
   return <Route {...rest} render={props => {
-    if (isAuthenticated && !path.startsWith('/login')) {
+    if (isAuthenticated && !whitelist.has(path)) {
       return render ? render() : <Component {...props}/>;
     }
 
-    if (path.startsWith('/login')) {
+    if (whitelist.has(path)) {
       return isAuthenticated
         ? <Redirect to={{pathname: '/activity', state: {from: props.location}}}/>
         : <Component {...props}/>;

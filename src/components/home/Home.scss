@@ -1,0 +1,152 @@
+@import "../common/Common.scss";
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: $color-white;
+
+  .NavBar {
+    box-shadow: 0 5px 6px -6px;
+    margin-bottom: 5px;
+    background-color: $color-white;
+    display: flex;
+    flex-direction: row;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 3%;
+    align-items: center;
+    justify-content: space-between;
+
+    .Links {
+      flex-direction: row;
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-family: $font-secondary;
+        font-weight: 700;
+        font-size: 1em;
+        color: $color-gray-dark;
+
+        margin-right: 40px;
+      }
+    }
+  }
+
+  .Hero {
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: $color-white;
+
+    h1 {
+      margin: 0;
+      margin-bottom: 10px;
+      font-family: $font-primary;
+      font-size: 5.5em;
+      color: $color-primary;
+      padding: 0;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: $font-primary;
+      font-size: 3em;
+      color: $color-gray-dark;
+      font-weight: 500;
+    }
+
+    .Order {
+      display: flex;
+      flex-direction: column;
+      margin-top: 25px;
+      padding-bottom: 50px;
+
+      p {
+        max-width: 800px;
+        text-align: start;
+        font-family: $font-secondary;
+        color: $color-gray-light;
+        font-size: 1.8em;
+      }
+
+      input {
+        padding-left: 20px;
+        padding-right: 70px;
+        font-family: $font-primary;
+        color: $color-gray-dark;
+        font-size: 1.2em;
+        font-weight: 500;
+        outline: none;
+        border: 2px solid $color-primary;
+        border-radius: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      button {
+        margin-top: 20px;
+        margin-left: 20px;
+        @include rounded-button($color-primary, $color-white, transparent,
+              $color-primary-dark, $color-white);
+      }
+
+      ::placeholder {
+        color: $color-primary;
+      }
+    }
+  }
+
+  .HowItWorks {
+    margin-top: 30px;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color:$color-primary;
+    min-height: 600px;
+    h1 {
+      text-align: center;
+      font-size: 3.2em;
+      color: $color-white;
+      font-family: $font-primary;
+    }
+
+    .HowItWorksItems {
+      display: flex;
+      margin-top: 50px;
+      justify-content: space-around;
+
+      .HowItWorksItem {
+        flex-basis: 30%;
+        text-align: center;
+        margin-right: 50px;
+        margin-left: 50px;
+
+        i {
+          font-size: 5em;
+          color: white;
+        }
+
+        h3 {
+          color: white;
+          font-family: $font-primary;
+          font-weight: 600;
+          font-size: 2.3em;
+          opacity: 0.7;
+        }
+
+        p {
+          color: white;
+          font-family: $font-secondary;
+          font-size: 1.5em;
+        }
+      }
+    }
+  }
+}

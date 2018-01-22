@@ -10,12 +10,13 @@ import Order from '../../components/order/Order';
 import AuthenticatedRoute from "../../components/routes/AuthenticatedRoute";
 import Login from "../../components/login/Login";
 import './Content.css';
+import Home from "../../components/home/Home";
 
 const Content = ({ sidebarEnabled }) => (
   <div className="Content" style={contentStyle(sidebarEnabled)}>
     <Switch>
+      <AuthenticatedRoute exact path="/" component={Home}/>
       <AuthenticatedRoute exact path="/login" component={Login}/>
-      <AuthenticatedRoute exact path="/" render={() => <Redirect to="/activity"/>}/>
       <AuthenticatedRoute exact path="/activity" component={Activity}/>
       <AuthenticatedRoute exact path="/preferences" component={Preferences}/>
       <AuthenticatedRoute exact path="/pricing" component={Pricing}/>
