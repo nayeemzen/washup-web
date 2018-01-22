@@ -21,6 +21,10 @@ class UserService extends ApiService {
         Authenticator.setAuthToken(token);
         return token;
       });
+  };
+
+  getProfile = () => {
+    return this.api.get('/get-profile').then(response => response.data);
   }
 }
 

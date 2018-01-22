@@ -4,3 +4,10 @@ export const setAuthenticated = (isAuthenticated) => {
       isAuthenticated: isAuthenticated
     }
 };
+
+export const setProfile = (profile) => {
+  return {
+    type: 'SET_PROFILE',
+    profile: profile
+  }
+};
