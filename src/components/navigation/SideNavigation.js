@@ -17,4 +17,4 @@ const SideNavigation =({history, sidebarEnabled}) => {
     ) : (null);
 };
 
-export default  withRouter(SideNavigation);
+export default withRouter(SideNavigation);
