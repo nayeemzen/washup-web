@@ -18,6 +18,14 @@
     align-items: center;
     justify-content: space-between;
 
+    i {
+      margin-right: 40px;
+      font-size: 1.4em;
+      @media only screen and (min-width: 690px) {
+        display: none;
+      }
+    }
+
     .Links {
       flex-direction: row;
       a {
@@ -31,6 +39,11 @@
 
         margin-right: 40px;
       }
+
+      @media only screen and (max-width: 690px) {
+        display: none;
+      }
+
     }
   }
 
@@ -42,6 +55,15 @@
     margin-top: 100px;
     background-color: $color-white;
 
+    @media only screen and (max-width: 1030px) {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+
+    @media only screen and (max-width: 690px) {
+      margin-top: 30px;
+    }
+
     h1 {
       margin: 0;
       margin-bottom: 10px;
@@ -49,6 +71,10 @@
       font-size: 5.5em;
       color: $color-primary;
       padding: 0;
+
+      @media only screen and (max-width: 520px) {
+        font-size: 4.2em;
+      }
     }
 
     h2 {
@@ -57,6 +83,10 @@
       font-size: 3em;
       color: $color-gray-dark;
       font-weight: 500;
+
+      @media only screen and (max-width: 520px) {
+        font-size: 2.2em;
+      }
     }
 
     .Order {
@@ -71,34 +101,63 @@
         font-family: $font-secondary;
         color: $color-gray-light;
         font-size: 1.8em;
+
+        @media only screen and (max-width: 520px) {
+          margin-top: 5px;
+          font-size: 1.4em;
+        }
       }
 
-      input {
-        padding-left: 20px;
-        padding-right: 70px;
-        font-family: $font-primary;
-        color: $color-gray-dark;
-        font-size: 1.2em;
-        font-weight: 500;
-        outline: none;
-        border: 2px solid $color-primary;
-        border-radius: 5px;
-        margin-left: 10px;
-        margin-right: 10px;
-        margin-top: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
+      .OrderForm {
+        @media only screen
+        and (max-width: 875px)
+        and (min-width: 600px) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
 
-      button {
-        margin-top: 20px;
-        margin-left: 20px;
-        @include rounded-button($color-primary, $color-white, transparent,
-              $color-primary-dark, $color-white);
-      }
+        input {
+          padding-left: 20px;
+          padding-right: 70px;
+          font-family: $font-primary;
+          color: $color-gray-dark;
+          font-size: 1.2em;
+          font-weight: 500;
+          outline: none;
+          border: 2px solid $color-primary;
+          border-radius: 5px;
+          margin-left: 10px;
+          margin-right: 10px;
+          margin-top: 20px;
+          padding-top: 15px;
+          padding-bottom: 15px;
 
-      ::placeholder {
-        color: $color-primary;
+          @media only screen and (max-width: 520px) {
+            margin-left: 0;
+            margin-right: 0;
+          }
+
+          @media only screen and (max-width: 390px) {
+            padding-right: 25px;
+          }
+        }
+
+        button {
+          @include rounded-button($color-primary, $color-white, transparent, $color-primary-dark, $color-white);
+          width: 300px;
+          margin-top: 22px;
+          margin-left: 20px;
+          font-size: 1em;
+
+          @media only screen and (max-width: 875px) {
+            margin-left: 0;
+          }
+        }
+
+        ::placeholder {
+          color: $color-primary;
+        }
       }
     }
   }
@@ -110,41 +169,91 @@
     flex-direction: column;
     background-color:$color-primary;
     min-height: 600px;
+    padding-bottom: 80px;
+
     h1 {
       text-align: center;
-      font-size: 3.2em;
+      font-size: 4em;
       color: $color-white;
       font-family: $font-primary;
+      font-weight: 300;
+
+      @media only screen and (max-width: 480px) {
+        font-size: 4.2em;
+      }
     }
 
     .HowItWorksItems {
       display: flex;
-      margin-top: 50px;
-      justify-content: space-around;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      justify-content: space-between;
+
+      @media only screen and (max-width: 810px) {
+        flex-direction: column;
+        align-self: center;
+        max-width: 470px;
+      }
 
       .HowItWorksItem {
-        flex-basis: 30%;
+        flex-basis: 20%;
         text-align: center;
         margin-right: 50px;
         margin-left: 50px;
+        margin-bottom: 30px;
 
         i {
-          font-size: 5em;
+          font-size: 4em;
           color: white;
+          border: 3px solid white;
+          border-radius: 50%;
+          padding: 50px;
+
         }
 
         h3 {
           color: white;
           font-family: $font-primary;
-          font-weight: 600;
-          font-size: 2.3em;
+          font-weight: 300;
+          font-size: 2.2em;
           opacity: 0.7;
+          margin-top: 22px;
+          margin-bottom: 12px;
         }
 
         p {
+          margin-top: 0;
           color: white;
           font-family: $font-secondary;
-          font-size: 1.5em;
+          font-size: 1.3em;
+        }
+      }
+    }
+  }
+
+  .Price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $color-background;
+    min-height: 600px;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    h1 {
+      font-size: 4em;
+      color: $color-black;
+      font-family: $font-primary;
+      font-weight: 300;
+    }
+
+    .Pricing {
+      margin: 0 auto;
+      justify-content: center;
+      @media only screen and (max-width: 520px) {
+        li {
+          width: 320px;
         }
       }
     }

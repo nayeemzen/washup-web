@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from '../../resources/logo_horizontal_selected.svg';
 import './Home.css';
+import Pricing from "../pricing/Pricing";
 
 const Home = () => (
   <div className="Home">
@@ -13,6 +14,7 @@ const Home = () => (
           <a href="#">Pricing</a>
           <a href="/login">Login</a>
         </div>
+        <i class="fa fa-bars" aria-hidden="true"/>
     </div>
 
     <section className="Hero">
@@ -61,6 +63,12 @@ const Home = () => (
           </p>
         </div>
       </div>
+    </section>
+
+
+    <section className="Price">
+      <h1>Pricing</h1>
+      <Pricing/>
     </section>
   </div>
 );
