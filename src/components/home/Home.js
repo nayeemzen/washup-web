@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../resources/logo_horizontal_selected.svg';
+import Logo from '../../resources/logo_horizontal.svg';
 import './Home.css';
 import Pricing from "../pricing/Pricing";
 
@@ -7,30 +7,28 @@ const Home = () => (
   <div className="Home">
     <div className="NavBar">
         <div className="Logo">
-          <img src={Logo} alt="Wash Up"/>
+          <object data={Logo} alt="Wash Up"/>
         </div>
         <div className="Links">
           <a href="#HowItWorks">How it works</a>
-          <a href="#">Pricing</a>
+          <a href="#Pricing">Pricing</a>
           <a href="/login">Login</a>
         </div>
         <i class="fa fa-bars" aria-hidden="true"/>
     </div>
 
     <section className="Hero">
-      <h1>Laundry?</h1>
-      <h2>ain't nobody got time for that!</h2>
+      <h1>Pickup and delivery for your dry cleaning and laundry.</h1>
 
       <div className="Order">
         <p>
-          We'll pickup and deliver your laundry to your doorstep
-          so you can focus on things that really matter.
+          So you can focus on things that really matter.
         </p>
 
         <div className="OrderForm">
-          <input placeholder="Email"/>
-          <input placeholder="Postal Code"/>
-          <button>CLEAN MY CLOTHES!</button>
+          <input spellCheck="false" id="email_input" placeholder="Email"/>
+          <input spellCheck="false" id="postal_code_input" placeholder="Postal Code"/>
+          <button>CLEAN MY CLOTHES</button>
         </div>
       </div>
     </section>
@@ -66,7 +64,7 @@ const Home = () => (
     </section>
 
 
-    <section className="Price">
+    <section id="Pricing" className="Price">
       <h1>Pricing</h1>
       <Pricing/>
     </section>
