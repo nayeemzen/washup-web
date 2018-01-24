@@ -13,6 +13,7 @@ const Home = () => (
           <a href="#HowItWorks">How it works</a>
           <a href="#Pricing">Pricing</a>
           <a href="/login">Login</a>
+          <a href="/signup">Sign Up</a>
         </div>
         <i class="fa fa-bars" aria-hidden="true"/>
     </div>

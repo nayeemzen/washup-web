@@ -38,7 +38,7 @@
       margin-right: 40px;
       color: $color-white;
       font-size: 1.4em;
-      @media only screen and (min-width: 690px) {
+      @media only screen and (min-width: 880px) {
         display: none;
       }
     }
@@ -59,7 +59,7 @@
         }
       }
 
-      @media only screen and (max-width: 690px) {
+      @media only screen and (max-width: 880px) {
         display: none;
       }
 
