@@ -15,7 +15,7 @@ const Home = () => (
           <a href="/login">Login</a>
           <a href="/signup">Sign Up</a>
         </div>
-        <i class="fa fa-bars" aria-hidden="true"/>
+        <i className="fa fa-bars" aria-hidden="true"/>
     </div>
 
     <section className="Hero">
