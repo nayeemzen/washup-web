@@ -1,0 +1,92 @@
+@import '../common/Common.scss';
+
+.SignUp {
+  width: 100%;
+  display: flex;
+  background-color: $color-white;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 300px;
+  }
+
+  .ProgressNav {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    text-align: center;
+
+    .ProgressNavItem {
+      color: $color-primary;
+      font-size: 1.4em;
+      padding-left: 100px;
+      padding-right: 100px;
+      margin-left: 20px;
+      margin-right: 20px;
+      border-bottom: 3px solid;
+    }
+
+    .disabled {
+      opacity: 0.4;
+    }
+  }
+
+  .Header {
+    font-family: $font-primary;
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  .Form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .signupInput {
+      input {
+        width: 420px;
+        font-size: 1em;
+        font-family: $font-secondary;
+        outline: none;
+        border: 1px solid $color-gray-light;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        padding-left: 80px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        &:focus {
+          border-color: $color-primary;
+        }
+      }
+
+      i {
+        position: fixed;
+        text-align: center;
+        margin-top: 10px;
+        margin-left: 20px;
+        z-index: 0;
+        color: $color-primary;
+        font-weight: 500;
+        font-size: 1.2em;
+        width: 20px;
+        border-right: 1px solid $color-gray-extra-light;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        padding-right: 15px;
+      }
+
+      ::placeholder {
+        color: $color-gray-light;
+      }
+    }
+
+    button {
+      margin-top: 15px;
+      @include rectangular-button($color-primary, $color-primary-dark);
+      font-size: 1.1em;
+    }
+  }
+}

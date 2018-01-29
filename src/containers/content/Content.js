@@ -11,12 +11,14 @@ import AuthenticatedRoute from "../../components/routes/AuthenticatedRoute";
 import Login from "../../components/login/Login";
 import './Content.css';
 import Home from "../../components/home/Home";
+import SignUp from "../../components/signup/Signup";
 
 const Content = ({ sidebarEnabled }) => (
   <div className="Content" style={contentStyle(sidebarEnabled)}>
     <Switch>
       <AuthenticatedRoute exact path="/" component={Home}/>
       <AuthenticatedRoute exact path="/login" component={Login}/>
+      <AuthenticatedRoute exact path="/signup" component={SignUp}/>
       <AuthenticatedRoute exact path="/activity" component={Activity}/>
       <AuthenticatedRoute exact path="/preferences" component={Preferences}/>
       <AuthenticatedRoute exact path="/pricing" component={Pricing}/>
