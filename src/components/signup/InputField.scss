@@ -1,0 +1,44 @@
+@import "../common/Common.scss";
+
+.InputField {
+  input {
+    @media only screen and (max-width: 630px) {
+      width: 15em;
+    }
+
+    width: 28em;
+    font-size: 1em;
+    font-family: $font-secondary;
+    outline: none;
+    border: 1px solid $color-gray-light;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding-left: 80px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    &:focus {
+      border-color: $color-primary;
+    }
+  }
+
+  i {
+    position: absolute;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 20px;
+    z-index: 0;
+    color: $color-primary;
+    font-weight: 500;
+    font-size: 1.2em;
+    width: 20px;
+    border-right: 1px solid $color-gray-extra-light;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-right: 15px;
+  }
+
+  ::placeholder {
+    color: $color-gray-light;
+  }
+}

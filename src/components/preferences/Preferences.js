@@ -7,8 +7,8 @@ import './Preferences.css';
 const Preferences = () => (
     <div className="Preferences">
       {
-        preferencesList.map(preference => (
-          <div className="Preference">
+        preferencesList.map((preference, idx) => (
+          <div className="Preference" key={idx}>
             <Card header={preference.header.toUpperCase()}>
               <div>{renderOptions(preference.options)}</div>
               <h1>{preference.title.toUpperCase()}</h1>

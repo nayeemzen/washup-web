@@ -1,0 +1,19 @@
+@import "../common/Common.scss";
+
+.Header {
+  font-family: $font-primary;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  button {
+    margin-top: 15px;
+    @include rectangular-button($color-primary, $color-primary-dark);
+    font-size: 1.1em;
+  }
+}
