@@ -27,18 +27,21 @@ class PersonalDetailsForm extends React.Component {
           name="firstName"
           placeholder="First Name"
           icon="user"
+          value={this.props.data.firstName}
           setValue={(firstName) => this.setState({ firstName: firstName })}
         />
         <InputField
           name="lastName"
           placeholder="Last Name"
           icon="user"
+          value={this.props.data.lastName}
           setValue={(lastName) => this.setState({ lastName: lastName })}
         />
         <InputField
           name="email"
           placeholder="Email"
           icon="envelope"
+          value={this.props.data.email}
           setValue={(email) => this.setState({ email: email })}
         />
         <InputField
@@ -46,12 +49,14 @@ class PersonalDetailsForm extends React.Component {
           placeholder="Password"
           icon="lock"
           type="password"
+          value={this.props.data.password}
           setValue={(password) => this.setState({ password: password })}
         />
         <InputField
           name="phone"
           placeholder="Phone Number"
           icon="phone"
+          value={this.props.data.phone}
           setValue={(phone) => this.setState({ phone: phone })}
         />
         <button onClick={this.completeStep}>Next</button>
@@ -65,8 +70,10 @@ class PersonalDetailsForm extends React.Component {
   };
 }
 
-const mapStateToProps = () => {
-  return {}
+const mapStateToProps = (state) => {
+  return {
+    data: state.signup['1'] || {}
+  }
 };
 
 const mapDispatchToProps = (dispatch) => {

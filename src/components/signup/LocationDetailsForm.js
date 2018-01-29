@@ -16,7 +16,6 @@ class LocationDetailsForm extends React.Component {
   }
 
   render() {
-    console.log(this.props.data);
     return (
       <Form
         header="Set your pickup location"
@@ -26,18 +25,21 @@ class LocationDetailsForm extends React.Component {
           name="streetAddress"
           placeholder="Street Address"
           icon="map-marker"
+          value={this.props.data.streetAddress}
           setValue={(streetAddress) => this.setState({ streetAddress: streetAddress })}
         />
         <InputField
           name="unit"
           placeholder="Apt, Suite, etc (optional)"
           icon="map-marker"
+          value={this.props.data.unit}
           setValue={(unit) => this.setState({ unit: unit })}
         />
         <InputField
           name="postalCode"
           placeholder="Postal code"
           icon="map-marker"
+          value={this.props.data.postalCode}
           setValue={(postalCode) => this.setState({ postalCode: postalCode })}
         />
         <button onClick={this.completeStep}>Next</button>
