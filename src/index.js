@@ -3,17 +3,15 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import './index.css';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import {createEpicMiddleware} from 'redux-observable';
 import App from './containers/app/App';
 import rootReducer from './reducers/RootReducer';
+import rootEpic from "./epics/RootEpic";
 import registerServiceWorker from './registerServiceWorker';
-import Authenticator from "./services/Authenticator";
 
-let store = createStore(rootReducer, {
-  user: {
-    isAuthenticated: Authenticator.isAuthenticated()
-  }
-});
+let epicMiddleware = createEpicMiddleware(rootEpic);
+let store = createStore(rootReducer, applyMiddleware(epicMiddleware));
 
 ReactDOM.render(
   <Provider store={store}>

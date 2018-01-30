@@ -1,4 +1,11 @@
-import {SET_AUTHENTICATED, SET_PROFILE} from "./ActionTypes";
+import {LOGIN, SET_AUTHENTICATED, SET_PROFILE} from "./ActionTypes";
+
+export const login = (credentials) => {
+  return {
+    type: LOGIN,
+    credentials: credentials
+  }
+};
 
 export const setAuthenticated = (isAuthenticated) => {
     return {

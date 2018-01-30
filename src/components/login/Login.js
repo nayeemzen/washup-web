@@ -21,25 +21,20 @@ class Login extends Component {
         <img className="logo" src={Logo} alt="WashUp"/>
         <input onChange={this.onEmailInput} spellCheck="false" name="email" placeholder="email"/>
         <input onChange={this.onPasswordInput} spellCheck="false" name="password" placeholder="password" type="password" />
-        <button onClick={this.logIn}>LOG IN</button>
+        <button onClick={this.login}>LOG IN</button>
       </div>
     )
   }
 
-  logIn = () => {
+  login = () => {
     if (!this.state.email || !this.state.password) {
       alert("Please fill in your email and password");
       return;
     }
 
-    userService.login({
-      email: this.state.email,
-      password: this.state.password
-    }).then(() => {
-      this.props.setAuthenticated(true);
-      this.props.history.push('/activity');
-    }).catch(() => {
-      alert('Login failed.');
+    this.props.login({
+       email: this.state.email,
+       password: this.state.password
     });
   };
 
@@ -64,6 +59,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    login: credentials => dispatch(UserActions.login(credentials)),
     setAuthenticated: isAuthenticated => dispatch(UserActions.setAuthenticated(isAuthenticated))
   }
 };
