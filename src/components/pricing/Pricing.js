@@ -6,8 +6,9 @@ import CardList from "../card/CardList";
 const Pricing = () => (
   <div className="Pricing">
     {
-      prices.map(price =>
+      prices.map((price, idx) =>
         <CardList
+          key={idx}
           categoryName={price.category.name}
           items={price.items.map(item => toCardItem(item) )}
         />)

@@ -7,7 +7,7 @@ const Home = () => (
   <div className="Home">
     <div className="NavBar">
         <div className="Logo">
-          <object data={Logo} alt="Wash Up"/>
+          <object data={Logo}>Wash Up</object>
         </div>
         <div className="Links">
           <a href="#HowItWorks">How it works</a>

@@ -1,12 +1,14 @@
 import React from 'react';
 import StepBar from "./StepBar";
-import { withRouter } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import './MultiStepForm.css';
 
-const MultiStepForm = ({ children, match, history }) => {
-    const activeStep = parseInt(match.params.step);
+const MultiStepForm = ({children, match, history }) => {
+    const activeStep = parseInt(match.params.step, 10);
+    const url = match.url.endsWith("/") ? match.url : match.url + '/';
+
     if (!activeStep) {
-      history.push(`${match.url}/1`);
+      history.push(`${url}1`);
     }
 
     return (

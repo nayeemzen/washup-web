@@ -1,6 +1,6 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 import OrderList from './OrderList';
 import NoOrders from './NoOrders';
 import './Activity.css'

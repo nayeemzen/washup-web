@@ -7,8 +7,8 @@ const CardList = ({ categoryName, items }) => (
     <div className="CardList">
       <ul>
         {
-          items.map(item => (
-            <li>
+          items.map((item, idx) => (
+            <li key={idx}>
               <div className="CardItem">
                 <p className="itemName">{item.name}</p>
                 <p className="itemValue">{item.value}</p>

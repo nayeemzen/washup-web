@@ -2,7 +2,6 @@ import React from 'react';
 import './InputField.css';
 
 const InputField = ({ name, placeholder, icon, type="text", value, setValue }) => {
-  console.log('valz', value);
   return (
         <div className="InputField">
           <i className={`fa fa-${icon}`} aria-hidden="true"/>

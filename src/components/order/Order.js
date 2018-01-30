@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Modal from 'react-modal';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import  { withRouter } from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 import moment from 'moment';
 
 import * as OrderActions from '../../actions/OrderActions';

@@ -1,14 +1,13 @@
-export const completeStep = (step, data) => {
+export const completePersonalDetails = (personalDetails) => {
   return {
-    type: 'COMPLETE_STEP',
-    step: step,
-    data: data
+    type: 'COMPLETE_PERSONAL_DETAILS',
+    personalDetails: personalDetails
   };
 };
 
-export const undoStep = (step) => {
+export const completeLocationDetails = (locationDetails) => {
   return {
-    type: 'UNDO_STEP',
-    step: step
+    type: 'COMPLETE_LOCATION_DETAILS',
+    locationDetails: locationDetails
   };
 };

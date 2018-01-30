@@ -1,5 +1,5 @@
 import React from 'react';
-import  { withRouter } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import NavHeader from './NavHeader';
 import NavList from "./NavList";
 import NavFooter from "./NavFooter";

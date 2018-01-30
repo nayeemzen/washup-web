@@ -1,5 +1,5 @@
 import React from 'react';
-import { WASH_AND_FOLD } from '../order/OrderType';
+import {WASH_AND_FOLD} from '../order/OrderType';
 import DryCleanSelectedSvg from '../../resources/dryclean_selected.svg';
 import WashAndFoldSelectedSvg from '../../resources/washandfold_selected.svg';
 import './OrderList.css';
