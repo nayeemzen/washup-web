@@ -1,10 +1,18 @@
-import {LOGIN} from "../actions/ActionTypes";
+import {GET_PROFILE, LOGIN} from "../actions/ActionTypes";
 import {Observable} from 'rxjs';
 import userService from '../services/UserService';
-import {setAuthenticated} from "../actions/UserActions";
+import {getProfile, setAuthenticated, setProfile} from "../actions/UserActions";
 
 export const loginEpic = action$ =>
   action$.ofType(LOGIN)
     .map(action => action.credentials)
     .switchMap(credentials => Observable.fromPromise(userService.login(credentials)))
-    .map(token => setAuthenticated(true));
+    .flatMap(token => Observable.of(getProfile(), setAuthenticated(true)));
+
+export const getProfileEpic = action$ =>
+    action$.ofType(GET_PROFILE)
+      .switchMap(action => Observable.fromPromise(userService.getProfile()))
+      .map(profile => {
+        console.log('profile', profile);
+        return setProfile(profile);
+      });

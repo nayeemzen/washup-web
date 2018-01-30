@@ -1,4 +1,5 @@
-import {SET_AUTHENTICATED, SET_PROFILE} from "../actions/ActionTypes";
+import {GET_PROFILE, SET_AUTHENTICATED, SET_PROFILE} from "../actions/ActionTypes";
+import Authenticator from "../services/Authenticator";
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -7,6 +8,6 @@ export default (state = {}, action) => {
     case SET_PROFILE:
       return Object.assign({}, state, { profile: action.profile.user });
     default:
-      return state;
+      return Object.assign({}, state, { isAuthenticated: Authenticator.isAuthenticated() });
   }
 }
