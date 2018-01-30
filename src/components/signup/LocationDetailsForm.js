@@ -46,16 +46,16 @@ class LocationDetailsForm extends React.Component {
           value={this.props.locationDetails.postalCode}
           setValue={(postalCode) => this.setState({ postal_code: postalCode })}
         />
-        <button onClick={this.completeLocationDetails}>Next</button>
+        <button onClick={this.setLocationDetails}>Next</button>
       </Form>
     );
   }
 
-  completeLocationDetails = () => {
+  setLocationDetails = () => {
     userService.setAddress({
       address: this.state
     }).then((address) => {
-      this.props.completeLocationDetails(address);
+      this.props.setLocationDetails(address);
       this.props.setAuthenticated(Authenticator.isAuthenticated());
       this.props.history.push('/activity');
     }).catch(e => {
@@ -74,8 +74,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setAuthenticated: isAuthenticated =>
       dispatch(UserActions.setAuthenticated(isAuthenticated)),
-    completeLocationDetails: locationDetails =>
-      dispatch(SignUpActions.completeLocationDetails(locationDetails))
+    setLocationDetails: locationDetails =>
+      dispatch(SignUpActions.setLocationDetails(locationDetails))
   }
 };
 

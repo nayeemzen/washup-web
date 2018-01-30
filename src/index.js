@@ -5,11 +5,11 @@ import './index.css';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import App from './containers/app/App';
-import RootReducer from './reducers';
+import rootReducer from './reducers/RootReducer';
 import registerServiceWorker from './registerServiceWorker';
 import Authenticator from "./services/Authenticator";
 
-let store = createStore(RootReducer, {
+let store = createStore(rootReducer, {
   user: {
     isAuthenticated: Authenticator.isAuthenticated()
   }

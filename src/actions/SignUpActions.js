@@ -1,13 +1,15 @@
-export const completePersonalDetails = (personalDetails) => {
+import {SET_LOCATION_DETAILS, SET_PERSONAL_DETAILS} from "./ActionTypes";
+
+export const setPersonalDetails = (personalDetails) => {
   return {
-    type: 'COMPLETE_PERSONAL_DETAILS',
+    type: SET_PERSONAL_DETAILS,
     personalDetails: personalDetails
   };
 };
 
-export const completeLocationDetails = (locationDetails) => {
+export const setLocationDetails = (locationDetails) => {
   return {
-    type: 'COMPLETE_LOCATION_DETAILS',
+    type: SET_LOCATION_DETAILS,
     locationDetails: locationDetails
   };
 };

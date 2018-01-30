@@ -60,15 +60,15 @@ class PersonalDetailsForm extends React.Component {
           value={this.props.personalDetails.phone_number}
           setValue={(phone) => this.setState({ phone_number: phone })}
         />
-        <button onClick={this.completePersonalDetails}>Next</button>
+        <button onClick={this.setPersonalDetails}>Next</button>
       </Form>
     );
   }
 
-  completePersonalDetails = () => {
+  setPersonalDetails = () => {
     userService.signup(this.state)
       .then(() => {
-        this.props.completePersonalDetails(this.state);
+        this.props.setPersonalDetails(this.state);
         this.props.history.push('/signup/2');
       })
       .catch((e) => {
@@ -85,8 +85,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    completePersonalDetails: personalDetails =>
-      dispatch(SignUpActions.completePersonalDetails(personalDetails))
+    setPersonalDetails: personalDetails =>
+      dispatch(SignUpActions.setPersonalDetails(personalDetails))
   }
 };
 
