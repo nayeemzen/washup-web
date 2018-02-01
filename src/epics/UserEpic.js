@@ -12,7 +12,4 @@ export const loginEpic = action$ =>
 export const getProfileEpic = action$ =>
     action$.ofType(GET_PROFILE)
       .switchMap(action => Observable.fromPromise(userService.getProfile()))
-      .map(profile => {
-        console.log('profile', profile);
-        return setProfile(profile);
-      });
+      .map(response => setProfile(response.user));

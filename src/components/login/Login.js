@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Logo from '../../resources/logo_horizontal.svg';
 import './Login.css';
-import userService from '../../services/UserService';
 
 class Login extends Component {
   constructor() {
@@ -59,8 +58,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: credentials => dispatch(UserActions.login(credentials)),
-    setAuthenticated: isAuthenticated => dispatch(UserActions.setAuthenticated(isAuthenticated))
+    login: credentials => dispatch(UserActions.login(credentials))
   }
 };
 

@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import * as SignUpActions from '../../actions/SignUpActions';
 import Form from "./Form";
 import InputField from "./InputField";
-import userService from '../../services/UserService';
 
 class PersonalDetailsForm extends React.Component {
   constructor() {
@@ -60,33 +59,25 @@ class PersonalDetailsForm extends React.Component {
           value={this.props.personalDetails.phone_number}
           setValue={(phone) => this.setState({ phone_number: phone })}
         />
-        <button onClick={this.setPersonalDetails}>Next</button>
+        <button onClick={this.signUp}>Next</button>
       </Form>
     );
   }
 
-  setPersonalDetails = () => {
-    userService.signup(this.state)
-      .then(() => {
-        this.props.setPersonalDetails(this.state);
-        this.props.history.push('/signup/2');
-      })
-      .catch((e) => {
-        console.error(e);
-      });
+  signUp = () => {
+    this.props.signUp(this.state);
   };
 }
 
 const mapStateToProps = (state) => {
   return {
-    personalDetails: state.signup['personalDetails'] || {}
+    personalDetails: state.user.profile || {}
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setPersonalDetails: personalDetails =>
-      dispatch(SignUpActions.setPersonalDetails(personalDetails))
+    signUp: personalDetails => dispatch(SignUpActions.signUp(personalDetails))
   }
 };
 

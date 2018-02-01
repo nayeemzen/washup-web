@@ -1,15 +1,8 @@
-import {SET_LOCATION_DETAILS, SET_PERSONAL_DETAILS} from "./ActionTypes";
+import {SIGN_UP} from "./ActionTypes";
 
-export const setPersonalDetails = (personalDetails) => {
+export const signUp = (personalDetails) => {
   return {
-    type: SET_PERSONAL_DETAILS,
+    type: SIGN_UP,
     personalDetails: personalDetails
-  };
-};
-
-export const setLocationDetails = (locationDetails) => {
-  return {
-    type: SET_LOCATION_DETAILS,
-    locationDetails: locationDetails
   };
 };

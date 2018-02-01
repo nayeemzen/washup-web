@@ -1,23 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom';
-import './index.css';
+import {Router} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import {createEpicMiddleware} from 'redux-observable';
 import App from './containers/app/App';
+import history from './history';
 import rootReducer from './reducers/RootReducer';
 import rootEpic from "./epics/RootEpic";
 import registerServiceWorker from './registerServiceWorker';
+import './index.css';
 
 let epicMiddleware = createEpicMiddleware(rootEpic);
 let store = createStore(rootReducer, applyMiddleware(epicMiddleware));
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router history={history}>
       <App/>
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.getElementById('root'));
 registerServiceWorker();

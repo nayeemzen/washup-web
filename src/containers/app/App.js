@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import * as UserActions from '../../actions/UserActions';
-import userService from "../../services/UserService";
 import SideNavigation from '../../components/navigation/SideNavigation';
 import Content from '../content/Content';
+import {getProfile} from "../../actions/UserActions";
 import './App.css';
 
 class App extends Component {
   componentDidMount() {
-    userService.getProfile().then(profile => {
-      this.props.setProfile(profile);
-    });
+    const {isAuthenticated, getProfile} = this.props;
+    if (isAuthenticated) {
+      getProfile();
+    }
   }
 
   render() {
@@ -45,7 +45,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setProfile: (profile) => dispatch(UserActions.setProfile(profile))
+    getProfile: () => dispatch(getProfile())
   }
 };
 

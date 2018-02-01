@@ -1,12 +1,9 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import * as SignUpActions from '../../actions/SignUpActions';
-import * as UserActions from '../../actions/UserActions';
-import userService from '../../services/UserService';
+import * as AddressActions from "../../actions/AddressActions";
 import Form from "./Form";
 import InputField from "./InputField";
-import Authenticator from "../../services/Authenticator";
 
 class LocationDetailsForm extends React.Component {
   constructor() {
@@ -29,53 +26,42 @@ class LocationDetailsForm extends React.Component {
           name="streetAddress"
           placeholder="Street Address"
           icon="map-marker"
-          value={this.props.locationDetails.streetAddress}
+          value={this.props.address.streetAddress}
           setValue={(streetAddress) => this.setState({ street_address: streetAddress })}
         />
         <InputField
           name="apt"
           placeholder="Apt, Suite, etc (optional)"
           icon="map-marker"
-          value={this.props.locationDetails.apt}
+          value={this.props.address.apt}
           setValue={(apt) => this.setState({ apt: apt })}
         />
         <InputField
           name="postalCode"
           placeholder="Postal code"
           icon="map-marker"
-          value={this.props.locationDetails.postalCode}
+          value={this.props.address.postalCode}
           setValue={(postalCode) => this.setState({ postal_code: postalCode })}
         />
-        <button onClick={this.setLocationDetails}>Next</button>
+        <button onClick={this.setAddress}>Next</button>
       </Form>
     );
   }
 
-  setLocationDetails = () => {
-    userService.setAddress({
-      address: this.state
-    }).then((address) => {
-      this.props.setLocationDetails(address);
-      this.props.setAuthenticated(Authenticator.isAuthenticated());
-      this.props.history.push('/activity');
-    }).catch(e => {
-      console.error(e);
-    });
+  setAddress = () => {
+    this.props.setAddress({ address: this.state });
   };
 }
 
 const mapStateToProps = (state) => {
   return {
-    locationDetails: state.signup['locationDetails'] || {}
+    address: state.address || {}
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setAuthenticated: isAuthenticated =>
-      dispatch(UserActions.setAuthenticated(isAuthenticated)),
-    setLocationDetails: locationDetails =>
-      dispatch(SignUpActions.setLocationDetails(locationDetails))
+    setAddress: address => dispatch(AddressActions.setAddress(address))
   }
 };
 

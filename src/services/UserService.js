@@ -15,13 +15,11 @@ class UserService extends ApiService {
     return this.api.post('/set-address', address).then(response => response.data);
   };
 
-  signup = (personalDetails) => {
-    return this.api.post('/sign-up', personalDetails)
+  authenticate = (endpoint, data) => {
+    return this.api.post(endpoint, data)
       .then(response => {
-        let authorizationHeader = response.headers.authorization;
-        console.log(response);
-        if (response.status === 201 && authorizationHeader) {
-          return authorizationHeader.split('Bearer ')[1];
+        if (response.status === 200 || response.status === 201) {
+          return response.headers.authorization.split('Bearer ')[1];
         }
 
         throw new LoginFailedException(response);
@@ -32,22 +30,9 @@ class UserService extends ApiService {
       });
   };
 
-  login = (credentials) => {
-    return this.api.post('/login', credentials)
-      .then(response => {
-        let authorizationHeader = response.headers.authorization;
-        if (response.status === 200 && authorizationHeader) {
-          return authorizationHeader.split('Bearer ')[1];
-        }
+  signUp = (personalDetails) => this.authenticate('/sign-up', personalDetails);
 
-        throw new LoginFailedException(response);
-      })
-      .then(token => {
-        Authenticator.setAuthToken(token);
-        return token;
-      });
-  };
-
+  login = (credentials) => this.authenticate('/login', credentials);
 }
 
 export default new UserService();

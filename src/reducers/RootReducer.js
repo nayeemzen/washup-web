@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import OrderReducer from './OrderReducer';
 import UserReducer from "./UserReducer";
-import SignUpReducer from "./SignUpReducer";
+import AddressReducer from "./AddressReducer";
 
 export default combineReducers({
   orders: OrderReducer,
   user: UserReducer,
-  signup: SignUpReducer
+  address: AddressReducer
 });

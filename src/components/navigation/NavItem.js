@@ -1,8 +1,8 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 
-const NavItem = ({ key, link }) => (
-  <li key={key}>
+const NavItem = ({ link }) => (
+  <li>
     <NavLink to={link.to} activeStyle={activeStyle}>
       <i className={`fa fa-${link.icon}`} aria-hidden="true"/>
       {link.text}
