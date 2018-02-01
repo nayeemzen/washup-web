@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Modal from 'react-modal';
 import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import moment from 'moment';
+import uuidv4 from 'uuid/v4';
 
 import * as OrderActions from '../../actions/OrderActions';
 import modalStyles from './ModalStyles';
@@ -40,24 +40,19 @@ class Order extends Component {
             dropOffDate={this.state.dropOffDate}
             selectPickupDate={this.selectPickupDate}
             selectDropOffDate={this.selectDropOffDate}/>
-          <button onClick={this.createOrder} className="orderButton">PLACE ORDER</button>
+          <button onClick={this.placeOrder} className="orderButton">PLACE ORDER</button>
         </div>
       </Modal>
     );
   }
 
-  createOrder = () => {
-    this.state.selectedOptions.forEach(option => {
-      this.props.createOrder({
-        type: option.type,
-        name: option.name,
-        date: moment(),
-        status: 'Picked Up',
-        price: '$34.75'
-      });
+  placeOrder = () => {
+    this.props.placeOrder({
+      order_type: this.state.selectedOptions[0],
+      pickup_date: this.state.pickupDate.valueOf(),
+      delivery_date: this.state.dropOffDate.valueOf(),
+      idempotence_token: uuidv4()
     });
-
-    this.props.history.push('/activity');
   };
 
   selectPickupDate = (date) => {
@@ -91,7 +86,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createOrder: order => dispatch(OrderActions.createOrder(order))
+    placeOrder: order => dispatch(OrderActions.placeOrder(order))
   }
 };
 

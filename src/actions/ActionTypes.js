@@ -9,4 +9,5 @@ export const SET_PROFILE = 'SET_PROFILE';
 export const SET_ADDRESS = 'SET_ADDRESS';
 
 // Order
-export const CREATE_ORDER = 'CREATE_ORDER';
+export const PLACE_ORDER = 'PLACE_ORDER';
+export const PLACE_ORDER_COMPLETE = 'PLACE_ORDER_COMPLETE';

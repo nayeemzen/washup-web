@@ -2,6 +2,7 @@
   <dictionary name="nayeemzen">
     <words>
       <w>axios</w>
+      <w>idempotence</w>
       <w>signup</w>
     </words>
   </dictionary>

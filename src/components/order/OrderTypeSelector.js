@@ -1,5 +1,5 @@
 import React from 'react';
-import {DRY_CLEAN, WASH_AND_FOLD} from '../order/OrderType';
+import {DRY_CLEAN, WASH_FOLD} from '../order/OrderType';
 import DryCleanSvg from '../../resources/dryclean.svg';
 import DryCleanSelectedSvg from '../../resources/dryclean_selected.svg';
 import WashAndFoldSvg from '../../resources/washandfold.svg';
@@ -18,8 +18,8 @@ const OrderTypeSelector = ({ selectOption, selectedOptions }) => (
     />
     <OrderTypeOption
       className="WashAndFold"
-      selectOption={() => selectOption(WASH_AND_FOLD)}
-      selected={selectedOptions.indexOf(WASH_AND_FOLD) !== -1}
+      selectOption={() => selectOption(WASH_FOLD)}
+      selected={selectedOptions.indexOf(WASH_FOLD) !== -1}
       selectedSvg={WashAndFoldSelectedSvg}
       defaultSvg={WashAndFoldSvg}
       name="Wash & Fold"
