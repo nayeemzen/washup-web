@@ -17,7 +17,7 @@ class Order extends Component {
     this.state = {
       modalOpen: true,
       pickupDate: null,
-      dropOffDate: null,
+      deliveryDate: null,
       focusedInput: null,
       selectedOptions: []
     };
@@ -37,9 +37,9 @@ class Order extends Component {
             selectedOptions={this.state.selectedOptions}/>
           <DateSelector
             pickupDate={this.state.pickupDate}
-            dropOffDate={this.state.dropOffDate}
+            deliveryDate={this.state.deliveryDate}
             selectPickupDate={this.selectPickupDate}
-            selectDropOffDate={this.selectDropOffDate}/>
+            selectDeliveryDate={this.selectDeliveryDate}/>
           <button onClick={this.placeOrder} className="orderButton">PLACE ORDER</button>
         </div>
       </Modal>
@@ -50,7 +50,7 @@ class Order extends Component {
     this.props.placeOrder({
       order_type: this.state.selectedOptions[0],
       pickup_date: this.state.pickupDate.valueOf(),
-      delivery_date: this.state.dropOffDate.valueOf(),
+      delivery_date: this.state.deliveryDate.valueOf(),
       idempotence_token: uuidv4()
     });
   };
@@ -61,9 +61,9 @@ class Order extends Component {
     });
   };
 
-  selectDropOffDate = (date) => {
+  selectDeliveryDate = (date) => {
     this.setState({
-      dropOffDate: date
+      deliveryDate: date
     });
   };
 

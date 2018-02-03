@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './DateSelector.css'
 
-const DateSelector = ({pickupDate, dropOffDate, selectPickupDate, selectDropOffDate }) => (
+const DateSelector = ({pickupDate, deliveryDate, selectPickupDate, selectDeliveryDate }) => (
   <div className="DateSelectorWrapper">
     <DateSelectorItem
       className="PickupDate"
@@ -12,8 +12,8 @@ const DateSelector = ({pickupDate, dropOffDate, selectPickupDate, selectDropOffD
       placeholder="Pick up date"/>
     <DateSelectorItem
       className="DropOffDate"
-      selectedDate={dropOffDate}
-      selectDate={selectDropOffDate}
+      selectedDate={deliveryDate}
+      selectDate={selectDeliveryDate}
       placeholder="Drop off date"/>
   </div>
 );

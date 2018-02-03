@@ -3,13 +3,47 @@ import './Account.css';
 import Billing from "./Billing";
 import Profile from "./Profile";
 import Password from "./Password";
+import {connect} from "react-redux";
+import {getProfile} from "../../actions/UserActions";
 
-const Account = () => (
-  <div className="Account">
-    <Profile firstName="John" lastName="Doe" email="johndoe@gmail.com" cellphone="(519) 022 8991"/>
-    <Billing lastFourDigits={8991}/>
-    <Password/>
-  </div>
-);
+class Account extends React.Component {
+  componentDidMount() {
+    if (!this.props.profile) {
+      this.props.getProfile();
+    }
+  }
 
-export default Account;
+  render() {
+    const profile = this.props.profile || {
+      first_name: "Full Name",
+      last_name: "",
+      email: "Email Address",
+      phone_number: "Phone Number"
+    };
+    return (
+      <div className="Account">
+        <Profile
+          firstName={profile.first_name}
+          lastName={profile.last_name}
+          email={profile.email}
+          cellphone={profile.phone_number}/>
+        <Billing lastFourDigits={8991}/>
+        <Password/>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    profile: state.user.profile
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getProfile: () => dispatch(getProfile())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Account);

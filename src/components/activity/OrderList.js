@@ -16,10 +16,10 @@ const OrderList = ({ orders }) => (
         <OrderListItem
           key={idx}
           type={order.type}
-          pickupDate={order.pickupDate}
-          dropOffDate={order.dropOffDate}
+          pickupDate={order.pickup_date}
+          deliveryDate={order.delivery_date}
           status={order.status}
-          totalCostCents={order.totalCostCents}
+          totalCostCents={order.total_cost_cents}
         />
       )
     }
