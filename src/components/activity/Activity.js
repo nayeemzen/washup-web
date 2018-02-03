@@ -4,12 +4,24 @@ import {connect} from 'react-redux';
 import OrderList from './OrderList';
 import NoOrders from './NoOrders';
 import './Activity.css'
+import {getOrders} from "../../actions/OrderActions";
 
-const Activity = withRouter(({ history, orders }) => {
-  return orders && orders.length ? <OrderList orders={orders}/> : <NoOrders history={history}/>
-});
+class Activity extends React.Component {
+  componentDidMount() {
+    this.props.getOrders();
+  }
 
-const mapDispatchToProps = () => { return {}};
+  render() {
+    const { history, orders } = this.props;
+    return orders && orders.length ? <OrderList orders={orders}/> : <NoOrders history={history}/>
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getOrders: () => dispatch(getOrders())
+  }
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -17,4 +29,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Activity);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Activity));

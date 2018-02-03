@@ -4,7 +4,7 @@ import history from '../history';
 import {SET_ADDRESS} from "../actions/ActionTypes";
 import {setAuthenticated} from "../actions/UserActions";
 
-export const addressEpic = action$ =>
+export const setAddressEpic = action$ =>
   action$.ofType(SET_ADDRESS)
     .switchMap(action => Observable.fromPromise(userService.setAddress(action.address)))
     .do(() => history.push('/activity'))

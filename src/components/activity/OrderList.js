@@ -1,26 +1,26 @@
 import React from 'react';
-import moment from "moment";
-import {WASH_FOLD} from '../order/OrderType';
-import DryCleanSelectedSvg from '../../resources/dryclean_selected.svg';
-import WashAndFoldSelectedSvg from '../../resources/washandfold_selected.svg';
 import './OrderList.css';
+import OrderListItem from "./OrderListItem";
 
 const OrderList = ({ orders }) => (
   <div className="OrderList">
-    <h1>Orders</h1>
+    <div className="OrderListHeader">
+      <div className="orderListHeader orderTypeHeader">Order</div>
+      <div className="orderListHeader orderPickUpDateHeader">PickUp Date</div>
+      <div className="orderListHeader orderDeliveryDateHeader">Delivery Date</div>
+      <div className="orderListHeader orderStatusHeader">Status</div>
+      <div className="orderListHeader orderPriceHeader">Price</div>
+    </div>
     {
       orders.map((order, idx) =>
-        <div className="OrderItem" key={idx}>
-          <div className="orderItemProp orderType">
-            <img
-              src={ order.order_type === WASH_FOLD ? WashAndFoldSelectedSvg : DryCleanSelectedSvg}
-              alt={ order.order_type }/>
-            { order.order_type === WASH_FOLD ? 'Wash & Fold' : 'Dry Clean'}
-          </div>
-          <div className="orderItemProp orderDate">{moment(order.pickup_date).format('LL')}</div>
-          <div className="orderItemProp orderStatus">{order.status || 'PENDING'}</div>
-          <div className="orderItemProp orderPrice">{order.price || 'PENDING'}</div>
-        </div>
+        <OrderListItem
+          key={idx}
+          type={order.type}
+          pickupDate={order.pickupDate}
+          dropOffDate={order.dropOffDate}
+          status={order.status}
+          totalCostCents={order.totalCostCents}
+        />
       )
     }
   </div>
