@@ -15,7 +15,7 @@ const OrderList = ({ orders }) => (
       orders.map((order, idx) =>
         <OrderListItem
           key={idx}
-          type={order.type}
+          type={order.order_type}
           pickupDate={order.pickup_date}
           deliveryDate={order.delivery_date}
           status={order.status}
