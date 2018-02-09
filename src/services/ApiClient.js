@@ -17,7 +17,6 @@ class ApiClient {
   getRequestHeaders = () => {
     return {
       Authorization: this.getAuthorizationHeader(),
-      Accept: 'application/json'
     };
   };
 

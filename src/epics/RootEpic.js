@@ -3,6 +3,7 @@ import {getProfileEpic, loginEpic} from "./UserEpic";
 import {signUpEpic} from "./SignUpEpic";
 import {setAddressEpic} from "./AddressEpic";
 import {getOrdersEpic, placeOrderEpic} from "./OrderEpic";
+import {getPreferencesEpic, setPreferencesEpic} from "./PreferencesEpic";
 
 export default combineEpics(
   loginEpic,
@@ -10,5 +11,7 @@ export default combineEpics(
   setAddressEpic,
   getProfileEpic,
   placeOrderEpic,
-  getOrdersEpic
+  getOrdersEpic,
+  getPreferencesEpic,
+  setPreferencesEpic
 );

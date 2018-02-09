@@ -1,73 +1,65 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import Card from '../card/Card';
 import TabSelector from '../../components/common/TabSelector';
-import Switch from 'react-switchery';
+import Switch from 'react-ios-switch';
+import preferencesList from './PreferencesList';
 import './Preferences.css';
+import isEmpty from 'lodash/isEmpty';
+import {getPreferences, setPreferences} from "../../actions/PreferencesActions";
 
-const Preferences = () => (
-    <div className="Preferences">
-      {
-        preferencesList.map((preference, idx) => (
-          <div className="Preference" key={idx}>
-            <Card header={preference.header.toUpperCase()}>
-              <div>{renderOptions(preference.options)}</div>
-              <h1>{preference.title.toUpperCase()}</h1>
-              <p>{preference.subtitle}</p>
-            </Card>
-          </div>
-        ))
-      }
-    </div>
-);
-
-const renderOptions = (options) => (
-  (options.length === 1)
-    ? <Switch onChange={this.onChange} options={{color: '#27b7d7', size: 'small'}} checked/>
-    : <TabSelector options={options}/>
-);
-
-const preferencesList = [
-  {
-    header: "Detergents",
-    title: "Scented",
-    subtitle: "Scented detergents will be used for your laundry",
-    options: [
-      {
-        enabled: true
-      },
-    ]
-  },
-  {
-    header: "Rush Delivery",
-    title: "24 Hour Delivery (Wash & Fold Only)",
-    subtitle: "Your clothes will be delivered within 48-72 hours",
-    options: [
-      {
-        enabled: false
-      },
-    ]
-  },
-  {
-    header: "Fabric Softener",
-    title: "Fabric Softener",
-    subtitle: "No fabric softener will be used with your laundry",
-    options: [
-      {
-        enabled: false
-      },
-    ]
-  },
-  {
-    header: "Text Reminder",
-    title: "Laundry Day Reminder",
-    subtitle: "We will remind you weekly about doing laundry",
-    options: [
-      {
-        enabled: false
-      },
-    ]
+class Preferences extends React.Component {
+  componentDidMount() {
+    if (isEmpty(this.props.preferences)) {
+      this.props.getPreferences();
+    }
   }
+  renderOptions = (preferenceId) => {
+    let isEnabled = (this.props.preferences && this.props.preferences[preferenceId]) || false;
+    return (
+      <Switch
+        checked = {isEnabled}
+        onChange = {(checked) => this.onSwitchChange(preferenceId, checked)}
+        readOnly={false}
+        onColor = '#27b7d7'
+      />
+    );
+  };
 
-];
+  onSwitchChange = (preferenceId, checked) => {
+    this.props.setPreferences(Object.assign({}, this.props.preferences, {[preferenceId]: checked}));
+  };
 
-export default Preferences;
+  render() {
+    return (
+      <div className="Preferences">
+        {
+          preferencesList.map((preference, idx) => (
+            <div className="Preference" key={idx}>
+              <Card header={preference.header.toUpperCase()}>
+                <div>{this.renderOptions(preference.id)}</div>
+                <h1>{preference.title.toUpperCase()}</h1>
+                <p>{preference.subtitle}</p>
+              </Card>
+            </div>
+          ))
+        }
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    preferences: state.preferences
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getPreferences: () => dispatch(getPreferences()),
+    setPreferences: preferences => dispatch(setPreferences(preferences))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Preferences);
