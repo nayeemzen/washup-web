@@ -72,11 +72,10 @@ class Order extends Component {
   };
 
   selectOption = (option) => {
-    this.setState((prevState) => {
-      return this.isSelectedOption(option)
-        ? { selectedOptions: prevState.selectedOptions.filter(o => o !== option) }
-        : { selectedOptions: [...prevState.selectedOptions, option] }
-    });
+    this.setState((prevState) => this.isSelectedOption(option)
+      ? { selectedOptions: [] }
+      : { selectedOptions: [option] }
+    );
   };
 }
 
