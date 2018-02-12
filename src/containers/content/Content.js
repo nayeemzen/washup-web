@@ -10,13 +10,13 @@ import Order from '../../components/order/Order';
 import AuthenticatedRoute from "../../components/routes/AuthenticatedRoute";
 import Login from "../../components/login/Login";
 import './Content.css';
-import Home from "../../components/home/Home";
+import Landing from "../../components/landing/Landing";
 import SignUp from "../../components/signup/Signup";
 
 const Content = ({ sidebarEnabled }) => (
   <div className="Content" style={contentStyle(sidebarEnabled)}>
     <Switch>
-      <AuthenticatedRoute exact path="/" component={Home}/>
+      <AuthenticatedRoute exact path="/" component={Landing}/>
       <AuthenticatedRoute exact path="/login" component={Login}/>
       <AuthenticatedRoute exact path="/signup/:step?" component={SignUp}/>
       <AuthenticatedRoute exact path="/activity" component={Activity}/>

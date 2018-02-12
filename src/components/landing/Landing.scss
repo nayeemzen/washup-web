@@ -1,0 +1,8 @@
+@import "../common/Common.scss";
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-white;
+  min-width: 100%;
+}
