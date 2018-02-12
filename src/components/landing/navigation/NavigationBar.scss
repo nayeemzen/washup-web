@@ -1,4 +1,4 @@
-@import "../../common/Common";
+@import "../../common/Common.scss";
 
 .NavigationBar {
   z-index: 2;
@@ -40,6 +40,42 @@
 
     @media only screen and (max-width: 880px) {
       display: none;
+    }
+  }
+}
+
+.MobileMenu {
+  .close {
+    border: 2px solid white;
+    padding: 3px 9px;
+    border-radius: 100%;
+    text-decoration: none;
+    color: $color-white;
+    position: fixed;
+    top:20px;
+    right: 20px;
+    font-family: $font-primary;
+    font-weight: 600;
+    font-size: 1.2em;
+  }
+  .MobileLinks {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    a {
+      color: white;
+      text-decoration: none;
+      letter-spacing: 2px;
+      font-family: $font-primary;
+      text-transform: uppercase;
+      font-size: 1.5em;
+      margin-right: 40px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      &:hover {
+        color: $color-black;
+      }
     }
   }
 }
