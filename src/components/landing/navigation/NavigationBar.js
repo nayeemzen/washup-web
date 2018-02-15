@@ -2,7 +2,6 @@ import React from 'react';
 import Modal from 'react-modal';
 import Logo from '../../../resources/logo_horizontal_selected.svg';
 import './NavigationBar.css';
-import modalStyles from "../../order/ModalStyles";
 
 class NavigationBar extends React.Component {
   constructor() {

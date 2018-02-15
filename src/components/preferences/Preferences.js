@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Card from '../card/Card';
-import TabSelector from '../../components/common/TabSelector';
+import TabSelector from '../common/tabselector/TabSelector';
 import Switch from 'react-ios-switch';
 import preferencesList from './PreferencesList';
 import './Preferences.css';

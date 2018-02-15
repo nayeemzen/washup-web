@@ -4,6 +4,10 @@ body {
   font-family: sans-serif;
 }
 
+.ReactModal__Body--open {
+  overflow-y: hidden;
+}
+
 button:focus {
   outline: 0;
 }

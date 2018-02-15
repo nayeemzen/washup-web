@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import Modal from 'react-modal';
 import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
+import swal from 'sweetalert2';
 import uuidv4 from 'uuid/v4';
 
 import * as OrderActions from '../../actions/OrderActions';
 import modalStyles from './ModalStyles';
 import OrderTypeSelector from "./OrderTypeSelector";
 import DateSelector from "./DateSelector";
+import Spinner from '../../resources/spinner.gif';
 import './Order.css';
-
 
 class Order extends Component {
   constructor() {
@@ -28,6 +29,44 @@ class Order extends Component {
   }
 
   render() {
+    const { history, placeOrderComplete, orders: { placeOrder={} }} = this.props;
+
+    if (placeOrder.inFlight) {
+      swal({
+        imageUrl: Spinner,
+        title: "We're placing your order.",
+        text: "Hang tight!",
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false
+      });
+    }
+
+    if (placeOrder.success) {
+      swal({
+        title: "Order placed successfully!",
+        text:  "We will send you a reminder close to your pickup date.",
+        type:  "success",
+        confirmButtonColor: "#27b7d7"
+      }).then(() => {
+        placeOrderComplete();
+        history.push('/activity');
+      });
+    }
+
+    if (placeOrder.error) {
+      swal({
+        title: "Something went wrong!",
+        text:  "We will fix it asap.",
+        type:  "error",
+        confirmButtonColor: "#27b7d7"
+      }).then(() => {
+        placeOrderComplete();
+        history.push('/activity');
+      });
+    }
+
     return (
       <Modal isOpen={this.state.modalOpen} style={modalStyles}>
         <div className="Order">
@@ -47,12 +86,15 @@ class Order extends Component {
   }
 
   placeOrder = () => {
-    this.props.placeOrder({
-      order_type: this.state.selectedOptions[0],
-      pickup_date: this.state.pickupDate.valueOf(),
-      delivery_date: this.state.deliveryDate.valueOf(),
-      idempotence_token: uuidv4()
-    });
+    const {orders} = this.props;
+    if (!orders.placeOrder || !orders.placeOrder.inFlight) {
+      this.props.placeOrder({
+        order_type: this.state.selectedOptions[0],
+        pickup_date: this.state.pickupDate.valueOf(),
+        delivery_date: this.state.deliveryDate.valueOf(),
+        idempotence_token: uuidv4()
+      });
+    }
   };
 
   selectPickupDate = (date) => {
@@ -80,12 +122,15 @@ class Order extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    orders: state.orders
+  }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    placeOrder: order => dispatch(OrderActions.placeOrder(order))
+    placeOrder: order => dispatch(OrderActions.placeOrder(order)),
+    placeOrderComplete: () => dispatch(OrderActions.placeOrderComplete())
   }
 };
 

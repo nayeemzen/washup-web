@@ -1,4 +1,7 @@
-import {GET_ORDERS, SET_ORDERS, PLACE_ORDER, PLACE_ORDER_COMPLETE} from "./ActionTypes";
+import {
+  GET_ORDERS, GET_ORDERS_SUCCESS, PLACE_ORDER, PLACE_ORDER_SUCCESS, PLACE_ORDER_ERROR,
+  GET_ORDERS_ERROR, PLACE_ORDER_COMPLETE
+} from "./ActionTypes";
 
 export const placeOrder = (order) => {
   return {
@@ -7,10 +10,23 @@ export const placeOrder = (order) => {
   };
 };
 
-export const placeOrderComplete = (order) => {
+export const placeOrderSuccess = (order) => {
   return {
-    type: PLACE_ORDER_COMPLETE,
+    type: PLACE_ORDER_SUCCESS,
     order: order
+  };
+};
+
+export const placeOrderError = (error) => {
+  return {
+    type: PLACE_ORDER_ERROR,
+    error: error
+  };
+};
+
+export const placeOrderComplete = () => {
+  return {
+    type: PLACE_ORDER_COMPLETE
   };
 };
 
@@ -20,9 +36,16 @@ export const getOrders = () => {
   };
 };
 
-export const setOrders = (orders) => {
+export const getOrdersSuccess = (orders) => {
   return {
-    type: SET_ORDERS,
+    type: GET_ORDERS_SUCCESS,
     orders: orders
+  };
+};
+
+export const getOrdersError = (error) => {
+  return {
+    type: GET_ORDERS_ERROR,
+    error: error
   };
 };

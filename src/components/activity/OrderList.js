@@ -12,16 +12,19 @@ const OrderList = ({ orders }) => (
       <div className="orderListHeader orderPriceHeader">Price</div>
     </div>
     {
-      orders.map((order, idx) =>
-        <OrderListItem
-          key={idx}
-          type={order.order_type}
-          pickupDate={order.pickup_date}
-          deliveryDate={order.delivery_date}
-          status={order.status}
-          totalCostCents={order.total_cost_cents}
-        />
-      )
+      orders.map((order, idx) => {
+        console.log(order);
+        return (
+            <OrderListItem
+            key={idx}
+            type={order.order_type}
+            pickupDate={order.pickup_date}
+            deliveryDate={order.delivery_date}
+            status={order.status}
+            totalCostCents={order.total_cost_cents || "0"}
+          />
+        );
+      })
     }
   </div>
 );

@@ -10,9 +10,12 @@ export const SET_ADDRESS = 'SET_ADDRESS';
 
 // Order
 export const PLACE_ORDER = 'PLACE_ORDER';
+export const PLACE_ORDER_SUCCESS = 'PLACE_ORDER_SUCCESS';
+export const PLACE_ORDER_ERROR = 'PLACE_ORDER_ERROR';
 export const PLACE_ORDER_COMPLETE = 'PLACE_ORDER_COMPLETE';
 export const GET_ORDERS = 'GET_ORDERS';
-export const SET_ORDERS = 'SET_ORDERS';
+export const GET_ORDERS_SUCCESS = 'GET_ORDERS_SUCCESS';
+export const GET_ORDERS_ERROR = 'GET_ORDERS_ERROR';
 
 // Preferences
 export const GET_PREFERENCES = 'GET_PREFERENCES';
