@@ -13,7 +13,6 @@ const OrderList = ({ orders }) => (
     </div>
     {
       orders.map((order, idx) => {
-        console.log(order);
         return (
             <OrderListItem
             key={idx}

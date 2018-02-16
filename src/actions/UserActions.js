@@ -1,9 +1,31 @@
-import {GET_PROFILE, LOGIN, SET_AUTHENTICATED, SET_PROFILE} from "./ActionTypes";
+import {
+  GET_PROFILE, LOGIN, LOGIN_COMPLETE, LOGIN_ERROR, LOGIN_SUCCESS, SET_AUTHENTICATED,
+  SET_PROFILE
+} from "./ActionTypes";
 
 export const login = (credentials) => {
   return {
     type: LOGIN,
     credentials: credentials
+  }
+};
+
+export const loginError = (error) => {
+  return {
+    type: LOGIN_ERROR,
+    error: error
+  }
+};
+
+export const loginSuccess = () => {
+  return {
+    type: LOGIN_SUCCESS
+  }
+};
+
+export const loginComplete = () => {
+  return {
+    type: LOGIN_COMPLETE
   }
 };
 

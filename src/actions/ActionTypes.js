@@ -1,6 +1,14 @@
-// Authentication
+// Authentication - Log In
 export const LOGIN = 'LOGIN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const LOGIN_COMPLETE = 'LOGIN_COMPLETE';
+// Authentication - Sign Up
 export const SIGN_UP = 'SIGN_UP';
+export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
+export const SIGN_UP_ERROR = 'FAILED';
+export const SIGN_UP_COMPLETE = 'FAILED';
+// Authentication - Common
 export const SET_AUTHENTICATED = 'SET_AUTHENTICATED';
 
 // Profile

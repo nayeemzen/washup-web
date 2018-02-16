@@ -3,6 +3,8 @@ import * as UserActions from "../../actions/UserActions";
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Logo from '../../resources/logo_horizontal.svg';
+import swal from 'sweetalert2';
+import Spinner from '../../resources/spinner.gif';
 import './Login.css';
 
 class Login extends Component {
@@ -15,20 +17,74 @@ class Login extends Component {
   }
 
   render() {
+    const { history, loginRequest, loginComplete, setAuthenticated } = this.props;
+
+    if (loginRequest.inFlight) {
+      swal({
+        imageUrl: Spinner,
+        title: "Logging in",
+        text: "Hang tight!",
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false
+      });
+    }
+
+    if (loginRequest.success) {
+      swal.close();
+      setAuthenticated(true);
+      history.push('/activity');
+      loginComplete();
+    }
+
+    if (loginRequest.error) {
+      swal({
+        title: loginRequest.error.response.status === 401
+          ? "Incorrect credentials."
+          : "Unable to login",
+        text: loginRequest.error.response.status === 401
+          ? "Please check your email and password are correct."
+          : "Please try again. If error persists, please contact support@washup.io.",
+        type:  "error",
+        confirmButtonColor: "#27b7d7"
+      }).then(() => {
+        loginComplete();
+      });
+    }
+
     return (
       <div className="Login">
-        <img className="logo" src={Logo} alt="WashUp"/>
-        <input onChange={this.onEmailInput} spellCheck="false" name="email" placeholder="email"/>
-        <input onChange={this.onPasswordInput} spellCheck="false" name="password" placeholder="password" type="password" />
+        <object className="logo" data={Logo} alt="WashUp"/>
+        <input
+          onChange={this.onEmailInput}
+          spellCheck="false"
+          name="email"
+          placeholder="email"
+        />
+        <input
+          onChange={this.onPasswordInput}
+          spellCheck="false"
+          name="password"
+          placeholder="password"
+          type="password"
+        />
         <button onClick={this.login}>LOG IN</button>
       </div>
     )
   }
 
   login = () => {
-    if (!this.state.email || !this.state.password) {
-      alert("Please fill in your email and password");
+    if (this.props.loginRequest.inFlight) {
       return;
+    }
+
+    if (!this.state.email || !this.state.password) {
+      return swal({
+        text: "Please fill in your email and password",
+        type: "error",
+        confirmButtonColor: "#27b7d7"
+      });
     }
 
     this.props.login({
@@ -52,13 +108,16 @@ class Login extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.user.isAuthenticated
+    isAuthenticated: state.user.isAuthenticated,
+    loginRequest: state.user.login || {}
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: credentials => dispatch(UserActions.login(credentials))
+    login: credentials => dispatch(UserActions.login(credentials)),
+    loginComplete: () => dispatch(UserActions.loginComplete()),
+    setAuthenticated: (isAuthenticated) => dispatch(UserActions.setAuthenticated(isAuthenticated))
   }
 };
 

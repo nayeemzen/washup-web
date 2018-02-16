@@ -34,15 +34,13 @@ export default (state = [], action) => {
       });
 
     case PLACE_ORDER_COMPLETE:
-      let assign = Object.assign({}, state, {
+      return Object.assign({}, state, {
         placeOrder: {
           inFlight: false,
           success: false,
           error: null
         }
       });
-      console.log(assign);
-      return assign;
 
     case GET_ORDERS:
       return Object.assign({}, state, {
