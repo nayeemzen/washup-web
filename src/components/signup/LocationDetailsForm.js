@@ -43,7 +43,6 @@ class LocationDetailsForm extends React.Component {
       history.push('/activity')
     }
 
-    console.log("setAddress.error", setAddress.error && setAddress.error.message);
     return (
       <Form
         header="Set your pickup location"

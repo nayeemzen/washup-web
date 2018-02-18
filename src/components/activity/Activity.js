@@ -1,4 +1,5 @@
 import React from 'react'
+import isEmpty from 'lodash/isEmpty';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import OrderList from './OrderList';
@@ -10,23 +11,23 @@ import Error from "../common/error/Error";
 
 class Activity extends React.Component {
   componentDidMount() {
-    const { orders: { orders, getOrders }} = this.props;
-    if (orders.length === 0 && (!getOrders || !getOrders.inFlight)) {
+    const { orders: { getOrders = {} }} = this.props;
+    if (!getOrders.inFlight) {
       this.props.getOrders();
     }
   }
 
   render() {
-    const { orders: { orders, getOrders } } = this.props;
-    if (getOrders && getOrders.inFlight) {
+    const { orders: { orders, getOrders = {} } } = this.props;
+    if (isEmpty(orders) && getOrders.inFlight) {
         return this.renderLoading();
     }
 
-    if (orders.length > 0 || (getOrders && getOrders.success)) {
+    if (!isEmpty(orders) || getOrders.success) {
         return this.renderOrders(orders);
     }
 
-    if (getOrders && getOrders.error) {
+    if (getOrders.error) {
         return this.renderError(getOrders.error);
     }
 

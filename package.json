@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "node-sass-chokidar": "^0.0.3",
     "axios": "^0.17.1",
     "history": "^4.7.2",
     "lodash": "^4.17.5",
@@ -30,6 +31,5 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "node-sass-chokidar": "^0.0.3"
   }
 }

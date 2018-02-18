@@ -1,25 +1,75 @@
 import React from 'react';
+import isEmpty from 'lodash/isEmpty';
+import swal from 'sweetalert2';
 import './Account.css';
 import Billing from "./Billing";
 import Profile from "./Profile";
 import Password from "./Password";
 import {connect} from "react-redux";
-import {getProfile} from "../../actions/UserActions";
+import {withRouter} from 'react-router-dom';
+import {getProfile, getProfileComplete} from "../../actions/UserActions";
+import {getAddress, getAddressComplete} from "../../actions/AddressActions";
+import Address from "./Address";
+import Loading from "../common/loading/Loading";
 
 class Account extends React.Component {
   componentDidMount() {
-    if (!this.props.profile) {
-      this.props.getProfile();
+    const {
+      address,
+      getAddressRequest,
+      getAddress,
+      profile,
+      getProfileRequest,
+      getProfile
+    } = this.props;
+
+    if (isEmpty(profile) && !getProfileRequest.inFlight) {
+      getProfile();
+    }
+
+    if (isEmpty(address) && !getAddressRequest.inFlight) {
+      getAddress();
     }
   }
 
   render() {
-    const profile = this.props.profile || {
-      first_name: "Full Name",
-      last_name: "",
-      email: "Email Address",
-      phone_number: "Phone Number"
-    };
+    const {
+      history,
+      address,
+      profile,
+      getAddressRequest,
+      getProfileRequest,
+      getProfileComplete,
+      getAddressComplete,
+    } = this.props;
+
+    if (getAddressRequest.success) {
+      getAddressComplete();
+    }
+
+    if (getProfileRequest.success) {
+      getProfileComplete();
+    }
+
+    if (!isEmpty(getProfileRequest.error) || !isEmpty(getAddressRequest.error)) {
+      swal({
+        type: "error",
+        title: "Something went wrong.",
+        text: "please check back later."
+      }).then(() => {
+        swal.close();
+        history.push('/activity');
+        getProfileComplete();
+        getAddressComplete();
+      })
+    }
+
+    if (getProfileRequest.inFlight || getAddressRequest.inFlight) {
+      return (
+        <div className="Account"><Loading/></div>
+      )
+    }
+
     return (
       <div className="Account">
         <Profile
@@ -27,6 +77,10 @@ class Account extends React.Component {
           lastName={profile.last_name}
           email={profile.email}
           cellphone={profile.phone_number}/>
+        <Address
+          streetAddress={address.street_address}
+          apt={address.apt}
+          postalCode={address.postal_code}/>
         <Billing lastFourDigits={8991}/>
         <Password/>
       </div>
@@ -36,14 +90,20 @@ class Account extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    profile: state.user.profile
+    profile: state.user.profile || {},
+    getProfileRequest: state.user.getProfile || {},
+    address: state.address.address || {},
+    getAddressRequest: state.address.getAddress || {}
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getProfile: () => dispatch(getProfile())
+    getProfile: () => dispatch(getProfile()),
+    getProfileComplete: () => dispatch(getProfileComplete()),
+    getAddress: () => dispatch(getAddress()),
+    getAddressComplete: () => dispatch(getAddressComplete())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Account);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Account));

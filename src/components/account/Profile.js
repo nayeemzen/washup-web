@@ -1,7 +1,7 @@
 import React from 'react';
 import CardList from "../card/CardList";
 
-const Profile = ({firstName, lastName, email, cellphone}) => (
+const Profile = ({firstName, lastName, email, cellphone, isLoading}) => (
   <div className="Profile">
     <CardList
       categoryName="Profile"
