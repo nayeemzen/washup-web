@@ -35,7 +35,7 @@ class Activity extends React.Component {
 
   renderLoading = () => <Loading/>;
 
-  renderError = () => <Error message="Something went wrong. We'll fix it asap."/>;
+  renderError = () => <Error imgSize="large" message="Something went wrong. We'll fix it asap."/>;
 
   renderOrders = (orders) => {
     return orders && orders.length ? <OrderList orders={orders}/> : <NoOrders history={this.props.history}/>;

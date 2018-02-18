@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import * as SignUpActions from '../../actions/SignUpActions';
 import Form from "./Form";
 import InputField from "./InputField";
+import Loading from "../common/loading/Loading";
+import Error from "../common/error/Error";
 
 class PersonalDetailsForm extends React.Component {
   constructor() {
@@ -18,11 +20,26 @@ class PersonalDetailsForm extends React.Component {
   }
 
   render() {
+    const { signUp, history } = this.props;
+    const displayStyles = signUp.inFlight ? { display: 'none' } : {};
+
+    if (signUp.success) {
+      history.push('/signup/2');
+      return null;
+    }
+
     return (
       <Form
         header="Create your account"
         subHeader="Tell us who you are."
       >
+        <Loading isLoading={signUp.inFlight || false}/>
+        <Error
+          horizontal={true}
+          visible={!!signUp.error}
+          message={signUp.error && signUp.error.message}
+          imgSize="small"
+        />
         <InputField
           name="firstName"
           placeholder="First Name"
@@ -59,25 +76,26 @@ class PersonalDetailsForm extends React.Component {
           value={this.props.personalDetails.phone_number}
           setValue={(phone) => this.setState({ phone_number: phone })}
         />
-        <button onClick={this.signUp}>Next</button>
+        <button onClick={this.signUp} style={displayStyles}>Next</button>
       </Form>
     );
   }
 
   signUp = () => {
-    this.props.signUp(this.state);
+    this.props.signUpRequest(this.state);
   };
 }
 
 const mapStateToProps = (state) => {
   return {
-    personalDetails: state.user.profile || {}
+    personalDetails: state.user.profile || {},
+    signUp: state.signup || {}
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signUp: personalDetails => dispatch(SignUpActions.signUp(personalDetails))
+    signUpRequest: personalDetails => dispatch(SignUpActions.signUp(personalDetails))
   }
 };
 

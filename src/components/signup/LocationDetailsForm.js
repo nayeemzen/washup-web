@@ -4,6 +4,10 @@ import {connect} from 'react-redux';
 import * as AddressActions from "../../actions/AddressActions";
 import Form from "./Form";
 import InputField from "./InputField";
+import * as SignUpActions from "../../actions/SignUpActions";
+import Loading from "../common/loading/Loading";
+import Error from "../common/error/Error";
+import * as UserActions from "../../actions/UserActions";
 
 class LocationDetailsForm extends React.Component {
   constructor() {
@@ -17,30 +21,60 @@ class LocationDetailsForm extends React.Component {
   }
 
   render() {
+    const {
+      history,
+      signUp,
+      address,
+      setAddress,
+      setAddressComplete,
+      signUpComplete,
+      setAuthenticated
+    } = this.props;
+
+    if (!signUp.success) {
+      history.push('/signup/1');
+      return null;
+    }
+
+    if (setAddress.success) {
+      signUpComplete();
+      setAddressComplete();
+      setAuthenticated();
+      history.push('/activity')
+    }
+
+    console.log("setAddress.error", setAddress.error && setAddress.error.message);
     return (
       <Form
         header="Set your pickup location"
         subHeader="Where should we pick up and deliver your laundry?"
       >
+        <Loading isLoading={!!setAddress.inFlight}/>
+        <Error
+          visible={!!setAddress.error}
+          horizontal={true}
+          imgSize="small"
+          message={setAddress.error && setAddress.error.message}
+        />
         <InputField
           name="streetAddress"
           placeholder="Street Address"
           icon="map-marker"
-          value={this.props.address.streetAddress}
+          value={address.streetAddress}
           setValue={(streetAddress) => this.setState({ street_address: streetAddress })}
         />
         <InputField
           name="apt"
           placeholder="Apt, Suite, etc (optional)"
           icon="map-marker"
-          value={this.props.address.apt}
+          value={address.apt}
           setValue={(apt) => this.setState({ apt: apt })}
         />
         <InputField
           name="postalCode"
           placeholder="Postal code"
           icon="map-marker"
-          value={this.props.address.postalCode}
+          value={address.postalCode}
           setValue={(postalCode) => this.setState({ postal_code: postalCode })}
         />
         <button onClick={this.setAddress}>Next</button>
@@ -49,19 +83,24 @@ class LocationDetailsForm extends React.Component {
   }
 
   setAddress = () => {
-    this.props.setAddress({ address: this.state });
+    this.props.setAddressRequest({ address: this.state });
   };
 }
 
 const mapStateToProps = (state) => {
   return {
-    address: state.address || {}
+    address: state.address.address || {},
+    setAddress: state.address.setAddress || {},
+    signUp: state.signup || {}
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setAddress: address => dispatch(AddressActions.setAddress(address))
+    setAddressRequest: address => dispatch(AddressActions.setAddress(address)),
+    setAddressComplete: () => dispatch(AddressActions.setAddressComplete()),
+    signUpComplete: () => dispatch(SignUpActions.signUpComplete()),
+    setAuthenticated: () => dispatch(UserActions.setAuthenticated(true))
   }
 };
 

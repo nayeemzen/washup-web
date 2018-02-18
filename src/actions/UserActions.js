@@ -1,6 +1,7 @@
 import {
-  GET_PROFILE, LOGIN, LOGIN_COMPLETE, LOGIN_ERROR, LOGIN_SUCCESS, SET_AUTHENTICATED,
-  SET_PROFILE
+  GET_PROFILE, GET_PROFILE_COMPLETE, GET_PROFILE_ERROR, GET_PROFILE_SUCCESS, LOGIN, LOGIN_COMPLETE, LOGIN_ERROR,
+  LOGIN_SUCCESS,
+  SET_AUTHENTICATED, SET_PROFILE,
 } from "./ActionTypes";
 
 export const login = (credentials) => {
@@ -39,6 +40,26 @@ export const setAuthenticated = (isAuthenticated) => {
 export const getProfile = () => {
   return {
     type: GET_PROFILE
+  }
+};
+
+export const getProfileSuccess = (profile) => {
+  return {
+    type: GET_PROFILE_SUCCESS,
+    profile: profile
+  }
+};
+
+export const getProfileError = (error) => {
+  return {
+    type: GET_PROFILE_ERROR,
+    error: error
+  }
+};
+
+export const getProfileComplete = () => {
+  return {
+    type: GET_PROFILE_COMPLETE
   }
 };
 

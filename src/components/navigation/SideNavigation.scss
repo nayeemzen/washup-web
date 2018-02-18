@@ -17,6 +17,10 @@
         font-weight: 300;
         color: $color-white;
         text-transform: capitalize;
+
+        .Loading {
+          margin-top: 10px;
+        }
     }
 
     h1 {

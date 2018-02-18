@@ -1,8 +1,8 @@
 import {
-  LOGIN, LOGIN_COMPLETE, LOGIN_ERROR, LOGIN_SUCCESS, SET_AUTHENTICATED,
-  SET_PROFILE
+  GET_PROFILE, GET_PROFILE_COMPLETE, GET_PROFILE_ERROR, GET_PROFILE_SUCCESS, LOGIN, LOGIN_COMPLETE, LOGIN_ERROR,
+  LOGIN_SUCCESS,
+  SET_AUTHENTICATED, SET_PROFILE,
 } from "../actions/ActionTypes";
-import Authenticator from "../services/Authenticator";
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -38,11 +38,47 @@ export default (state = {}, action) => {
           error: null
         }
       });
+
+    case GET_PROFILE:
+      return Object.assign({}, state, {
+        getProfile: {
+          inFlight: true,
+          success: false,
+          error: null
+        }
+      });
+    case GET_PROFILE_SUCCESS:
+      return Object.assign({}, state, {
+        profile: action.profile,
+        getProfile: {
+          inFlight: false,
+          success: true,
+          error: null
+        }
+      });
+    case GET_PROFILE_ERROR:
+      return Object.assign({}, state, {
+        getProfile: {
+          inFlight: false,
+          success: true,
+          error: action.error
+        }
+      });
+    case GET_PROFILE_COMPLETE:
+      return Object.assign({}, state, {
+        getProfile: {
+          inFlight: false,
+          success: false,
+          error: null
+        }
+      });
+    case SET_PROFILE:
+      return Object.assign({}, state, {
+        profile: action.profile
+      });
     case SET_AUTHENTICATED:
       return Object.assign({}, state, { isAuthenticated: action.isAuthenticated });
-    case SET_PROFILE:
-      return Object.assign({}, state, { profile: action.profile });
     default:
-      return Object.assign({}, state, { isAuthenticated: Authenticator.isAuthenticated() });
+      return state;
   }
 }

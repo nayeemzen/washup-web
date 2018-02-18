@@ -1,8 +1,10 @@
 import React from 'react';
+import Loading from "../common/loading/Loading";
 
-const NavHeader = ({ logo, fullName } ) => (
+const NavHeader = ({ logo, fullName, isNameLoading } ) => (
   <div className="header">
-    <img src={logo} alt="WashUp"/>
+    <object data={logo} aria-label="WashUp"/>
+    <Loading isLoading={isNameLoading} inverted={true}/>
     <h1>{fullName}</h1>
   </div>
 );

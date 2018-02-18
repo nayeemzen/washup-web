@@ -3,18 +3,28 @@ export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGIN_COMPLETE = 'LOGIN_COMPLETE';
+
 // Authentication - Sign Up
 export const SIGN_UP = 'SIGN_UP';
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 export const SIGN_UP_ERROR = 'FAILED';
 export const SIGN_UP_COMPLETE = 'FAILED';
+
 // Authentication - Common
 export const SET_AUTHENTICATED = 'SET_AUTHENTICATED';
 
 // Profile
 export const GET_PROFILE = 'GET_PROFILE';
+export const GET_PROFILE_SUCCESS = 'GET_PROFILE_SUCCESS ';
+export const GET_PROFILE_ERROR = 'GET_PROFILE_ERROR';
+export const GET_PROFILE_COMPLETE = 'GET_PROFILE_COMPLETE';
 export const SET_PROFILE = 'SET_PROFILE';
+
+// Address
 export const SET_ADDRESS = 'SET_ADDRESS';
+export const SET_ADDRESS_SUCCESS = 'SET_ADDRESS_SUCCESS';
+export const SET_ADDRESS_ERROR = 'SET_ADDRESS_ERROR';
+export const SET_ADDRESS_COMPLETE = 'SET_ADDRESS_COMPLETE';
 
 // Order
 export const PLACE_ORDER = 'PLACE_ORDER';

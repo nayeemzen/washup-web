@@ -7,10 +7,14 @@ import NavLinks from './NavLinks';
 import Logo from '../../resources/logo.svg';
 import './SideNavigation.css';
 
-const SideNavigation =({history, sidebarEnabled, firstName="", lastName=""}) => {
+const SideNavigation =({history, sidebarEnabled, firstName="", lastName="", isNameLoading}) => {
   return sidebarEnabled ? (
       <div className="SideNavigation">
-        <NavHeader logo={Logo} fullName={`${firstName} ${lastName}`}/>
+        <NavHeader
+          isNameLoading={isNameLoading}
+          logo={Logo}
+          fullName={`${firstName} ${lastName}`}
+        />
         <NavList links={NavLinks}/>
         <NavFooter onClick={ () => history.push('/order') }/>
       </div>

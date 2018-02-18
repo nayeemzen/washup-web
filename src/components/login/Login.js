@@ -55,7 +55,7 @@ class Login extends Component {
 
     return (
       <div className="Login">
-        <object className="logo" data={Logo} alt="WashUp"/>
+        <object className="logo" data={Logo} aria-label="WashUp"/>
         <input
           onChange={this.onEmailInput}
           spellCheck="false"

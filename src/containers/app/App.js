@@ -1,34 +1,45 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import isEmpty from 'lodash/isEmpty';
 import SideNavigation from '../../components/navigation/SideNavigation';
 import Content from '../content/Content';
-import {getProfile} from "../../actions/UserActions";
+import {getProfile, getProfileComplete, setAuthenticated} from "../../actions/UserActions";
 import './App.css';
+import Authenticator from "../../services/Authenticator";
 
 class App extends Component {
   componentDidMount() {
-    const {isAuthenticated, getProfile} = this.props;
-    if (isAuthenticated) {
-      getProfile();
+    const {isAuthenticated, setAuthenticated} = this.props;
+    if (!isAuthenticated && Authenticator.isAuthenticated()) {
+      setAuthenticated();
     }
   }
 
   render() {
     const {
       isAuthenticated,
-      profile: {
-        first_name: firstName,
-        last_name: lastName,
-      }
+      getProfileRequest,
+      getProfile,
+      getProfileComplete,
+      profile
     } = this.props;
+
+    if (isAuthenticated && isEmpty(profile) && !getProfileRequest.inFlight) {
+      getProfile();
+    }
+
+    if (getProfileRequest.success) {
+      getProfileComplete();
+    }
 
     return (
       <div className="App">
         <SideNavigation
           sidebarEnabled={isAuthenticated}
-          firstName={firstName}
-          lastName={lastName}
+          firstName={profile.first_name}
+          lastName={profile.last_name}
+          isNameLoading={!!getProfileRequest.inFlight}
         />
         <Content sidebarEnabled={isAuthenticated}/>
       </div>
@@ -39,13 +50,16 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.user.isAuthenticated,
+    getProfileRequest: state.user.getProfile || {},
     profile: state.user.profile || {}
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getProfile: () => dispatch(getProfile())
+    getProfile: () => dispatch(getProfile()),
+    getProfileComplete: () => dispatch(getProfileComplete()),
+    setAuthenticated: () => dispatch(setAuthenticated(true))
   }
 };
 

@@ -9,7 +9,7 @@ class SignUp extends Component {
   render() {
     return (
       <div className="SignUp">
-        <img src={Logo} alt="WashUp"/>
+        <object className="Logo" data={Logo} aria-label="WashUp"/>
         <MultiStepForm>
           <PersonalDetailsForm/>
           <LocationDetailsForm/>
