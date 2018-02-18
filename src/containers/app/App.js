@@ -51,7 +51,7 @@ const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.user.isAuthenticated,
     getProfileRequest: state.user.getProfile || {},
-    profile: state.user.profile || {}
+    user: state.user.profile && state.user.profile.user || {}
   }
 };
 

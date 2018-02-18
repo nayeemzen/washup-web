@@ -70,6 +70,7 @@ class Account extends React.Component {
       )
     }
 
+    const {last_four} = this.props.payment_card;
     return (
       <div className="Account">
         <Profile
@@ -81,7 +82,7 @@ class Account extends React.Component {
           streetAddress={address.street_address}
           apt={address.apt}
           postalCode={address.postal_code}/>
-        <Billing lastFourDigits={8991}/>
+        <Billing lastFourDigits={last_four} history={this.props.history}/>
         <Password/>
       </div>
     );
@@ -90,10 +91,12 @@ class Account extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    profile: state.user.profile || {},
     getProfileRequest: state.user.getProfile || {},
     address: state.address.address || {},
-    getAddressRequest: state.address.getAddress || {}
+    getAddressRequest: state.address.getAddress || {},
+    profile: state.user.profile || {},
+    user: state.user.profile && state.user.profile.user,
+    payment_card: state.user.profile && state.user.profile.card || {},
   };
 };
 

@@ -3,10 +3,13 @@ import Card from "../card/Card";
 import CardList from "../card/CardList";
 import './Billing.css';
 
-const Billing = ({ lastFourDigits }) => (
+const Billing = ({ lastFourDigits, history }) => (
   <div className="Billing">
-    <CardList categoryName="Billing" items={[{name: "Credit Card", value: lastFourDigits}]} />
-    <Card><button>UPDATE CARD</button></Card>
+    <CardList categoryName="Billing" items={!!lastFourDigits ? [{name: "Credit Card", value: lastFourDigits}] : null} />
+    <Card>
+    <button onClick={() => { history.push('/payment-card') }}>
+      {!!lastFourDigits ? `UPDATE CARD` : `ADD CARD`}
+    </button></Card>
   </div>
 );
 

@@ -5,9 +5,11 @@ $color-primary-dark: #2999bb;
 $color-background: #F7F7F7;
 $color-white: white;
 $color-black: black;
+$color-gray-darker: #505050;
 $color-gray-dark: #707070;
 $color-gray-light: #b0b0b0;
 $color-gray-extra-light: #e2e2e2;
+$color-white: #ffffff;
 
 $sidebar-width: 340px;
 
@@ -49,4 +51,36 @@ $sidebar-width: 340px;
     background-color: $hoverBackgroundColor;
     transition: all 0.3s ease;
   }
+}
+
+@mixin rounded-input() {
+  margin: 18px 0;
+  padding: 18px;
+  border: 2px solid $color-gray-extra-light;
+  font-size: 0.9em;
+  font-family: $font-primary;
+  color: $color-gray-dark;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  outline: none;
+
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: $color-gray-darker;
+  font-family: $font-primary;
+}
+
+h3 {
+  font-size: 1em;
+  font-weight: normal;
+  color: $color-gray-darker;
+  font-family: $font-primary;
 }

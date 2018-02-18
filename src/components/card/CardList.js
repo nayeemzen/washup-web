@@ -5,18 +5,20 @@ const CardList = ({ categoryName, items }) => (
   <div className="CardListWrapper">
     <p className="categoryName">{categoryName}</p>
     <div className="CardList">
-      <ul>
-        {
-          items.map((item, idx) => (
-            <li key={idx}>
-              <div className="CardItem">
-                <p className="itemName">{item.name}</p>
-                <p className="itemValue">{item.value}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ul>
+      {!!items &&
+        <ul>
+          {
+            items.map((item, idx) => (
+              <li key={idx}>
+                <div className="CardItem">
+                  <p className="itemName">{item.name}</p>
+                  <p className="itemValue">{item.value}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      }
     </div>
   </div>
 );
