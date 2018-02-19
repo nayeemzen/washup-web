@@ -16,4 +16,4 @@ export const loginSuccessEpic = action$ =>
       .switchMap(action => Observable
         .fromPromise(userService.getProfile())
         .map(response => getProfileSuccess(response.user))
-        .catch(error => Observable.of(getProfileError(error))));
+        .catch(error => Observable.of(getProfileError(error)))); 

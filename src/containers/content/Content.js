@@ -12,6 +12,7 @@ import Login from "../../components/login/Login";
 import './Content.css';
 import Landing from "../../components/landing/Landing";
 import SignUp from "../../components/signup/Signup";
+import PaymentCard from "../../components/payment/PaymentCard";
 
 const Content = ({ sidebarEnabled }) => (
   <div className="Content" style={contentStyle(sidebarEnabled)}>
@@ -26,6 +27,7 @@ const Content = ({ sidebarEnabled }) => (
       <AuthenticatedRoute exact path="/contact" component={Contact}/>
       <AuthenticatedRoute exact path="/logout" component={Logout}/>
       <AuthenticatedRoute exact path="/order" component={Order}/>
+      <AuthenticatedRoute exact path="/payment-card" component={PaymentCard}/>
     </Switch>
   </div>
 );

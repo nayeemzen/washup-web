@@ -6,7 +6,7 @@ import swal from 'sweetalert2';
 import uuidv4 from 'uuid/v4';
 
 import * as OrderActions from '../../actions/OrderActions';
-import modalStyles from './ModalStyles';
+import modalStyles from '../common/ModalStyles';
 import OrderTypeSelector from "./OrderTypeSelector";
 import DateSelector from "./DateSelector";
 import Spinner from '../../resources/spinner.gif';

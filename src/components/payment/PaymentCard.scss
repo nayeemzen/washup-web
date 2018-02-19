@@ -1,0 +1,26 @@
+@import "../common/Common.scss";
+
+.PaymentCard {
+  min-width: 400px;
+  text-align: center;
+
+  .inputText {
+    @include rounded-input();
+  }
+
+  .closeButton {
+    text-decoration: none;
+    color: $color-gray-dark;
+    position: fixed;
+    top:20px;
+    right: 40px;
+    font-family: $font-primary;
+    font-weight: 600;
+    font-size: 2em;
+  }
+
+  .saveButton {
+    @include rounded-button($color-primary, $color-white, transparent, $color-primary-dark, $color-white);
+    margin-top: 20px;
+  }
+}
