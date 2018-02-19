@@ -5,8 +5,12 @@ import './Billing.css';
 
 const Billing = ({ lastFourDigits }) => (
   <div className="Billing">
-    <CardList categoryName="Billing" items={[{name: "Credit Card", value: lastFourDigits}]} />
-    <Card><button>UPDATE CARD</button></Card>
+    <CardList
+      categoryName="Billing"
+      items={[
+        {name: "Credit Card", value: lastFourDigits || "Not Linked"}
+      ]}/>
+    <Card><button>{ lastFourDigits ? "UPDATE CARD" : "LINK CARDggi"}</button></Card>
   </div>
 );
 

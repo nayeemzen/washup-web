@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import history from '../history';
 import Authenticator from './Authenticator';
 
 class ApiClient {
@@ -7,11 +8,15 @@ class ApiClient {
   }
 
   post = (path, data = {}) => {
-    return this.axios.post(path, data, { headers: this.getRequestHeaders() });
+    return this.axios
+      .post(path, data, { headers: this.getRequestHeaders() })
+      .catch(error => this.handleError(error));
   };
 
   get = (path) => {
-    return this.axios.get(path, { headers: this.getRequestHeaders() });
+    return this.axios
+      .get(path, { headers: this.getRequestHeaders() })
+      .catch(error => this.handleError(error));
   };
 
   getRequestHeaders = () => {
@@ -26,6 +31,15 @@ class ApiClient {
       && `Bearer ${Authenticator.getAuthToken()}`
     ) || null;
   };
+
+  handleError = (error) => {
+    if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+      Authenticator.clearAuthToken();
+      history.push('/login');
+    }
+
+    throw error;
+  }
 }
 
 export default ApiClient;

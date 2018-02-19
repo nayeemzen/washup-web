@@ -81,7 +81,7 @@ class Account extends React.Component {
           streetAddress={address.street_address}
           apt={address.apt}
           postalCode={address.postal_code}/>
-        <Billing lastFourDigits={8991}/>
+        <Billing/>
         <Password/>
       </div>
     );

@@ -4,7 +4,7 @@ import './Error.css';
 
 const DEFAULT_ERROR_MSG = 'Something went wrong.';
 
-const Error = ({ visible, message, imgSize="medium", horizontal = false}) => (
+const Error = ({ visible=true, message, imgSize="medium", horizontal = false}) => (
   <div className= {
     `Error
     ${visible ? "visible" : "not-visible"}
