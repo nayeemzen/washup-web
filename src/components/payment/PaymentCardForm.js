@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import swal from 'sweetalert2';
 import {
   CardElement,
   CardNumberElement,
@@ -11,34 +12,66 @@ import {
 } from 'react-stripe-elements';
 import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import * as PaymentCardActions from '../../actions/PaymentCardActions';
+import {setPaymentCard, setPaymentCardComplete} from "../../actions/PaymentCardActions";
+import Loading from "../common/loading/Loading";
 
 class PaymentCardForm extends Component {
   render() {
+    const {
+      history,
+      setPaymentCardComplete,
+      paymentCard: { setPaymentCard = {}}
+    } = this.props;
+
+    if (setPaymentCard.success) {
+      swal({
+        type: 'success',
+        title: 'Card linked successfully!',
+        confirmButtonColor: "#27b7d7"
+      }).then(() => {
+        swal.close();
+        setPaymentCardComplete();
+        history.goBack();
+      });
+    }
+
+    if (setPaymentCard.error) {
+      swal({
+        type: 'error',
+        title: 'Something went wrong',
+        text: 'Please check your details and try again',
+        confirmButtonColor: "#27b7d7"
+      }).then(() => {
+        swal.close();
+        setPaymentCardComplete();
+      })
+    }
+
     return (
       <form onSubmit={this.onSubmit}>
+        <Loading isLoading={!!setPaymentCard.inFlight}/>
         <label>
           <CardNumberElement
             className="inputText"
-            {...createOptions()}
+            {...formInputStyles()}
           />
         </label>
         <label>
           <CardExpiryElement
             className="inputText"
-            {...createOptions()}
+            {...formInputStyles()}
           />
         </label>
         <label>
           <CardCVCElement
             className="inputText"
-            {...createOptions()}
+            {...formInputStyles()}
           />
         </label>
         <label>
           <PostalCodeElement
             className="inputText"
-            {...createOptions()}
+            {...formInputStyles()}
           />
         </label>
         <button className="saveButton">Save</button>
@@ -47,16 +80,29 @@ class PaymentCardForm extends Component {
   }
 
   onSubmit = (event) => {
-    const {firstName, lastName, setCard} = this.props;
-    // We don't want to let default form submission happen here, which would refresh the page.
+    const {profile, setPaymentCard, stripe} = this.props;
     event.preventDefault();
-    this.props.stripe.createToken({name: firstName + ` ` + lastName}).then(({token}) => {
-      setCard(token.id);
+    setPaymentCard({
+      createToken: () => stripe.createToken({name: profile.firstName + ' ' + profile.lastName})
     });
   }
 }
 
-const createOptions = (fontSize) => {
+const mapStateToProps = (state) => {
+  return {
+    profile: state.user.profile || {},
+    paymentCard: state.paymentCard || {}
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setPaymentCard: (stripe) => dispatch(setPaymentCard(stripe)),
+    setPaymentCardComplete: (stripe) => dispatch(setPaymentCardComplete())
+  };
+};
+
+const formInputStyles = (fontSize) => {
   return {
     style: {
       base: {
@@ -69,18 +115,6 @@ const createOptions = (fontSize) => {
       },
     },
   };
-};
-
-const mapStateToProps = (state) => {
-  return {
-    profile: state.user.profile || {}
-  }
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setCard: stripeCardToken => dispatch(PaymentCardActions.setCard(stripeCardToken))
-  }
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(injectStripe(PaymentCardForm)));

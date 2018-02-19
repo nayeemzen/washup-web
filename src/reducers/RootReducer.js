@@ -12,5 +12,5 @@ export default combineReducers({
   address: AddressReducer,
   preferences: PreferencesReducer,
   signup: SignUpReducer,
-  card: PaymentCardReducer
+  paymentCard: PaymentCardReducer
 });

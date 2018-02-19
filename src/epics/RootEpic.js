@@ -1,5 +1,5 @@
 import {combineEpics} from 'redux-observable';
-import {loginSuccessEpic, loginEpic} from "./UserEpic";
+import {getProfileEpic, loginEpic} from "./UserEpic";
 import {signUpEpic} from "./SignUpEpic";
 import {getAddressEpic, setAddressEpic} from "./AddressEpic";
 import {getOrdersEpic, placeOrderEpic} from "./OrderEpic";
@@ -11,7 +11,7 @@ export default combineEpics(
   signUpEpic,
   getAddressEpic,
   setAddressEpic,
-  loginSuccessEpic,
+  getProfileEpic,
   placeOrderEpic,
   getOrdersEpic,
   getPreferencesEpic,

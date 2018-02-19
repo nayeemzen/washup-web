@@ -14,44 +14,20 @@ import Loading from "../common/loading/Loading";
 
 class Account extends React.Component {
   componentDidMount() {
-    const {
-      address,
-      getAddressRequest,
-      getAddress,
-      profile,
-      getProfileRequest,
-      getProfile
-    } = this.props;
-
+    const {profile, getProfileRequest, getProfile} = this.props;
     if (isEmpty(profile) && !getProfileRequest.inFlight) {
       getProfile();
-    }
-
-    if (isEmpty(address) && !getAddressRequest.inFlight) {
-      getAddress();
     }
   }
 
   render() {
-    const {
-      history,
-      address,
-      profile,
-      getAddressRequest,
-      getProfileRequest,
-      getProfileComplete,
-      getAddressComplete,
-    } = this.props;
-
-    if (getAddressRequest.success) {
-      getAddressComplete();
-    }
+    const {history, profile, paymentCard, address, getProfileRequest, getProfileComplete,} = this.props;
 
     if (getProfileRequest.success) {
       getProfileComplete();
     }
 
-    if (!isEmpty(getProfileRequest.error) || !isEmpty(getAddressRequest.error)) {
+    if (!isEmpty(getProfileRequest.error)) {
       swal({
         type: "error",
         title: "Something went wrong.",
@@ -64,13 +40,12 @@ class Account extends React.Component {
       })
     }
 
-    if (getProfileRequest.inFlight || getAddressRequest.inFlight) {
+    if (getProfileRequest.inFlight) {
       return (
         <div className="Account"><Loading/></div>
       )
     }
 
-    const {last_four} = this.props.payment_card;
     return (
       <div className="Account">
         <Profile
@@ -79,11 +54,10 @@ class Account extends React.Component {
           email={profile.email}
           cellphone={profile.phone_number}/>
         <Address
-          streetAddress={address.street_address}
           apt={address.apt}
-          postalCode={address.postal_code}/>
-        <Billing lastFourDigits={last_four}/>
-        <Password/>
+          postalCode={address.postal_code}
+          streetAddress={address.street_address}/>
+        <Billing lastFourDigits={paymentCard.lastFour}/>
       </div>
     );
   }
@@ -91,12 +65,10 @@ class Account extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    getProfileRequest: state.user.getProfile || {},
     address: state.address.address || {},
-    getAddressRequest: state.address.getAddress || {},
     profile: state.user.profile || {},
-    user: state.user.profile && state.user.profile.user,
-    payment_card: state.user.profile && state.user.profile.card || {},
+    getProfileRequest: state.user.getProfile || {},
+    paymentCard: state.paymentCard || {}
   };
 };
 
@@ -104,8 +76,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getProfile: () => dispatch(getProfile()),
     getProfileComplete: () => dispatch(getProfileComplete()),
-    getAddress: () => dispatch(getAddress()),
-    getAddressComplete: () => dispatch(getAddressComplete())
   };
 };
 
