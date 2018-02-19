@@ -8,7 +8,7 @@ const Billing = ({ lastFourDigits, history }) => (
   <div className="Billing">
     <CardList
       categoryName="Billing"
-      items={!!lastFourDigits ? [{name: "Credit Card", value: lastFourDigits}] : null}
+      items={[{name: "Credit Card", value: lastFourDigits || "Not Linked"}]}
     />
     <Card>
       <button onClick={() => history.push('/payment-card')}>

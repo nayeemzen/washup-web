@@ -48,7 +48,7 @@ export default (state = [], action) => {
       });
     case GET_PAYMENT_CARD_SUCCESS:
       return Object.assign({}, state, {
-        lastFour: action.card.last_four,
+        lastFour: (action.card && action.card.last_four) || null,
         getPaymentCard: {
           inFlight: false,
           success: true,
