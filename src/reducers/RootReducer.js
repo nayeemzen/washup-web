@@ -5,6 +5,7 @@ import AddressReducer from "./AddressReducer";
 import PreferencesReducer from "./PreferencesReducer";
 import SignUpReducer from "./SignUpReducer";
 import PaymentCardReducer from "./PaymentCardReducer";
+import PricingReducer from "./PricingReducer";
 
 export default combineReducers({
   orders: OrderReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   address: AddressReducer,
   preferences: PreferencesReducer,
   signup: SignUpReducer,
-  paymentCard: PaymentCardReducer
+  paymentCard: PaymentCardReducer,
+  pricing: PricingReducer
 });

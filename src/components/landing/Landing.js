@@ -15,7 +15,6 @@ const Landing = () => (
     </NavigationBar>
     <IntroHero/>
     <HowItWorksHero/>
-    <PricingHero/>
   </div>
 );
 
