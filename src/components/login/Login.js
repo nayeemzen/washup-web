@@ -40,10 +40,10 @@ class Login extends Component {
 
     if (loginRequest.error) {
       swal({
-        title: loginRequest.error.response.status === 401
+        title: loginRequest.error.response && loginRequest.error.response.status === 401
           ? "Incorrect credentials."
           : "Unable to login",
-        text: loginRequest.error.response.status === 401
+        text: loginRequest.error.response && loginRequest.error.response.status === 401
           ? "Please check your email and password are correct."
           : "Please try again. If error persists, please contact support@washup.io.",
         type:  "error",

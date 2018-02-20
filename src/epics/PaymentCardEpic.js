@@ -8,6 +8,12 @@ export const setPaymentCardEpic = action$ =>
     .switchMap(action => Observable.fromPromise(action.stripe.createToken())
       .flatMap(({token}) => Observable.fromPromise(paymentCardService
         .setPaymentCard(token.id)
-        .then(() => token.card.last4)))
+        .then(({status}) => {
+          if (status === 'SUCCESS') {
+            return token.card.last4;
+          }
+
+          throw new Error(`/set-card failed [status=${status}]`)
+        })))
       .map((lastFour) => setPaymentCardSuccess({ last_four: lastFour }))
       .catch(error => Observable.of(setPaymentCardError(error))));
