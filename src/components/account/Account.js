@@ -22,7 +22,6 @@ class Account extends React.Component {
 
   render() {
     const {history, profile, paymentCard, address, getProfileRequest, getProfileComplete,} = this.props;
-
     if (getProfileRequest.success) {
       getProfileComplete();
     }
@@ -53,11 +52,11 @@ class Account extends React.Component {
           lastName={profile.last_name}
           email={profile.email}
           cellphone={profile.phone_number}/>
+        <Billing lastFourDigits={paymentCard.lastFour}/>
         <Address
           apt={address.apt}
           postalCode={address.postal_code}
           streetAddress={address.street_address}/>
-        <Billing lastFourDigits={paymentCard.lastFour}/>
       </div>
     );
   }

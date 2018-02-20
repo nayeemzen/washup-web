@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
+import modalStyles from '../common/ModalStyles';
 import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import modalStyles from '../common/ModalStyles';
 import './PaymentCard.css';
 import {StripeProvider} from 'react-stripe-elements';
 import PaymentCardElements from './PaymentCardElements';

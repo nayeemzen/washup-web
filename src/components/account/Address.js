@@ -1,19 +1,25 @@
 import React from 'react';
 import CardList from "../card/CardList";
+import Card from "../card/Card";
+import './Address.css';
+import withRouter from "react-router-dom/es/withRouter";
 
-const Address = ({streetAddress, apt, postalCode}) => (
+const Address = ({history, streetAddress, apt, postalCode}) => (
   <div className="Address">
     <CardList
       categoryName="Address"
       items = {
-        [
-          { name: streetAddress },
-          { name: `Apartment ${apt}` },
-          { name: postalCode }
-        ]
+        !(streetAddress && postalCode && apt)
+          ? [{ name: "Address", value: "Not Linked"}]
+          : [{ name: streetAddress }, { name: apt }, { name: postalCode }]
       }
     />
+    <Card>
+      <button onClick={() => history.push('/set-address')}>
+        { !(streetAddress && postalCode && apt) ? "ADD ADDRESS" : "UPDATE ADDRESS" }
+      </button>
+    </Card>
   </div>
 );
 
-export default Address;
+export default withRouter(Address);
