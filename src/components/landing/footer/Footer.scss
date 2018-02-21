@@ -1,0 +1,56 @@
+@import "../../common/Common.scss";
+
+.Footer {
+  background-color: #343E48;
+  min-height: 500px;
+  display: flex;
+  justify-content: space-around;
+
+  .Branding {
+    align-self: center;
+    flex-basis: 25%;
+    p {
+      margin-left: 12px;
+      font-family: $font-primary;
+    }
+
+    .trademark {
+      color: white;
+    }
+  }
+
+  .Company, .Social {
+    display: flex;
+    flex-direction: column;
+    max-width: 25%;
+    margin-top: 5%;
+
+    h1 {
+      font-family: $font-primary;
+      color: white;
+      font-weight: 500;
+      font-size: 1.5em;
+    }
+
+    a {
+      font-family: $font-primary;
+      font-size: 1.2em;
+      color: $color-gray-light;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      text-decoration: none;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+
+  .Company {
+    flex-basis: 5%;
+  }
+
+  .Social {
+    flex-basis: 50%;
+  }
+}

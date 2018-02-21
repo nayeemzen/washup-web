@@ -1,0 +1,43 @@
+@import "../../common/Common.scss";
+
+.direction-left {
+  flex-direction: row-reverse !important;
+}
+
+.background-alternate {
+  background-color: #F3F8FA;
+}
+
+.ImageWithText {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+
+  .TextSection {
+    max-width: 40%;
+    margin-left: 50px;
+    margin-right: 50px;
+    h1 {
+      font-family: $font-primary;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-family: $font-secondary;
+      font-weight: 100;
+      color: $color-gray-dark;
+      font-size: 1.2em;
+    }
+  }
+
+  .ImageSection {
+    margin-left: 50px;
+    margin-right: 50px;
+    img {
+      width: 480px;
+      border-radius: 10px;
+    }
+  }
+}

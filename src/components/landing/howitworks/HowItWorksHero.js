@@ -1,12 +1,15 @@
 import React from 'react';
 import './HowItWorksHero.css';
+import Calendar from '../../../resources/calendar.png';
+import Sack from '../../../resources/sack.png';
+import Delivery from '../../../resources/delivery.png';
 
 const HowItWorksHero = () => (
   <section id="HowItWorks" className="HowItWorks">
     <h1>How It Works</h1>
     <div className="HowItWorksItems">
       <div className="HowItWorksItem">
-        <i className="fa fa-calendar" aria-hidden="true"/>
+        <img src={Calendar} alt="calendar"/>
         <h3>Schedule</h3>
         <p>
           WashUp is available 7 days a week between 8pm and 10pm.
@@ -14,7 +17,7 @@ const HowItWorksHero = () => (
         </p>
       </div>
       <div className="HowItWorksItem">
-        <i className="fa fa-shopping-bag" aria-hidden="true"/>
+        <img src={Sack} alt="laundry bag"/>
         <h3>Pickup</h3>
         <p>
           Your friendly WashUp Valet will arrive between 8PM and 10PM,
@@ -22,7 +25,7 @@ const HowItWorksHero = () => (
         </p>
       </div>
       <div className="HowItWorksItem">
-        <i className="fa fa-truck" aria-hidden="true"/>
+        <img src={Delivery} alt="delivery"/>
         <h3>Delivery</h3>
         <p>
           WashUp  delivers on a consistent and predictable schedule,

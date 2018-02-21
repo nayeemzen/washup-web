@@ -27,14 +27,14 @@
     flex-direction: row;
     a {
       text-decoration: none;
-      letter-spacing: 2px;
-      font-family: $font-secondary;
+      text-transform: uppercase;
+      font-family: $font-primary;
       font-size: 1em;
       color: $color-gray-dark;
       margin-right: 40px;
 
       &:hover {
-        color: $color-primary-dark;
+        color: $color-primary;
       }
     }
 

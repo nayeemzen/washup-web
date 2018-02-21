@@ -19,7 +19,7 @@
   }
 
   h1 {
-    max-width: 1000px;
+    text-align: center;
     margin: 0;
     margin-bottom: 10px;
     font-family: $font-primary;
@@ -64,10 +64,10 @@
     margin-left: 2px;
 
     p {
-      text-align: start;
+      text-align: center;
       font-family: $font-primary;
       color: $color-gray-dark;
-      font-size: 1.4em;
+      font-size: 1.1em;
 
       @media only screen and (max-width: 520px) {
         margin-top: 5px;

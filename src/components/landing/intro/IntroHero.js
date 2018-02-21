@@ -3,7 +3,7 @@ import './IntroHero.css';
 
 const IntroHero = () => (
   <section className="IntroHero">
-    <h1>Laundry and dry cleaning to your doorstep</h1>
+    <h1>Laundry & Dry Cleaning To Your Door</h1>
     <div className="Order">
       <p>So you can focus on things that really matter</p>
       <div className="OrderForm">

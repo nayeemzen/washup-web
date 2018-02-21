@@ -5,19 +5,17 @@
   padding-top: 15px;
   display: flex;
   flex-direction: column;
-  background-color:$color-primary-dark;
-  min-height: 500px;
+  justify-content: space-around;
+  background-color:$color-primary;
+  min-height: 400px;
+  padding-bottom: 80px;
 
   h1 {
     text-align: center;
-    font-size: 2.5em;
+    font-size: 1.8em;
     color: $color-white;
     font-family: $font-primary;
     font-weight: 300;
-
-    @media only screen and (max-width: 480px) {
-      font-size: 2.5em;
-    }
   }
 
   .HowItWorksItems {
@@ -40,22 +38,16 @@
       margin-left: 50px;
       margin-bottom: 30px;
 
-      i {
-        font-size: 2.2em;
-        background-color: white;
-        color: $color-primary-dark;
-        border: 3px solid white;
-        border-radius: 50%;
-        padding: 30px;
+      img {
+        width: 80px;
       }
 
       h3 {
         color: white;
         font-family: $font-primary;
-        font-weight: 300;
-        font-size: 1.2em;
+        font-weight: 500;
+        font-size: 1.4em;
         text-transform: uppercase;
-        opacity: 0.7;
         margin-top: 22px;
         margin-bottom: 12px;
       }
