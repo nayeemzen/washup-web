@@ -31,17 +31,19 @@ class Pricing extends React.Component {
         />
         <Loading isLoading={!!userPricing.inFlight}/>
         {
-          Object.keys(pricing).map((pricingCategory, idx) => {
-            let categoryName = pricingCategory === 'wash_fold' ? 'WASH & FOLD' : 'DRY CLEAN';
-            if (isEmpty(pricing[pricingCategory])) {
-              return (
-                <CardList
-                  key={idx}
-                  categoryName={categoryName}
-                  items={ [{ name: "No pricing available" }] }
-                />
-              );
-            }
+          Object.keys(pricing)
+            .filter(key => key ==='wash_fold' || key==='dry_clean')
+            .map((pricingCategory, idx) => {
+              let categoryName = pricingCategory === 'wash_fold' ? 'WASH & FOLD' : 'DRY CLEAN';
+              if (isEmpty(pricing[pricingCategory])) {
+                return (
+                  <CardList
+                    key={idx}
+                    categoryName={categoryName}
+                    items={ [{ name: "No pricing available" }] }
+                  />
+                );
+              }
 
             return (
               <CardList
