@@ -1,0 +1,51 @@
+@import "../../common/Common.scss";
+
+.Faq {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-white;
+  min-width: 100%;
+
+  h1 {
+    font-family: $font-primary;
+    font-weight: 300;
+  }
+
+  .FaqItems {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 30px auto;
+
+    .FaqItem {
+      h2 {
+        font-family: $font-primary;
+        color: $color-black;
+        font-size: 1.2em;
+      }
+
+      p {
+        font-family: $font-primary;
+        color: $color-gray-darker;
+        font-size: 1em;
+        width: 700px;
+        padding-bottom: 15px;
+      }
+
+      h3 {
+        font-family: $font-primary;
+        font-size: 1.2em;
+      }
+
+      ol {
+        li {
+          font-family: $font-primary;
+          font-size: 1em;
+          padding-bottom: 5px;
+        }
+      }
+    }
+  }
+}

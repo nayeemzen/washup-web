@@ -21,7 +21,7 @@ const Footer = () => (
     <div className="Company">
         <h1 className="title">Company</h1>
         <Link to="/">Home</Link>
-        <Link to="/">FAQ</Link>
+        <Link to="/faq">FAQ</Link>
         <Link to="/">Pricing</Link>
         <Link to="/">Terms</Link>
         <Link to="/">Privacy</Link>
