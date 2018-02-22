@@ -9,6 +9,11 @@
   .Branding {
     align-self: center;
     flex-basis: 25%;
+
+    img {
+      width: 190px;
+    }
+
     p {
       margin-left: 12px;
       font-family: $font-primary;

@@ -1,7 +1,8 @@
 import React from 'react';
 import Modal from 'react-modal';
-import Logo from '../../../resources/logo_horizontal_selected.svg';
+import Logo from '../../../resources/washup_horizontal.png';
 import './NavigationBar.css';
+import {withRouter} from "react-router-dom";
 
 class NavigationBar extends React.Component {
   constructor() {
@@ -23,11 +24,11 @@ class NavigationBar extends React.Component {
   };
 
   render() {
-    const {children} = this.props;
+    const {children, history} = this.props;
     return (
       <div className="NavigationBar">
         <div className="Logo">
-          <object data={Logo}>Wash Up</object>
+          <img onClick={() => history.push('/')} src={Logo} alt="WashUp"/>
         </div>
         <div className="Links">{children}</div>
         <i
@@ -67,4 +68,4 @@ class NavigationBar extends React.Component {
   }
 }
 
-export default NavigationBar;
+export default withRouter(NavigationBar);

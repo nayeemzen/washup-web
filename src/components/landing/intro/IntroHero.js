@@ -1,5 +1,6 @@
 import React from 'react';
 import './IntroHero.css';
+import {withRouter} from "react-router-dom";
 
 const IntroHero = () => (
   <section className="IntroHero">
@@ -15,4 +16,4 @@ const IntroHero = () => (
   </section>
 );
 
-export default IntroHero;
+export default withRouter(IntroHero);

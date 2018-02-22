@@ -1,12 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Logo from '../../../resources/logo_horizontal.svg';
+import Logo from '../../../resources/washup_horizontal_inverted.png';
 import './Footer.css';
 
 const Footer = () => (
   <section className="Footer">
     <div className="Branding">
-      <object data={Logo}>Wash Up</object>
+      <img src={Logo} alt="WashUp"/>
       <p className="trademark">
         © 2018 WashUp<br/>
         Made with ♥ in Canada.

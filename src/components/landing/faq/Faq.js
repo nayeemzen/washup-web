@@ -1,5 +1,4 @@
 import React from 'react';
-import Logo from '../../../resources/logo_horizontal_selected.svg'
 import './Faq.css';
 import NavigationBar from "../navigation/NavigationBar";
 import Footer from "../footer/Footer";

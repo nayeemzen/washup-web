@@ -4,7 +4,7 @@ import NavHeader from './NavHeader';
 import NavList from "./NavList";
 import NavFooter from "./NavFooter";
 import NavLinks from './NavLinks';
-import Logo from '../../resources/logo.svg';
+import Logo from '../../resources/washup_vertical_inverted.png';
 import './SideNavigation.css';
 
 const SideNavigation =({history, sidebarEnabled, firstName="", lastName="", isNameLoading}) => {

@@ -3,7 +3,7 @@ import Loading from "../common/loading/Loading";
 
 const NavHeader = ({ logo, fullName, isNameLoading } ) => (
   <div className="header">
-    <object data={logo} aria-label="WashUp"/>
+    <img src={logo} alt="WashUp"/>
     <Loading isLoading={isNameLoading} inverted={true}/>
     <h1>{fullName}</h1>
   </div>

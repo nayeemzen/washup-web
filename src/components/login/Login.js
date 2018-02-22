@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as UserActions from "../../actions/UserActions";
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Logo from '../../resources/logo_horizontal.svg';
+import Logo from '../../resources/washup_horizontal_inverted.png';
 import swal from 'sweetalert2';
 import Spinner from '../../resources/spinner.gif';
 import './Login.css';
@@ -55,7 +55,7 @@ class Login extends Component {
 
     return (
       <div className="Login">
-        <object className="logo" data={Logo} aria-label="WashUp"/>
+        <img className="logo" src={Logo} aria-label="WashUp"/>
         <input
           onChange={this.onEmailInput}
           spellCheck="false"
