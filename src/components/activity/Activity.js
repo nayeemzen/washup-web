@@ -8,6 +8,8 @@ import './Activity.css'
 import {getOrders} from "../../actions/OrderActions";
 import Loading from "../common/loading/Loading";
 import Error from "../common/error/Error";
+import {NOT_AVAILABLE} from "../../utils/ServiceAvailabilityStates";
+import ServiceNotAvailable from "../common/servicenotavailable/ServiceNotAvailable";
 
 class Activity extends React.Component {
   componentDidMount() {
@@ -18,7 +20,12 @@ class Activity extends React.Component {
   }
 
   render() {
-    const { orders: { orders, getOrders = {} } } = this.props;
+    const { availability, address, orders: { orders, getOrders = {} } } = this.props;
+
+    if (availability === NOT_AVAILABLE) {
+      return this.renderServiceNotAvailable(address);
+    }
+
     if (isEmpty(orders) && getOrders.inFlight) {
         return this.renderLoading();
     }
@@ -38,9 +45,12 @@ class Activity extends React.Component {
 
   renderError = () => <Error message="Something went wrong. We'll fix it asap."/>;
 
-  renderOrders = (orders) => {
-    return orders && orders.length ? <OrderList orders={orders}/> : <NoOrders history={this.props.history}/>;
-  }
+  renderOrders = (orders) => orders && orders.length
+    ? <OrderList orders={orders}/>
+    : <NoOrders history={this.props.history}/>;
+
+  renderServiceNotAvailable = (address) =>
+    <ServiceNotAvailable address={address}/>;
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -51,7 +61,9 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    orders: state.orders
+    availability: state.user.availability,
+    orders: state.orders,
+    address: state.address.address || {}
   }
 };
 

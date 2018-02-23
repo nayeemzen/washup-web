@@ -9,14 +9,12 @@ import Location from "../../resources/location.png";
 import Loading from "../common/loading/Loading";
 import Error from "../common/error/Error";
 import Card from "../card/Card";
-import {
-  NOT_AVAILABLE, SERVICE_AVAILABILITY_UNKNOWN,
-  SERVICE_AVAILABLE_STATES
-} from "../../utils/ServiceAvailabilityStates";
+import {NOT_AVAILABLE, SERVICE_AVAILABLE_STATES} from "../../utils/ServiceAvailabilityStates";
+import ServiceNotAvailable from "../common/servicenotavailable/ServiceNotAvailable";
 
 class Pricing extends React.Component {
   componentDidMount() {
-    const { userPricing, getUserPricing, availability } = this.props;
+    const {userPricing, getUserPricing, availability} = this.props;
     if (!userPricing.inFlight && SERVICE_AVAILABLE_STATES.has(availability)) {
       getUserPricing();
     }
@@ -27,7 +25,7 @@ class Pricing extends React.Component {
       address,
       availability,
       userPricing,
-      userPricing: { pricing = {} },
+      userPricing: {pricing = {}},
       getUserPricingComplete
     } = this.props;
 
@@ -51,17 +49,7 @@ class Pricing extends React.Component {
     }
 
     if (availability === NOT_AVAILABLE) {
-      return (
-        <div className="Pricing NotAvailable">
-          <Card>
-            <img className="LocationIcon" src={Location}/>
-            <h1>
-              We're not available in your area yet
-              but working hard to get there soon!
-            </h1>
-          </Card>
-        </div>
-      );
+      return <ServiceNotAvailable address={address}/>;
     }
 
     return (
@@ -73,24 +61,24 @@ class Pricing extends React.Component {
         <Loading isLoading={!!userPricing.inFlight}/>
         {
           Object.keys(pricing)
-            .filter(key => key ==='wash_fold' || key==='dry_clean')
-            .map((pricingCategory, idx) => {
-              let categoryName = pricingCategory === 'wash_fold' ? 'WASH & FOLD' : 'DRY CLEAN';
-              if (isEmpty(pricing[pricingCategory])) {
-                return (
-                  <CardList
-                    key={idx}
-                    categoryName={categoryName}
-                    items={ [{ name: "No pricing available" }] }
-                  />
-                );
-              }
+          .filter(key => key === 'wash_fold' || key === 'dry_clean')
+          .map((pricingCategory, idx) => {
+            let categoryName = pricingCategory === 'wash_fold' ? 'WASH & FOLD' : 'DRY CLEAN';
+            if (isEmpty(pricing[pricingCategory])) {
+              return (
+                <CardList
+                  key={idx}
+                  categoryName={categoryName}
+                  items={[{name: "No pricing available"}]}
+                />
+              );
+            }
 
             return (
               <CardList
                 key={idx}
                 categoryName={categoryName}
-                items={pricing[pricingCategory].map(item => this.toCardItem(item) )}
+                items={pricing[pricingCategory].map(item => this.toCardItem(item))}
               />
             );
           })
@@ -101,8 +89,8 @@ class Pricing extends React.Component {
 
   toCardItem = (item) => ({
     name: item.item
-      .replace(/_/g, ' ')
-      .replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()),
+    .replace(/_/g, ' ')
+    .replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()),
     value: Formatter.format(item.price_cents / 100)
   });
 }

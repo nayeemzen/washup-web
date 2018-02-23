@@ -1,0 +1,32 @@
+@import "../../common/Common.scss";
+
+.ServiceNotAvailable {
+  justify-content: flex-start;
+  align-self: center;
+  margin: 0 auto;
+
+
+  .Card {
+    padding-left: 80px;
+    padding-right: 80px;
+
+    .LocationIcon {
+      width: 50px;
+    }
+
+    h1 {
+      font-size: 1.2em;
+    }
+
+    h2 {
+      font-size: 1em;
+      color: $color-black;
+      font-family: $font-primary;
+    }
+
+    button {
+      @include rectangular-button($color-primary, $color-primary-dark);
+      margin-bottom: 20px;
+    }
+  }
+}

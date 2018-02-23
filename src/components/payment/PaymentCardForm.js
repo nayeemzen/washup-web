@@ -15,15 +15,30 @@ import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setPaymentCard, setPaymentCardComplete} from "../../actions/PaymentCardActions";
 import Loading from "../common/loading/Loading";
+import {NOT_AVAILABLE} from "../../utils/ServiceAvailabilityStates";
 
 class PaymentCardForm extends Component {
   render() {
     const {
+      availability,
       history,
       location: { search },
       setPaymentCardComplete,
-      paymentCard: { setPaymentCard = {}}
+      paymentCard: { setPaymentCard = {}, lastFour }
     } = this.props;
+
+    if (availability === NOT_AVAILABLE && !lastFour) {
+      // TODO(zen): Refactor swals into something like a sealed class.
+      swal({
+        title: "We're not available in your area yet",
+        text:  "But working hard to get there soon!",
+        type:  "error",
+        confirmButtonColor: "#27b7d7",
+        confirmButtonText: "Continue"
+      }).then(() => {
+        history.push('/activity');
+      });
+    }
 
     let queryParams = parse(search), nextPage = queryParams && queryParams.next;
 
@@ -37,9 +52,7 @@ class PaymentCardForm extends Component {
         setPaymentCardComplete();
         // TODO(Zen): Refactor into a flow class.
         if (nextPage && nextPage.length > 0) {
-          history.push({
-            pathname: nextPage
-          });
+          history.push({pathname: nextPage});
         } else {
           history.goBack();
         }
@@ -102,7 +115,8 @@ class PaymentCardForm extends Component {
 const mapStateToProps = (state) => {
   return {
     profile: state.user.profile || {},
-    paymentCard: state.paymentCard || {}
+    paymentCard: state.paymentCard || {},
+    availability: state.user.availability
   }
 };
 
