@@ -3,7 +3,7 @@ import './Form.css';
 
 const Form = ({ header, subHeader, children }) => (
   [
-    <div key={1} className="Header">
+    <div key={1} className="FormHeader">
       <h1>{header}</h1>
       <p>{subHeader}</p>
     </div>,
