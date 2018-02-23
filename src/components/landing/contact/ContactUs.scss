@@ -1,0 +1,23 @@
+@import "../../common/Common.scss";
+
+.ContactUs {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-white;
+  min-width: 100%;
+
+  .ContactUsContent {
+    margin-top: 50px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    p {
+      font-family: $font-primary;
+      color: $color-gray-darker;
+      font-size: 1em;
+    }
+  }
+}
