@@ -1,12 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect, Route} from 'react-router-dom';
+import Authenticator from "../../services/Authenticator";
 
 const whitelist = new Set(['/', '/login', '/faq', '/contact-us', '/signup/:step?']);
 
 const AuthenticatedRoute = ({component: Component, render, path, isAuthenticated, ...rest}) => {
   return <Route {...rest} render={props => {
-    if (isAuthenticated && !whitelist.has(path)) {
+    if (Authenticator.isAuthenticated() && !whitelist.has(path)) {
       return render ? render() : <Component {...props}/>;
     }
 
