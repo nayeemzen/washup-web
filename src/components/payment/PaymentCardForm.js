@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {parse} from 'query-string';
 import swal from 'sweetalert2';
 import {
   CardElement,
@@ -19,9 +20,12 @@ class PaymentCardForm extends Component {
   render() {
     const {
       history,
+      location: { search },
       setPaymentCardComplete,
       paymentCard: { setPaymentCard = {}}
     } = this.props;
+
+    let queryParams = parse(search), nextPage = queryParams && queryParams.next;
 
     if (setPaymentCard.success) {
       swal({
@@ -31,7 +35,14 @@ class PaymentCardForm extends Component {
       }).then(() => {
         swal.close();
         setPaymentCardComplete();
-        history.goBack();
+        // TODO(Zen): Refactor into a flow class.
+        if (nextPage && nextPage.length > 0) {
+          history.push({
+            pathname: nextPage
+          });
+        } else {
+          history.goBack();
+        }
       });
     }
 

@@ -18,7 +18,7 @@ export const getProfileEpic = action$ =>
       .switchMap(action => Observable
         .fromPromise(userService.getProfile())
         .flatMap(response => Observable.of(
-            getProfileSuccess(response.user),
+            getProfileSuccess(response.user, response.availability),
             getAddressSuccess(response.address),
             getPaymentCardSuccess(response.card))
         .catch(error => Observable.of(getProfileError(error)))));

@@ -31,7 +31,7 @@ const Content = ({ sidebarEnabled }) => (
       <AuthenticatedRoute exact path="/logout" component={Logout}/>
       <AuthenticatedRoute exact path="/order" component={Order}/>
       <AuthenticatedRoute exact path="/set-address" component={SetAddress}/>
-      <AuthenticatedRoute exact path="/payment-card" component={PaymentCard}/>
+      <AuthenticatedRoute exact path="/set-payment-card" component={PaymentCard}/>
     </Switch>
   </div>
 );

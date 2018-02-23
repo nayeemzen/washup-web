@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
+import isEmpty from 'lodash/isEmpty';
 import {Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import swal from 'sweetalert2';
@@ -11,6 +12,7 @@ import OrderTypeSelector from "./OrderTypeSelector";
 import DateSelector from "./DateSelector";
 import Spinner from '../../resources/spinner.gif';
 import './Order.css';
+import {NOT_AVAILABLE, SERVICE_AVAILABILITY_UNKNOWN} from "../../utils/ServiceAvailabilityStates";
 
 class Order extends Component {
   constructor() {
@@ -29,6 +31,7 @@ class Order extends Component {
   }
 
   render() {
+    this.validateRequest();
     const { history, placeOrderComplete, orders: { placeOrder={} }} = this.props;
 
     if (placeOrder.inFlight) {
@@ -63,7 +66,6 @@ class Order extends Component {
         confirmButtonColor: "#27b7d7"
       }).then(() => {
         placeOrderComplete();
-        history.push('/activity');
       });
     }
 
@@ -86,6 +88,10 @@ class Order extends Component {
   }
 
   placeOrder = () => {
+    if (!this.validateRequest()) {
+      return;
+    }
+
     const {orders} = this.props;
     if (!orders.placeOrder || !orders.placeOrder.inFlight) {
       this.props.placeOrder({
@@ -95,6 +101,56 @@ class Order extends Component {
         idempotence_token: uuidv4()
       });
     }
+  };
+
+  validateRequest = () => {
+    const {address, history, availability, paymentCard : { lastFour }} = this.props;
+    if (isEmpty(address)) {
+      swal({
+        title: "You don't have an address set",
+        text:  "Continue to set an address.",
+        type:  "error",
+        confirmButtonColor: "#27b7d7",
+        confirmButtonText: "Continue"
+      }).then(() => {
+        history.push({
+          pathname: '/set-address',
+          search: !lastFour ? '?next=set-payment-card&origin=order' : null
+        })
+      });
+
+      return false;
+    }
+
+    if (availability === NOT_AVAILABLE) {
+      swal({
+        title: "We're not available in your area yet",
+        text:  "But working hard to get there soon!",
+        type:  "error",
+        confirmButtonColor: "#27b7d7",
+        confirmButtonText: "Continue"
+      }).then(() => {
+        history.push('/activity');
+      });
+
+      return false;
+    }
+
+    if (!lastFour) {
+      swal({
+        title: "You don't have a payment card linked",
+        text:  "Continue to link a payment card.",
+        type:  "error",
+        confirmButtonColor: "#27b7d7",
+        confirmButtonText: "Continue"
+      }).then(() => {
+        history.push('/set-payment-card')
+      });
+
+      return false;
+    }
+
+    return true;
   };
 
   selectPickupDate = (date) => {
@@ -123,8 +179,11 @@ class Order extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    orders: state.orders
-  }
+    orders: state.orders,
+    paymentCard: state.paymentCard || {},
+    address: state.address.address || {},
+    availability: state.user.availability
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

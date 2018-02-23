@@ -11,7 +11,7 @@ const Billing = ({ lastFourDigits, history }) => (
       items={[{name: "Credit Card", value: lastFourDigits || "Not Linked"}]}
     />
     <Card>
-      <button onClick={() => history.push('/payment-card')}>
+      <button onClick={() => history.push('/set-payment-card')}>
         {!!lastFourDigits ? `UPDATE CARD` : `ADD CARD`}
       </button>
     </Card>

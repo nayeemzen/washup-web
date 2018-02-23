@@ -4,6 +4,7 @@ import modalStyles from '../common/ModalStyles';
 import Form from "../signup/Form";
 import Loading from "../common/loading/Loading";
 import swal from "sweetalert2";
+import {parse} from 'query-string';
 import InputField from "../signup/InputField";
 import * as AddressActions from "../../actions/AddressActions";
 import withRouter from "react-router-dom/es/withRouter";
@@ -27,7 +28,16 @@ class SetAddress extends Component {
   }
 
   render() {
-    const { history, address: { address = {}, setAddress = {}}, setAddressComplete } = this.props;
+    const {
+      history,
+      location: { search },
+      address: { address = {}, setAddress = {}},
+      setAddressComplete
+    } = this.props;
+
+    let queryParams = parse(search),
+        nextPage = queryParams && queryParams.next,
+        origin = queryParams && queryParams.origin;
 
     if (setAddress.success) {
       swal({
@@ -36,15 +46,23 @@ class SetAddress extends Component {
       }).then(() => {
         swal.close();
         setAddressComplete();
-        history.goBack();
-      })
+        // TODO(Zen): Refactor into a flow class.
+        if (nextPage && nextPage.length > 0) {
+          history.push({
+            pathname: nextPage,
+            search: `?next=${origin}`
+          });
+        } else {
+          history.goBack();
+        }
+      });
     }
 
     if (setAddress.error) {
       swal({
         title: "Something went wrong",
-        text: "Please check your details and try again or contact support.",
-        type: "error"
+        text:  "Please check your details and try again or contact support.",
+        type:  "error"
       }).then(() => {
         swal.close();
         setAddressComplete();
