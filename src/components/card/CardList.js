@@ -3,7 +3,7 @@ import './CardList.css';
 
 const CardList = ({ categoryName, items }) => (
   <div className="CardListWrapper">
-    <p className="categoryName">{categoryName}</p>
+    {!!categoryName && <p className="categoryName">{categoryName}</p>}
     <div className="CardList">
       {!!items &&
         <ul>

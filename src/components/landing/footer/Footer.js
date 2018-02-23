@@ -22,17 +22,15 @@ const Footer = () => (
         <h1 className="title">Company</h1>
         <Link to="/">Home</Link>
         <Link to="/faq">FAQ</Link>
-        <Link to="/">Pricing</Link>
-        <Link to="/">Terms</Link>
-        <Link to="/">Privacy</Link>
-        <Link to="/">Contact</Link>
+        <Link to="/pricing">Pricing</Link>
+        <Link to="/contact-us">Contact</Link>
     </div>
 
     <div className="Social">
       <h1 className="title">Social</h1>
-      <a href="#">Facebook</a>
-      <a href="#">Twitter</a>
-      <a href="#">Instagram</a>
+      <a href="https://www.facebook.com/washupio">Facebook</a>
+      <a href="https://twitter.com/washupapp">Twitter</a>
+      <a href="https://www.instagram.com/washupio/">Instagram</a>
     </div>
   </section>
 );

@@ -2,6 +2,7 @@ import React from 'react';
 import './Faq.css';
 import NavigationBar from "../navigation/NavigationBar";
 import Footer from "../footer/Footer";
+import Header from "../header/Header";
 
 const Faq = () => (
   <section className="Faq">
@@ -11,8 +12,8 @@ const Faq = () => (
       <a href="/login">Login</a>
       <a href="/signup">Sign Up</a>
     </NavigationBar>
+    <Header headerText="Frequently Asked Questions" />
     <div className="FaqItems">
-      <h1>Frequently Asked Questions</h1>
       <FaqItem question="Is WashUp available in my city?">
         <p>
           We're only serving downtown Toronto and downtown Waterloo locations.

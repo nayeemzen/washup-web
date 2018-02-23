@@ -15,12 +15,14 @@ import SignUp from "../../components/signup/Signup";
 import PaymentCard from "../../components/payment/PaymentCard";
 import SetAddress from "../../components/address/SetAddress";
 import Faq from "../../components/landing/faq/Faq";
+import ContactUs from "../../components/landing/contact/ContactUs";
 
 const Content = ({ sidebarEnabled }) => (
   <div className="Content" style={contentStyle(sidebarEnabled)}>
     <Switch>
       <AuthenticatedRoute exact path="/" component={Landing}/>
       <AuthenticatedRoute exact path="/faq" component={Faq}/>
+      <AuthenticatedRoute exact path="/contact-us" component={ContactUs}/>
       <AuthenticatedRoute exact path="/login" component={Login}/>
       <AuthenticatedRoute exact path="/signup/:step?" component={SignUp}/>
       <AuthenticatedRoute exact path="/activity" component={Activity}/>
