@@ -3,15 +3,11 @@ import './Faq.css';
 import NavigationBar from "../navigation/NavigationBar";
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
+import DefaultNavigationBar from "../navigation/DefaultNavigationBar";
 
 const Faq = () => (
   <section className="Faq">
-    <NavigationBar>
-      <a href="/pricing">Pricing</a>
-      <a href="/faq">FAQ</a>
-      <a href="/login">Login</a>
-      <a href="/signup">Sign Up</a>
-    </NavigationBar>
+    <DefaultNavigationBar/>
     <Header headerText="Frequently Asked Questions" />
     <div className="FaqItems">
       <FaqItem question="Is WashUp available in my city?">

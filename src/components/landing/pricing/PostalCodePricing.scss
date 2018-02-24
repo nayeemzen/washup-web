@@ -1,0 +1,37 @@
+@import "../../common/Common.scss";
+
+.PostalCodePricing {
+  background-color: #F3F8FA;
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+
+  h1 {
+    font-family: $font-primary;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  .PriceFinder {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    .PostalCodePricingInput {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      .InputField {
+        margin-top: 7px;
+      }
+      button {
+        @include rounded-button($color-primary, $color-white, transparent, $color-primary-dark, $color-white);
+        margin-left: 30px;
+        margin-top: 0;
+      }
+    }
+  }
+}

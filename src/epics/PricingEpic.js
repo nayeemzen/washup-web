@@ -16,6 +16,6 @@ export const getUserPricingEpic = action$ =>
 export const getPostalCodePricingEpic = action$ =>
   action$.ofType(GET_POSTAL_CODE_PRICING)
     .switchMap(action => Observable
-      .fromPromise(pricingService.getPostalCodePricing({ postal_code: action.postalCode }))
-      .map(pricing => getPostalCodePricingSuccess(pricing, action.postalCode))
+      .fromPromise(pricingService.getPostalCodePricing(action.postalCode))
+      .map(pricing => getPostalCodePricingSuccess(pricing, action.postalCode.postal_code))
       .catch(error => Observable.of(getPostalCodePricingError(error))));

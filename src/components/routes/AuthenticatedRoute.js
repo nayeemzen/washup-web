@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Redirect, Route} from 'react-router-dom';
 import Authenticator from "../../services/Authenticator";
 
-const whitelist = new Set(['/', '/login', '/faq', '/contact-us', '/signup/:step?']);
+const whitelist = new Set(['/', '/login', '/faq', '/public-pricing', '/contact-us', '/signup/:step?']);
 
 const AuthenticatedRoute = ({component: Component, render, path, isAuthenticated, ...rest}) => {
   return <Route {...rest} render={props => {

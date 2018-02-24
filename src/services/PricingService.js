@@ -9,8 +9,8 @@ class PricingService extends ApiService {
     return this.api.get('/get-user-pricing').then(response => response.data);
   };
 
-  getPostalCodePricing = (postalCodePricingRequest) => {
-    return this.api.post('/get-postal-code-pricing', postalCodePricingRequest).then(response => response.data);
+  getPostalCodePricing = (postalCode) => {
+    return this.api.post('/get-postal-code-pricing', postalCode).then(response => response.data);
   };
 }
 

@@ -1,0 +1,34 @@
+@import "../common/Common.scss";
+
+.UserPricing {
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.NotAvailable {
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 auto;
+
+
+  .Card {
+    padding-left: 80px;
+    padding-right: 80px;
+
+    .LocationIcon {
+      width: 50px;
+    }
+
+    h1 {
+      font-size: 1.2em;
+    }
+
+    button {
+      @include rectangular-button($color-primary, $color-primary-dark);
+      margin-bottom: 20px;
+    }
+  }
+}

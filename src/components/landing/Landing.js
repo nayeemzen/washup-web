@@ -1,5 +1,4 @@
 import React from 'react';
-import NavigationBar from './navigation/NavigationBar'
 import IntroHero from "./intro/IntroHero";
 import HowItWorksHero from "./howitworks/HowItWorksHero";
 import ImageWithText from './imagewithtext/ImageWithText';
@@ -8,15 +7,11 @@ import SuitsOnRackImage from '../../resources/suits_on_rack.jpg';
 import ShirtButtoning from '../../resources/shirt_buttoning.jpg';
 import './Landing.css';
 import Footer from "./footer/Footer";
+import DefaultNavigationBar from "./navigation/DefaultNavigationBar";
 
 const Landing = () => (
   <div className="Home">
-    <NavigationBar>
-      <a href="/pricing">Pricing</a>
-      <a href="/faq">FAQ</a>
-      <a href="/login">Login</a>
-      <a href="/signup">Sign Up</a>
-    </NavigationBar>
+    <DefaultNavigationBar/>
     <IntroHero/>
     <HowItWorksHero/>
     <ImageWithText

@@ -3,8 +3,9 @@ import {
   LOGIN_SUCCESS,
   SET_AUTHENTICATED, SET_AVAILABILITY, SET_PROFILE,
 } from "../actions/ActionTypes";
+import {SERVICE_AVAILABILITY_UNKNOWN} from "../utils/ServiceAvailabilityStates";
 
-export default (state = {}, action) => {
+export default (state = { availability: SERVICE_AVAILABILITY_UNKNOWN }, action) => {
   switch (action.type) {
     case LOGIN:
       return Object.assign({}, state, {

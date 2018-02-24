@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch} from 'react-router-dom';
 import Activity from '../../components/activity/Activity';
 import Preferences from '../../components/preferences/Preferences';
-import Pricing from '../../components/pricing/Pricing';
+import UserPricing from '../../components/pricing/UserPricing';
 import Account from '../../components/account/Account';
 import Contact from '../../components/contact/Contact';
 import Logout from '../../components/logout/Logout';
@@ -16,6 +16,7 @@ import PaymentCard from "../../components/payment/PaymentCard";
 import SetAddress from "../../components/address/SetAddress";
 import Faq from "../../components/landing/faq/Faq";
 import ContactUs from "../../components/landing/contact/ContactUs";
+import PostalCodePricing from "../../components/landing/pricing/PostalCodePricing";
 
 const Content = ({ sidebarEnabled }) => (
   <div className="Content" style={contentStyle(sidebarEnabled)}>
@@ -27,7 +28,8 @@ const Content = ({ sidebarEnabled }) => (
       <AuthenticatedRoute exact path="/signup/:step?" component={SignUp}/>
       <AuthenticatedRoute exact path="/activity" component={Activity}/>
       <AuthenticatedRoute exact path="/preferences" component={Preferences}/>
-      <AuthenticatedRoute exact path="/pricing" component={Pricing}/>
+      <AuthenticatedRoute exact path="/pricing" component={UserPricing}/>
+      <AuthenticatedRoute exact path="/public-pricing" component={PostalCodePricing}/>
       <AuthenticatedRoute exact path="/account" component={Account}/>
       <AuthenticatedRoute exact path="/contact" component={Contact}/>
       <AuthenticatedRoute exact path="/logout" component={Logout}/>
