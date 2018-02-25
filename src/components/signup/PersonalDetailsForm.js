@@ -6,25 +6,37 @@ import Form from "./Form";
 import InputField from "./InputField";
 import Loading from "../common/loading/Loading";
 import Error from "../common/error/Error";
+import {parse} from "query-string";
+import {USER_ALREADY_EXISTS} from "../../errors/ErrorTypes";
 
 class PersonalDetailsForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const {location: {search}} = this.props;
+    let queryParams = parse(search),
+        email = queryParams && queryParams.email;
     this.state = {
-      first_name: null,
-      last_name: null,
-      email: null,
-      password: null,
-      phone_number: null
+      first_name: "",
+      last_name: "",
+      email: email || "",
+      password: "",
+      phone_number: ""
     };
   }
 
   render() {
-    const { signUp, history } = this.props;
+    const { signUp, history, location: {search} } = this.props;
     const displayStyles = signUp.inFlight ? { display: 'none' } : {};
 
     if (signUp.success) {
-      history.push('/signup/2');
+      let queryParams = parse(search),
+          postalCode = queryParams && queryParams.postalCode;
+
+      history.push({
+        pathname: '/signup/2',
+        search: (postalCode && postalCode.length > 0) ? `?postalCode=${postalCode}` : ""
+      });
+
       return null;
     }
 
@@ -37,7 +49,11 @@ class PersonalDetailsForm extends React.Component {
         <Error
           horizontal={true}
           visible={!!signUp.error}
-          message={signUp.error && signUp.error.message}
+          message={
+            signUp.error &&
+            signUp.error.type === USER_ALREADY_EXISTS &&
+            signUp.error.message
+          }
           imgSize="small"
         />
         <InputField
@@ -58,7 +74,7 @@ class PersonalDetailsForm extends React.Component {
           name="email"
           placeholder="Email"
           icon="envelope"
-          value={this.props.personalDetails.email}
+          value={this.props.personalDetails.email || this.state.email}
           setValue={(email) => this.setState({ email: email })}
         />
         <InputField

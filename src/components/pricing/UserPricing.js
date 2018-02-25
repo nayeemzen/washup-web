@@ -13,6 +13,7 @@ import {
   SERVICE_AVAILABLE_STATES
 } from "../../utils/ServiceAvailabilityStates";
 import ServiceNotAvailable from "../common/servicenotavailable/ServiceNotAvailable";
+import {withRouter} from "react-router-dom";
 
 class UserPricing extends React.Component {
   componentDidMount() {
@@ -24,6 +25,7 @@ class UserPricing extends React.Component {
 
   render() {
     const {
+      history,
       address,
       availability,
       userPricing,
@@ -31,17 +33,32 @@ class UserPricing extends React.Component {
       getUserPricingComplete
     } = this.props;
 
+    if (!!userPricing.error && !isEmpty(address)) {
+      return (
+        <div className="UserPricing">
+          <Error
+            visible={!!userPricing.error}
+            message="Could not fetch prices. Try again later."
+          />
+        </div>
+      );
+    }
+
+    if (!!userPricing.inFlight) {
+       return <Loading isLoading={!!userPricing.inFlight}/>
+    }
+
     if (userPricing.success) {
       getUserPricingComplete();
     }
 
-    if (isEmpty(address) && availability !== SERVICE_AVAILABILITY_UNKNOWN) {
+    if (isEmpty(address)) {
       return (
         <div className="UserPricing NotAvailable">
           <Card>
             <img className="LocationIcon" src={Location}/>
             <h1>You don't have an address set. Add an address to view pricing.</h1>
-            <button>ADD ADDRESS</button>
+            <button onClick={() => { history.push('/set-address') }}>ADD ADDRESS</button>
           </Card>
         </div>
       );
@@ -79,4 +96,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserPricing);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserPricing));

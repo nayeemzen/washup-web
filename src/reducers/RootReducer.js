@@ -6,8 +6,9 @@ import PreferencesReducer from "./PreferencesReducer";
 import SignUpReducer from "./SignUpReducer";
 import PaymentCardReducer from "./PaymentCardReducer";
 import PricingReducer from "./PricingReducer";
+import {SET_AUTHENTICATED} from "../actions/ActionTypes";
 
-export default combineReducers({
+const appReducer = combineReducers({
   orders: OrderReducer,
   user: UserReducer,
   address: AddressReducer,
@@ -16,3 +17,14 @@ export default combineReducers({
   paymentCard: PaymentCardReducer,
   pricing: PricingReducer
 });
+
+const rootReducer = (state, action) => {
+  // Reset Redux state if user logs out.
+  if (action.type === SET_AUTHENTICATED && action.isAuthenticated === false) {
+    state = undefined;
+  }
+
+  return appReducer(state, action);
+};
+
+export default rootReducer;

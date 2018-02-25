@@ -1,5 +1,7 @@
 import ApiService from "./ApiService";
 import Authenticator from "./Authenticator";
+import TypedError from "../errors/TypedError";
+import * as Errors from "../errors/Errors";
 
 class UserService extends ApiService {
   constructor() {
@@ -15,16 +17,14 @@ class UserService extends ApiService {
       .then(response => {
         // Sign up always returns 201 on success, 200 if user already exits.
         if (endpoint === '/sign-up' && response.status === 200) {
-          throw new Error(response.data.already_exists
-            ? "Account already exists"
-            : response.data.failure_reason);
+          throw Errors.UserAlreadyExists();
         }
 
         if (response.status === 200 || response.status === 201) {
           return response.headers.authorization.split('Bearer ')[1];
         }
 
-        throw new Error("Sign up failed. Please contact support.");
+        throw Errors.SignUpFailed();
       })
       .then(token => {
         Authenticator.setAuthToken(token);

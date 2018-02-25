@@ -4,19 +4,21 @@ import PersonalDetailsForm from './PersonalDetailsForm';
 import LocationDetailsForm from './LocationDetailsForm';
 import MultiStepForm from './MultiStepForm';
 import './Signup.css'
+import {withRouter} from "react-router-dom";
 
-class SignUp extends Component {
-  render() {
-    return (
-      <div className="SignUp">
-        <img className="Logo" src={Logo} aria-label="WashUp"/>
-        <MultiStepForm>
-          <PersonalDetailsForm/>
-          <LocationDetailsForm/>
-        </MultiStepForm>
-      </div>
-    );
-  }
-}
+const SignUp = ({ history }) => (
+  <div className="SignUp">
+    <img
+      className="Logo"
+      aria-label="WashUp"
+      src={Logo}
+      onClick={() => { history.push() }}
+    />
+    <MultiStepForm>
+      <PersonalDetailsForm/>
+      <LocationDetailsForm/>
+    </MultiStepForm>
+  </div>
+);
 
-export default SignUp;
+export default withRouter(SignUp);

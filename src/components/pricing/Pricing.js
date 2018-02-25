@@ -1,7 +1,7 @@
 import React from 'react';
 import './Pricing.css';
 import isEmpty from 'lodash/isEmpty';
-import Formatter from '../common/CurrencyFormatter';
+import Formatter from '../../utils/CurrencyFormatter';
 import CardList from "../card/CardList";
 import {NOT_AVAILABLE} from "../../utils/ServiceAvailabilityStates";
 import ServiceNotAvailable from "../common/servicenotavailable/ServiceNotAvailable";
@@ -44,8 +44,8 @@ const Pricing = ({ pricing }) => {
 
 const toCardItem = (item) => ({
   name: item.item
-  .replace(/_/g, ' ')
-  .replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()),
+    .replace(/_/g, ' ')
+    .replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()),
   value: Formatter.format(item.price_cents / 100)
 });
 

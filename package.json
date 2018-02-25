@@ -22,7 +22,8 @@
     "redux-observable": "^0.17.0",
     "rxjs": "^5.5.6",
     "sweetalert2": "^7.12.1",
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "validator": "^9.4.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",

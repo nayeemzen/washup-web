@@ -28,4 +28,6 @@ const width = (imgSize) => {
   }
 };
 
+
+
 export default Error;

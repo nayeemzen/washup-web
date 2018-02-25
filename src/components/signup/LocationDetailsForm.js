@@ -8,15 +8,20 @@ import * as SignUpActions from "../../actions/SignUpActions";
 import Loading from "../common/loading/Loading";
 import Error from "../common/error/Error";
 import * as UserActions from "../../actions/UserActions";
+import {parse} from "query-string";
 
 class LocationDetailsForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const {location: {search}} = this.props;
+    let queryParams = parse(search),
+        postalCode = queryParams && queryParams.postalCode;
+
     this.state = {
-      street_address: null,
-      apt: null,
-      postal_code: null,
-      notes: null,
+      street_address: "",
+      apt: "",
+      postal_code: postalCode || "",
+      notes: "",
     };
   }
 
@@ -73,7 +78,7 @@ class LocationDetailsForm extends React.Component {
           name="postalCode"
           placeholder="Postal code"
           icon="map-marker"
-          value={address.postalCode}
+          value={address.postalCode || this.state.postal_code}
           setValue={(postalCode) => this.setState({ postal_code: postalCode })}
         />
         <button onClick={this.setAddress}>Next</button>
