@@ -8,7 +8,8 @@ class Environment {
     this.environment = Environment.currentEnvironment();
   }
 
-  static currentEnvironment = () => process.env.REACT_APP_ENV.toUpperCase();
+  static currentEnvironment = () =>
+    (process.env.REACT_APP_ENV || Environment.DEVELOPMENT).toUpperCase();
 }
 
 export default Environment;
