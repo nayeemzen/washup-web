@@ -8,6 +8,7 @@ import {getPostalCodePricing, getPostalCodePricingComplete} from "../../../actio
 import Loading from "../../common/loading/Loading";
 import Error from "../../common/error/Error";
 import Pricing from "../../pricing/Pricing";
+import Footer from "../footer/Footer";
 
 class PostalCodePricing extends React.Component {
   constructor() {
@@ -61,6 +62,7 @@ class PostalCodePricing extends React.Component {
                 />
           }
         </div>
+        <Footer/>
       </section>
     );
   }

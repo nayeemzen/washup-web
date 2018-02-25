@@ -201,9 +201,9 @@ class Order extends Component {
     if (!lastFour && !isEmpty(profile)) {
       swal({
         title: "You don't have a payment card linked",
-        text:  "Continue to link a payment card.",
         imageUrl: PaymentCardImage,
         imageWidth: 70,
+        text:  "Please link your credit card before placing an order.",
         confirmButtonColor: "#27b7d7",
         confirmButtonText: "Continue"
       }).then(() => {
