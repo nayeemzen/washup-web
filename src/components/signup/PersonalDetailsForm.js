@@ -1,4 +1,8 @@
 import React from 'react';
+import isEmail from 'validator/lib/isEmail';
+import isEmpty from 'validator/lib/isEmpty';
+import isMobilePhone from 'validator/lib/isMobilePhone';
+import normalizeEmail from 'validator/lib/normalizeEmail';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as SignUpActions from '../../actions/SignUpActions';
@@ -15,12 +19,14 @@ class PersonalDetailsForm extends React.Component {
     const {location: {search}} = this.props;
     let queryParams = parse(search),
         email = queryParams && queryParams.email;
+
     this.state = {
       first_name: "",
       last_name: "",
       email: email || "",
       password: "",
-      phone_number: ""
+      phone_number: "",
+      errors: new Set()
     };
   }
 
@@ -61,6 +67,7 @@ class PersonalDetailsForm extends React.Component {
           placeholder="First Name"
           icon="user"
           value={this.props.personalDetails.first_name}
+          valid={!this.state.errors.has('first_name')}
           setValue={(firstName) => this.setState({ first_name: firstName })}
         />
         <InputField
@@ -68,6 +75,7 @@ class PersonalDetailsForm extends React.Component {
           placeholder="Last Name"
           icon="user"
           value={this.props.personalDetails.last_name}
+          valid={!this.state.errors.has('last_name')}
           setValue={(lastName) => this.setState({ last_name: lastName })}
         />
         <InputField
@@ -75,7 +83,8 @@ class PersonalDetailsForm extends React.Component {
           placeholder="Email"
           icon="envelope"
           value={this.props.personalDetails.email || this.state.email}
-          setValue={(email) => this.setState({ email: email })}
+          valid={!this.state.errors.has('email')}
+          setValue={(email) => this.setState({ email })}
         />
         <InputField
           name="password"
@@ -83,6 +92,7 @@ class PersonalDetailsForm extends React.Component {
           icon="lock"
           type="password"
           value={this.props.personalDetails.password}
+          valid={!this.state.errors.has('password')}
           setValue={(password) => this.setState({ password: password })}
         />
         <InputField
@@ -90,6 +100,7 @@ class PersonalDetailsForm extends React.Component {
           placeholder="Phone Number"
           icon="phone"
           value={this.props.personalDetails.phone_number}
+          valid={!this.state.errors.has('phone_number')}
           setValue={(phone) => this.setState({ phone_number: phone })}
         />
         <button onClick={this.signUp} style={displayStyles}>Next</button>
@@ -97,8 +108,58 @@ class PersonalDetailsForm extends React.Component {
     );
   }
 
+  validate = () => {
+    const {first_name, last_name, email, password, phone_number, errors} = this.state;
+
+    if (isEmpty(first_name)) {
+      errors.add('first_name')
+    } else {
+      errors.delete('first_name')
+    }
+
+    if (isEmpty(last_name)) {
+      errors.add('last_name');
+    } else {
+      errors.delete('last_name');
+    }
+
+    if (isEmpty(email) || !isEmail(email)) {
+      errors.add('email');
+    } else {
+      errors.delete('email');
+    }
+
+    if (isEmpty(password)) {
+      errors.add('password');
+    } else {
+      errors.delete('password');
+    }
+
+    if (isEmpty(this.state.phone_number) || !isMobilePhone(phone_number, 'en-CA')) {
+      errors.add('phone_number');
+    } else {
+      errors.delete('phone_number');
+    }
+
+    if (errors.size > 0) {
+      this.setState({ errors });
+      return false;
+    }
+
+    return true;
+  };
+
   signUp = () => {
-    this.props.signUpRequest(this.state);
+    if (this.validate()) {
+      const {first_name, last_name, email, password, phone_number} = this.state;
+      this.props.signUpRequest({
+        first_name,
+        last_name,
+        email: normalizeEmail(email),
+        password,
+        phone_number
+      });
+    }
   };
 }
 

@@ -1,6 +1,10 @@
 @import "../common/Common.scss";
 
 .Address {
+  .CardList {
+    margin-bottom: 22px;
+  }
+
   .CardList li {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import isEmpty from 'validator/lib/isEmpty';
+import isEmail from 'validator/lib/isEmail';
 import * as UserActions from "../../actions/UserActions";
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -55,7 +57,7 @@ class Login extends Component {
 
     return (
       <div className="Login">
-        <img className="logo" src={Logo} aria-label="WashUp"/>
+        <img className="logo" src={Logo} alt="WashUp"/>
         <input
           onChange={this.onEmailInput}
           spellCheck="false"
@@ -79,9 +81,20 @@ class Login extends Component {
       return;
     }
 
-    if (!this.state.email || !this.state.password) {
+    if ((!this.state.email || isEmpty(this.state.email))
+      || (!this.state.password || isEmpty(this.state.email))) {
       return swal({
-        text: "Please fill in your email and password",
+        title: "Missing input",
+        text: "Please fill in your email and password.",
+        type: "error",
+        confirmButtonColor: "#27b7d7"
+      });
+    }
+
+    if (!isEmail(this.state.email)) {
+      return swal({
+        title: "Invalid email",
+        text: "The email you entered is not a valid email address.",
         type: "error",
         confirmButtonColor: "#27b7d7"
       });

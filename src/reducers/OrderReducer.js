@@ -3,7 +3,7 @@ import {
   GET_ORDERS_ERROR, GET_ORDERS, PLACE_ORDER_COMPLETE
 } from "../actions/ActionTypes";
 
-export default (state = [], action) => {
+export default (state = { orders: [] }, action) => {
   switch (action.type) {
     case PLACE_ORDER:
       return Object.assign({}, state, {

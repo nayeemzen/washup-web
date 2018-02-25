@@ -1,25 +1,19 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
+import isEmptyObject from 'lodash/isEmpty';
 import modalStyles from '../common/ModalStyles';
-import Form from "../signup/Form";
 import Loading from "../common/loading/Loading";
 import swal from "sweetalert2";
 import {parse} from 'query-string';
-import InputField from "../signup/InputField";
-import * as AddressActions from "../../actions/AddressActions";
 import withRouter from "react-router-dom/es/withRouter";
 import connect from "react-redux/es/connect/connect";
+import AddressForm from "./AddressForm";
 
 class SetAddress extends Component {
-  constructor(props) {
-    super(props);
-    const {address: { address = {}}} = this.props;
+  constructor() {
+    super();
     this.state = {
       modalOpen: true,
-      street_address: address.street_address,
-      apt: address.apt,
-      postal_code: address.postal_code,
-      notes: null,
     }
   }
 
@@ -28,94 +22,65 @@ class SetAddress extends Component {
   }
 
   render() {
-    const {
-      history,
-      location: { search },
-      address: { address = {}, setAddress = {}},
-      setAddressComplete
-    } = this.props;
-
-    let queryParams = parse(search),
-        nextPage = queryParams && queryParams.next,
-        origin = queryParams && queryParams.origin;
-
-    if (setAddress.success) {
-      swal({
-        title: "Address set successfully!",
-        type: "success"
-      }).then(() => {
-        swal.close();
-        setAddressComplete();
-        // TODO(Zen): Refactor into a flow class.
-        if (nextPage && nextPage.length > 0) {
-          history.push({
-            pathname: nextPage,
-            search: `?next=${origin}`
-          });
-        } else {
-          history.goBack();
-        }
-      });
-    }
-
-    if (setAddress.error) {
-      swal({
-        title: "Something went wrong",
-        text:  "Please check your details and try again or contact support.",
-        type:  "error"
-      }).then(() => {
-        swal.close();
-        setAddressComplete();
-      })
-    }
-
+    const { address, address: { getAddress = {} }} = this.props;
     return (
       <Modal isOpen={this.state.modalOpen} style={modalStyles}>
-        <div className="SetAddress">
-          <Form
-            header="Set your pickup location"
-            subHeader="Where should we pick up and deliver your laundry?"
-          >
-            <Loading isLoading={!!setAddress.inFlight}/>
-            <InputField
-              name="streetAddress"
-              placeholder="Street Address"
-              icon="map-marker"
-              value={this.state.street_address}
-              setValue={(streetAddress) => this.setState({ street_address: streetAddress })}
-            />
-            <InputField
-              name="apt"
-              placeholder="Apt, Suite, etc (optional)"
-              icon="map-marker"
-              value={this.state.apt}
-              setValue={(apt) => this.setState({ apt: apt })}
-            />
-            <InputField
-              name="postalCode"
-              placeholder="Postal code"
-              icon="map-marker"
-              value={this.state.postal_code}
-              setValue={(postalCode) => this.setState({ postal_code: postalCode })}
-            />
-            <button onClick={this.setAddress}>Next</button>
-          </Form>
-        </div>
+        {
+          (!isEmptyObject(address) && !getAddress.inFlight)
+            ? this.renderForm()
+            : this.renderLoading()
+        }
       </Modal>
     );
   }
 
-  setAddress = () => {
-    const { address: { setAddress = {} }} = this.props;
-    if (!setAddress.inFlight) {
-      this.props.setAddress({
-        address: {
-          street_address: this.state.street_address,
-          apt: this.state.apt,
-          postal_code: this.state.postal_code
-        }
-      });
-    }
+  renderForm = () => (
+    <div className="SetAddress">
+      <AddressForm
+        onSuccess={this.onSuccess}
+        onError={this.onError}
+      />
+    </div>
+  );
+
+  renderLoading = () => <Loading/>;
+
+  onSuccess = (setAddressComplete) => {
+    const { history,  location: { search } } = this.props;
+    const queryParams = parse(search),
+      nextPage = queryParams && queryParams.next,
+      origin = queryParams && queryParams.origin;
+
+    swal({
+      title: "Address set successfully!",
+      type: "success",
+      confirmButtonColor: "#27b7d7",
+      confirmButtonText: "Continue"
+    }).then(() => {
+      swal.close();
+      setAddressComplete();
+      // TODO(Zen): Refactor into a flow class.
+      if (nextPage && nextPage.length > 0) {
+        history.push({
+          pathname: nextPage,
+          search: `?next=${origin}`
+        });
+      } else {
+        history.goBack();
+      }
+    });
+  };
+
+  onError = (setAddressComplete) => {
+    swal({
+      title: "Something went wrong",
+      text:  "Please check your details and try again or contact support.",
+      type:  "error",
+      confirmButtonColor: "#27b7d7",
+    }).then(() => {
+      swal.close();
+      setAddressComplete();
+    });
   };
 }
 
@@ -125,11 +90,8 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setAddress: address => dispatch(AddressActions.setAddress(address)),
-    setAddressComplete: () => dispatch(AddressActions.setAddressComplete()),
-  }
+const mapDispatchToProps = () => {
+  return {};
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SetAddress));

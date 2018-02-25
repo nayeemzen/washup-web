@@ -13,6 +13,9 @@ import DateSelector from "./DateSelector";
 import Spinner from '../../resources/spinner.gif';
 import './Order.css';
 import {NOT_AVAILABLE, SERVICE_AVAILABILITY_UNKNOWN} from "../../utils/ServiceAvailabilityStates";
+import Loading from "../common/loading/Loading";
+import LocationImage from "../../resources/location.png";
+import PaymentCardImage from "../../resources/payment_card.png";
 
 class Order extends Component {
   constructor() {
@@ -31,8 +34,8 @@ class Order extends Component {
   }
 
   render() {
-    this.validateRequest();
-    const { history, placeOrderComplete, orders: { placeOrder={} }} = this.props;
+    this.preValidate();
+    const { history, user: { profile }, placeOrderComplete, orders: { placeOrder={} }} = this.props;
 
     if (placeOrder.inFlight) {
       swal({
@@ -69,26 +72,28 @@ class Order extends Component {
       });
     }
 
-    return (
-      <Modal isOpen={this.state.modalOpen} style={modalStyles}>
-        <div className="Order">
-          <Link className="closeButton" to="/activity">⨉</Link>
-          <OrderTypeSelector
-            selectOption={this.selectOption}
-            selectedOptions={this.state.selectedOptions}/>
-          <DateSelector
-            pickupDate={this.state.pickupDate}
-            deliveryDate={this.state.deliveryDate}
-            selectPickupDate={this.selectPickupDate}
-            selectDeliveryDate={this.selectDeliveryDate}/>
-          <button onClick={this.placeOrder} className="orderButton">PLACE ORDER</button>
-        </div>
-      </Modal>
-    );
+    return (isEmpty(profile) ? <Loading/> : this.renderOrderForm());
   }
 
+  renderOrderForm = () => (
+    <Modal isOpen={this.state.modalOpen} style={modalStyles}>
+      <div className="Order">
+        <Link className="closeButton" to="/activity">⨉</Link>
+        <OrderTypeSelector
+          selectOption={this.selectOption}
+          selectedOptions={this.state.selectedOptions}/>
+        <DateSelector
+          pickupDate={this.state.pickupDate}
+          deliveryDate={this.state.deliveryDate}
+          selectPickupDate={this.selectPickupDate}
+          selectDeliveryDate={this.selectDeliveryDate}/>
+        <button onClick={this.placeOrder} className="orderButton">PLACE ORDER</button>
+      </div>
+    </Modal>
+  );
+
   placeOrder = () => {
-    if (!this.validateRequest()) {
+    if (!this.preValidate() || !this.validate()) {
       return;
     }
 
@@ -103,13 +108,69 @@ class Order extends Component {
     }
   };
 
-  validateRequest = () => {
-    const {address, history, availability, paymentCard : { lastFour }} = this.props;
-    if (isEmpty(address)) {
+  validate = () => {
+     const {
+       selectedOptions,
+       pickupDate,
+       deliveryDate
+     }  = this.state;
+
+    if (!selectedOptions || selectedOptions.length !== 1) {
+      swal({
+        title: "Please select the service",
+        text: "Dry cleaning or wash & fold are your options!",
+        type: "error",
+        confirmButtonColor: "#27b7d7"
+      }).then(() => { swal.close(); });
+      return false;
+    }
+
+    if (!pickupDate) {
+      swal({
+        title: "Please select a pickup date",
+        type: "error",
+        confirmButtonColor: "#27b7d7"
+      }).then(() => { swal.close(); });
+      return false;
+    }
+
+    if (!deliveryDate) {
+      swal({
+        title: "Please select a delivery date",
+        type: "error",
+        confirmButtonColor: "#27b7d7"
+      }).then(() => { swal.close(); });
+      return false;
+    }
+
+    if (!deliveryDate.isAfter(pickupDate)) {
+      swal({
+        title: "Delivery date must be after the pick up date",
+        type: "error",
+        confirmButtonColor: "#27b7d7"
+      }).then(() => { swal.close(); });
+
+      return false;
+    }
+
+    return true;
+  };
+
+  preValidate = () => {
+    const {
+      address,
+      history,
+      availability,
+      user: { profile },
+      paymentCard : { lastFour }
+    } = this.props;
+
+    if (isEmpty(address) && !isEmpty(profile)) {
       swal({
         title: "You don't have an address set",
         text:  "Continue to set an address.",
-        type:  "error",
+        imageUrl: LocationImage,
+        imageWidth: 70,
         confirmButtonColor: "#27b7d7",
         confirmButtonText: "Continue"
       }).then(() => {
@@ -126,7 +187,8 @@ class Order extends Component {
       swal({
         title: "We're not available in your area yet",
         text:  "But working hard to get there soon!",
-        type:  "error",
+        imageUrl: LocationImage,
+        imageWidth: 70,
         confirmButtonColor: "#27b7d7",
         confirmButtonText: "Continue"
       }).then(() => {
@@ -136,11 +198,12 @@ class Order extends Component {
       return false;
     }
 
-    if (!lastFour) {
+    if (!lastFour && !isEmpty(profile)) {
       swal({
         title: "You don't have a payment card linked",
         text:  "Continue to link a payment card.",
-        type:  "error",
+        imageUrl: PaymentCardImage,
+        imageWidth: 70,
         confirmButtonColor: "#27b7d7",
         confirmButtonText: "Continue"
       }).then(() => {
@@ -180,6 +243,7 @@ class Order extends Component {
 const mapStateToProps = (state) => {
   return {
     orders: state.orders,
+    user: state.user || {},
     paymentCard: state.paymentCard || {},
     address: state.address.address || {},
     availability: state.user.availability

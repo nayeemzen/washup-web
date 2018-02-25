@@ -22,6 +22,10 @@
     }
   }
 
+  .validation-error {
+    border-color: $color-red;
+  }
+
   i {
     position: absolute;
     text-align: center;

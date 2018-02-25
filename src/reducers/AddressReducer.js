@@ -41,7 +41,8 @@ export default (state = {}, action) => {
         setAddress: {
           inFlight: false,
           success: false,
-          error: null
+          error: null,
+          complete: true
         }
       });
     case GET_ADDRESS:
@@ -74,7 +75,8 @@ export default (state = {}, action) => {
         getAddress: {
           inFlight: false,
           success: false,
-          error: null
+          error: null,
+          complete: true
         }
       });
     default:

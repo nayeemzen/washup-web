@@ -3,7 +3,7 @@ import {
   SET_PAYMENT_CARD, SET_PAYMENT_CARD_COMPLETE, SET_PAYMENT_CARD_ERROR, SET_PAYMENT_CARD_SUCCESS
 } from "../actions/ActionTypes";
 
-export default (state = [], action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case SET_PAYMENT_CARD:
       return Object.assign({}, state, {

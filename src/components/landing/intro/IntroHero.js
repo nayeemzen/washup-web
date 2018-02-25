@@ -47,8 +47,19 @@ class IntroHero extends React.Component {
     signUp = (email, postalCode) => {
       email = this.normalize(email);
       postalCode = this.normalize(postalCode);
-      const {errors} = this.state;
+
       const {history} = this.props;
+
+      if (this.validate(email, postalCode)) {
+        history.push({
+          pathname: '/signup/1',
+          search: `?email=${email.replace(/\s/g, "")}&postalCode=${postalCode.toUpperCase()}`
+        });
+      }
+    };
+
+    validate = (email, postalCode) => {
+      const {errors} = this.state;
 
       if (isEmail(email)) {
         errors.delete('email');
@@ -63,15 +74,11 @@ class IntroHero extends React.Component {
       }
 
       if (errors.size > 0) {
-        this.setState({
-          errors: errors
-        });
-      } else {
-        history.push({
-          pathname: '/signup/1',
-          search: `?email=${email.replace(/\s/g, "")}&postalCode=${postalCode.toUpperCase()}`
-        });
+        this.setState({ errors });
+        return false;
       }
+
+      return true;
     };
 
     normalize = str => str && str.length > 0 ? str.replace(/\s/g, "") : "";

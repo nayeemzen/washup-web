@@ -9,14 +9,14 @@ const Address = ({history, streetAddress, apt, postalCode}) => (
     <CardList
       categoryName="Address"
       items = {
-        !(streetAddress && postalCode && apt)
+        !(streetAddress && postalCode)
           ? [{ name: "Address", value: "Not Linked"}]
           : [{ name: streetAddress }, { name: apt }, { name: postalCode }]
       }
     />
     <Card>
       <button onClick={() => history.push('/set-address')}>
-        { !(streetAddress && postalCode && apt) ? "ADD ADDRESS" : "UPDATE ADDRESS" }
+        { !(streetAddress && postalCode) ? "ADD ADDRESS" : "UPDATE ADDRESS" }
       </button>
     </Card>
   </div>
