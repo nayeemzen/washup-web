@@ -1,9 +1,10 @@
 import ApiClient from "./ApiClient";
+import configuration from "../config/Configuration";
 
 class ApiService {
   constructor(resource) {
     this.api = new ApiClient({
-      base: 'http://localhost:8080/api/v1',
+      base: configuration.server_url,
       resource: resource
     });
   }
