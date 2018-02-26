@@ -12,7 +12,7 @@ import OrderTypeSelector from "./OrderTypeSelector";
 import DateSelector from "./DateSelector";
 import Spinner from '../../resources/spinner.gif';
 import './Order.css';
-import {NOT_AVAILABLE, SERVICE_AVAILABILITY_UNKNOWN} from "../../utils/ServiceAvailabilityStates";
+import {NOT_AVAILABLE} from "../../utils/ServiceAvailabilityStates";
 import Loading from "../common/loading/Loading";
 import LocationImage from "../../resources/location.png";
 import PaymentCardImage from "../../resources/payment_card.png";

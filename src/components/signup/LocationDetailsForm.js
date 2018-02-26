@@ -7,10 +7,6 @@ import * as UserActions from "../../actions/UserActions";
 import AddressForm from "../address/AddressForm";
 
 class LocationDetailsForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { history, signUp } = this.props;
     if (!signUp.success) {

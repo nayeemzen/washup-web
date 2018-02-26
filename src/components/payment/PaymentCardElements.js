@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Elements} from 'react-stripe-elements';
 import PaymentCardForm from './PaymentCardForm';
 
@@ -6,7 +6,8 @@ const PaymentCardElements =({firstName="", lastName=""}) => {
   return (
     <Elements>
       <PaymentCardForm firstName={firstName} lastName={lastName} />
-    </Elements>);
+    </Elements>
+  );
 };
 
 export default PaymentCardElements;

@@ -8,10 +8,7 @@ import Loading from "../common/loading/Loading";
 import Error from "../common/error/Error";
 import Card from "../card/Card";
 import './UserPricing.css';
-import {
-  NOT_AVAILABLE, SERVICE_AVAILABILITY_UNKNOWN,
-  SERVICE_AVAILABLE_STATES
-} from "../../utils/ServiceAvailabilityStates";
+import {NOT_AVAILABLE} from "../../utils/ServiceAvailabilityStates";
 import ServiceNotAvailable from "../common/servicenotavailable/ServiceNotAvailable";
 import {withRouter} from "react-router-dom";
 
@@ -56,7 +53,7 @@ class UserPricing extends React.Component {
       return (
         <div className="UserPricing NotAvailable">
           <Card>
-            <img className="LocationIcon" src={Location}/>
+            <img className="LocationIcon" src={Location} alt="Location Pin"/>
             <h1>You don't have an address set. Add an address to view pricing.</h1>
             <button onClick={() => { history.push('/set-address') }}>ADD ADDRESS</button>
           </Card>

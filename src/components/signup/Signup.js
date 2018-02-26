@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Logo from '../../resources/washup_horizontal.png'
 import PersonalDetailsForm from './PersonalDetailsForm';
 import LocationDetailsForm from './LocationDetailsForm';
@@ -12,6 +12,7 @@ const SignUp = ({ history }) => (
       className="Logo"
       aria-label="WashUp"
       src={Logo}
+      alt="WashUp Logo"
       onClick={() => { history.push() }}
     />
     <MultiStepForm>

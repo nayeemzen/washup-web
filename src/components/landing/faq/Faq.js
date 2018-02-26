@@ -1,6 +1,5 @@
 import React from 'react';
 import './Faq.css';
-import NavigationBar from "../navigation/NavigationBar";
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
 import DefaultNavigationBar from "../navigation/DefaultNavigationBar";

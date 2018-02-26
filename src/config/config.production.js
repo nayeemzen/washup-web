@@ -1,3 +1,3 @@
 export default {
-  server_url: 'https://washup-production.us-east-2.elasticbeanstalk.com/api/v1'
+  server_url: 'https://production.api.washup.io/api/v1'
 };

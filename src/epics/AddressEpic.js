@@ -2,7 +2,7 @@ import {Observable} from "rxjs";
 import addressService from "../services/AddressService";
 import {GET_ADDRESS, SET_ADDRESS} from "../actions/ActionTypes";
 import {getAddressError, getAddressSuccess, setAddressError, setAddressSuccess} from "../actions/AddressActions";
-import {setAvailability, setProfile} from "../actions/UserActions";
+import {setAvailability} from "../actions/UserActions";
 
 export const setAddressEpic = action$ =>
   action$.ofType(SET_ADDRESS)

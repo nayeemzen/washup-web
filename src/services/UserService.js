@@ -1,6 +1,5 @@
 import ApiService from "./ApiService";
 import Authenticator from "./Authenticator";
-import TypedError from "../errors/TypedError";
 import * as Errors from "../errors/Errors";
 
 class UserService extends ApiService {

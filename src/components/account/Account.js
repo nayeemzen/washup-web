@@ -4,11 +4,10 @@ import swal from 'sweetalert2';
 import './Account.css';
 import Billing from "./Billing";
 import Profile from "./Profile";
-import Password from "./Password";
 import {connect} from "react-redux";
 import {withRouter} from 'react-router-dom';
 import {getProfile, getProfileComplete} from "../../actions/UserActions";
-import {getAddress, getAddressComplete} from "../../actions/AddressActions";
+import {getAddressComplete} from "../../actions/AddressActions";
 import Address from "./Address";
 import Loading from "../common/loading/Loading";
 

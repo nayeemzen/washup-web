@@ -2,16 +2,13 @@ import React, {Component} from 'react';
 import {parse} from 'query-string';
 import swal from 'sweetalert2';
 import {
-  CardElement,
   CardNumberElement,
   CardExpiryElement,
   CardCVCElement,
   PostalCodeElement,
-  StripeProvider,
-  Elements,
   injectStripe
 } from 'react-stripe-elements';
-import {Link, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setPaymentCard, setPaymentCardComplete} from "../../actions/PaymentCardActions";
 import Loading from "../common/loading/Loading";

@@ -10,7 +10,7 @@ const ImageWithText = ({image, title, text, imageDirection, backgroundColor}) =>
       <h2 className="text">{text}</h2>
     </div>
     <div className="ImageSection">
-      <img src={image} alt="image"/>
+      <img src={image} alt={title}/>
     </div>
   </div>
 );
