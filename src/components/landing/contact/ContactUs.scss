@@ -17,7 +17,11 @@
     p {
       font-family: $font-primary;
       color: $color-gray-darker;
-      font-size: 1em;
+      font-size: 1.2em;
+    }
+
+    .CardList li {
+      width: 300px;
     }
   }
 }

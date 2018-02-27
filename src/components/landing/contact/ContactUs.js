@@ -13,13 +13,10 @@ const Contact = () => (
     <Header headerText="Contact" />
     <div className="ContactUsContent">
       <p>Have a question? Feel free to contact us and we'll make sure its resolved!</p>
-      <div className="ContactInfoList">
         <CardList
           categoryName=""
-          items={[
-            { name: "Email", value: "support@washup.io"}
-          ]}/>
-      </div>
+          items={[{ name: "Email", value: "support@washup.io"}]}
+        />
     </div>
     <Footer/>
   </section>
