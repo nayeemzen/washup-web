@@ -9,6 +9,7 @@ import Loading from "../../common/loading/Loading";
 import Error from "../../common/error/Error";
 import Pricing from "../../pricing/Pricing";
 import Footer from "../footer/Footer";
+import ScrollToTop from "../../routes/ScrollToTop";
 
 class PostalCodePricing extends React.Component {
   constructor() {
@@ -36,6 +37,7 @@ class PostalCodePricing extends React.Component {
 
     return (
       <section className="PostalCodePricing">
+        <ScrollToTop/>
         <DefaultNavigationBar/>
         <Header headerText="Enter your postal code to obtain pricing" />
         <div className="PriceFinder">

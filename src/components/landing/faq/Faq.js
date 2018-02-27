@@ -3,9 +3,11 @@ import './Faq.css';
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
 import DefaultNavigationBar from "../navigation/DefaultNavigationBar";
+import ScrollToTop from "../../routes/ScrollToTop";
 
 const Faq = () => (
   <section className="Faq">
+    <ScrollToTop/>
     <DefaultNavigationBar/>
     <Header headerText="Frequently Asked Questions" />
     <div className="FaqItems">
