@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import './PaymentCard.css';
 import {StripeProvider} from 'react-stripe-elements';
 import PaymentCardElements from './PaymentCardElements';
+import configuration from "../../config/Configuration";
 
 class PaymentCard extends Component {
   constructor() {
@@ -36,7 +37,7 @@ class PaymentCard extends Component {
           <Link className="closeButton" to="/activity">⨉</Link>
           <h1>Credit Card</h1>
           <h3 style={{marginBottom: '40px'}}>Please add your credit card information</h3>
-          <StripeProvider apiKey="pk_test_Hs1thvqATIGXy4KYXvSIx5C0">
+          <StripeProvider apiKey={configuration.stripe_key}>
             <PaymentCardElements firstName={firstName} lastName={lastName} />
           </StripeProvider>
         </div>
