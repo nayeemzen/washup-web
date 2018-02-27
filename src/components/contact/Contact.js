@@ -11,7 +11,6 @@ const Contact = () => (
         <CardList
           categoryName="Contact Us"
           items={[
-            { name: "Phone (10AM - 8PM)", value: "+1 888 565 5000"},
             { name: "Email", value: "support@washup.io"}
           ]}/>
       </div>
