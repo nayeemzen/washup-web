@@ -19,6 +19,11 @@
     align-items: flex-start;
     margin: 30px auto;
 
+    @media only screen and (max-width: 600px) {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+
     .FaqItem {
       h2 {
         font-family: $font-primary;
@@ -30,7 +35,7 @@
         font-family: $font-primary;
         color: $color-gray-darker;
         font-size: 1em;
-        width: 700px;
+        max-width: 700px;
         padding-bottom: 15px;
       }
 
