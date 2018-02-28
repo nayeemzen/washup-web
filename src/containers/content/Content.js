@@ -19,7 +19,7 @@ import ContactUs from "../../components/landing/contact/ContactUs";
 import PostalCodePricing from "../../components/landing/pricing/PostalCodePricing";
 
 const Content = ({ sidebarEnabled }) => (
-  <div className="Content" style={contentStyle(sidebarEnabled)}>
+  <div className={`Content ${sidebarEnabled ? "sidebar-enabled" : "sidebar-disabled"}`}>
     <Switch>
       <AuthenticatedRoute exact path="/" component={Landing}/>
       <AuthenticatedRoute exact path="/faq" component={Faq}/>
@@ -39,11 +39,5 @@ const Content = ({ sidebarEnabled }) => (
     </Switch>
   </div>
 );
-
-const contentStyle = (sidebarEnabled) => {
- return {
-   marginLeft: sidebarEnabled ? "340px" : "0"
- }
-};
 
 export default Content;

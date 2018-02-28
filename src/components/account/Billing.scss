@@ -18,4 +18,21 @@
       @include rectangular-button($color-primary, $color-primary-dark)
     }
   }
+
+  @media only screen and (max-width: 580px) {
+    .CardList li {
+      width: 250px;
+
+      .CardItem p {
+        font-size: 0.8em;
+      }
+    }
+
+    .Card {
+      width: 240px;
+      button {
+        width: 80%;
+      }
+    }
+  }
 }

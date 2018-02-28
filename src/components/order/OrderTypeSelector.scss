@@ -8,6 +8,11 @@
   color: $color-gray-light;
   font-family: $font-primary;
 
+  @media only screen and (max-width: 580px) {
+    flex-direction: column;
+    margin-top: 50px;
+  }
+
   i {
     margin-top: 18px;
     color: $color-gray-light;
@@ -35,11 +40,20 @@
 
   .DryClean {
     border-right: 1px solid $color-gray-extra-light ;
+    @media only screen and (max-width: 580px) {
+      border-right: none;
+      border-bottom: 1px solid $color-gray-extra-light ;;
+    }
+
   }
 
   .DryClean, .WashAndFold {
     padding: 0 50px;
     margin-bottom: 50px;
+
+    @media only screen and (max-width: 580px) {
+      padding: 20px 0;
+    }
 
     img {
       min-height: 150px;

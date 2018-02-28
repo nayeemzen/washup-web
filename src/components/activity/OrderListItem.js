@@ -12,10 +12,10 @@ const OrderListItem = ({ type, pickupDate, deliveryDate, status, totalCostCents}
         alt={ type }/>
       { type === WASH_FOLD ? 'Wash & Fold' : 'Dry Clean'}
     </div>
-    <div className="orderItemProp orderDate">{moment.unix(pickupDate / 1000).format('LL')}</div>
-    <div className="orderItemProp orderDate">{moment.unix(deliveryDate / 1000).format('LL')}</div>
-    <div className="orderItemProp orderStatus">{status || 'PENDING'}</div>
-    <div className="orderItemProp orderPrice">{!!totalCostCents ? 'PENDING' : totalCostCents}</div>
+    <span className="label">Pickup</span> <div className="orderItemProp orderDate">{moment.unix(pickupDate / 1000).format('LL')}</div>
+    <span className="label">Delivery</span> <div className="orderItemProp orderDate">{moment.unix(deliveryDate / 1000).format('LL')}</div>
+    <span className="label">Status</span> <div className="orderItemProp orderStatus">{status || 'PENDING'}</div>
+    <span className="label">Price</span> <div className="orderItemProp orderPrice">{!!totalCostCents ? 'PENDING' : totalCostCents}</div>
   </div>
 );
 

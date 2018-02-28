@@ -4,6 +4,10 @@
   width: 100%;
   margin-top: 70px;
 
+  @media only screen and (max-width: 580px) {
+    margin-top: 0;
+  }
+
   .OrderListHeader {
     margin-bottom: 2px;
     padding-bottom: 15px;
@@ -12,6 +16,10 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    @media only screen and (max-width: 580px) {
+      display: none;
+    }
 
     .orderListHeader {
       flex-basis: 20%;
@@ -39,10 +47,28 @@
     justify-content: space-between;
     align-items: center;
 
+    @media only screen and (max-width: 580px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .label {
+      color: $color-black;
+      font-size: 1em;
+      @media only screen and (min-width: 580px) {
+        display: none;
+      }
+    }
+
     .orderItemProp {
       flex-basis: 20%;
       font-family: $font-secondary;
       font-size: 1em;
+      margin-top: 7px;
+      @media only screen and (max-width: 580px) {
+        margin-top: 0;
+        margin-bottom: 8px;
+      }
     }
 
     .orderPrice {

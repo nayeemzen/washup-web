@@ -4,6 +4,10 @@
   min-width: 400px;
   text-align: center;
 
+  @media only screen and (max-width: 400px) {
+    min-width: 100%;
+  }
+
   .inputText {
     @include rounded-input();
   }
@@ -11,12 +15,18 @@
   .closeButton {
     text-decoration: none;
     color: $color-gray-dark;
-    position: fixed;
+    position: absolute;
     top:20px;
     right: 40px;
     font-family: $font-primary;
     font-weight: 600;
     font-size: 2em;
+
+    @media only screen and (max-width: 400px) {
+      font-size: 1.5em;
+      top: 10px;
+      right: 20px;
+    }
   }
 
   .saveButton {

@@ -1,0 +1,11 @@
+.Profile {
+  @media only screen and (max-width: 580px) {
+    .CardList li {
+      width: 250px;
+
+      .CardItem p {
+        font-size: 0.8em;
+      }
+    }
+  }
+}

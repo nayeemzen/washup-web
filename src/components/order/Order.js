@@ -76,7 +76,11 @@ class Order extends Component {
   }
 
   renderOrderForm = () => (
-    <Modal isOpen={this.state.modalOpen} style={modalStyles}>
+    <Modal
+      isOpen={this.state.modalOpen}
+      className="Modal"
+      overlayClassName="Overlay"
+    >
       <div className="Order">
         <Link className="closeButton" to="/activity">⨉</Link>
         <OrderTypeSelector

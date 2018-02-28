@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 import SideNavigation from '../../components/navigation/SideNavigation';
 import Content from '../content/Content';
 import {getProfile, getProfileComplete, setAuthenticated} from "../../actions/UserActions";
 import './App.css';
 import Authenticator from "../../services/Authenticator";
+import TopBar from "../../components/navigation/TopBar";
 
 class App extends Component {
   componentDidMount() {
@@ -35,6 +36,12 @@ class App extends Component {
 
     return (
       <div className="App">
+        <TopBar
+          topBarEnabled={isAuthenticated}
+          firstName={profile.first_name}
+          lastName={profile.last_name}
+          isLoading={!!getProfileRequest.inFlight}
+        />
         <SideNavigation
           sidebarEnabled={isAuthenticated}
           firstName={profile.first_name}

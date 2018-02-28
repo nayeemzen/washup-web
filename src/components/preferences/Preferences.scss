@@ -8,6 +8,22 @@
   flex-wrap: wrap;
   margin: 0 auto 0 auto;
 
+  @media only screen and (max-width: 1200px) {
+    justify-content: center;
+  }
+
+  @media only screen and (max-width: 400px) {
+    .Card {
+      width: 250px;
+    }
+  }
+
+  @media only screen and (max-width: 350px) {
+    .Card {
+      width: 200px;
+    }
+  }
+
   .Preference {
     margin: 20px;
     flex-basis: 40%;

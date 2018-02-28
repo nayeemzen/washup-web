@@ -1,0 +1,94 @@
+@import "../common/Common.scss";
+
+.TopBar {
+  @media only screen and (min-width: 1101px) {
+    display: none;
+  }
+
+  /* Position and sizing of burger button */
+  .bm-burger-button {
+    position: absolute;
+    width: 16px;
+    height: 12px;
+    left: 20px;
+    top: 20px;
+  }
+
+  /* Color/shape of burger icon bars */
+  .bm-burger-bars {
+    background: #373a47;
+  }
+
+  /* Position and sizing of clickable cross button */
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
+
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background: $color-white;
+  }
+
+  /* General sidebar styles */
+  .bm-menu {
+    background: $color-primary;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+  }
+
+  /* Wrapper for item list */
+  .bm-item-list {
+    color: #b8b7ad;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Styling of overlay */
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .menu-item {
+    color: $color-white;
+    outline: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-bottom: 1.3em;
+    font-family: $font-primary, sans-serif;
+    font-weight: 300;
+    font-size: 0.9em;
+  }
+
+  .header {
+    margin-top: 0;
+    text-align: center;
+
+    .Loading {
+      margin-top: 10px;
+    }
+
+    img {
+      width: 150px;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-family: $font-secondary, sans-serif;
+      font-size: 1.3em;
+      font-weight: 300;
+      color: $color-white;
+      text-transform: capitalize;
+    }
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 0.8em;
+    margin-bottom: 20px;
+    button {
+      @include rounded-button(transparent, $color-white, $color-white, $color-white, $color-primary);
+    }
+  }
+}
