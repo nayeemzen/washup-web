@@ -27,8 +27,8 @@ class PaymentCard extends Component {
   render() {
     const {
       profile: {
-        first_name: firstName,
-        last_name: lastName,
+        first_name: first_name,
+        last_name: last_name,
       }
     } = this.props;
     return (
@@ -38,7 +38,7 @@ class PaymentCard extends Component {
           <h1>Credit Card</h1>
           <h3 style={{marginBottom: '40px'}}>Please add your credit card information</h3>
           <StripeProvider apiKey={configuration.stripe_key}>
-            <PaymentCardElements firstName={firstName} lastName={lastName} />
+            <PaymentCardElements firstName={first_name} lastName={last_name} />
           </StripeProvider>
         </div>
       </Modal>
