@@ -31,8 +31,8 @@ const Faq = () => (
 
       <FaqItem question="Is there a minimum order?">
         <p>
-          Wash & Fold minimum orders are 20lbs. We do accept orders that weigh less than 20lbs
-          but will be billed at the minimum order size of 20lbs.
+          Wash & Fold minimum orders are 15lbs. We do accept orders that weigh less than 15lbs
+          but will be billed at the minimum order size of 15lbs.
         </p>
 
         <p>
