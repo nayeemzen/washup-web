@@ -104,7 +104,7 @@ class PaymentCardForm extends Component {
     const {profile, setPaymentCard, stripe} = this.props;
     event.preventDefault();
     setPaymentCard({
-      createToken: () => stripe.createToken({name: profile.firstName + ' ' + profile.lastName})
+      createToken: () => stripe.createToken({name: profile.first_name + ' ' + profile.last_name})
     });
   }
 }
