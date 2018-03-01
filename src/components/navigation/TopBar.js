@@ -36,7 +36,12 @@ class TopBar extends React.Component {
             <Link onClick={() => {this.setState({ isOpen: false })}} className="menu-item" to="/contact">Contact</Link>
             <Link onClick={() => {this.setState({ isOpen: false })}} className="menu-item" to="/logout">Logout</Link>
           </div>
-          <NavFooter onClick={ () => history.push('/order') }/>
+          <NavFooter onClick={() => {
+            this.setState({
+              isOpen: false
+            });
+            history.push('/order');
+          }}/>
         </Menu>
       </div>
     ) : null;
