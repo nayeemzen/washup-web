@@ -8,6 +8,10 @@ body {
   overflow-y: hidden;
 }
 
+.ReactModal__Overlay {
+  z-index: 1000 !important;
+}
+
 button:focus {
   outline: 0;
 }

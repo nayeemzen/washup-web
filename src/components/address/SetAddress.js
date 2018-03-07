@@ -8,6 +8,8 @@ import {parse} from 'query-string';
 import withRouter from "react-router-dom/es/withRouter";
 import connect from "react-redux/es/connect/connect";
 import AddressForm from "./AddressForm";
+import {Link} from "react-router-dom";
+import './SetAddress.css'
 
 class SetAddress extends Component {
   constructor() {
@@ -36,6 +38,7 @@ class SetAddress extends Component {
 
   renderForm = () => (
     <div className="SetAddress">
+      <Link className="closeButton" to="/activity">⨉</Link>
       <AddressForm
         onSuccess={this.onSuccess}
         onError={this.onError}

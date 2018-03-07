@@ -2,27 +2,9 @@
 
 .Order {
   text-align: center;
-
   .orderButton {
     @include rounded-button($color-primary, $color-white, transparent, $color-primary-dark, $color-white);
     margin-top: 40px;
-  }
-
-  .closeButton {
-    text-decoration: none;
-    color: $color-gray-dark;
-    position: absolute;
-    top:20px;
-    right: 40px;
-    font-family: $font-primary;
-    font-weight: 600;
-    font-size: 2em;
-
-    @media only screen and (max-width: 580px) {
-      top: 10px;
-      right: 20px;
-      font-size: 1.5em;
-    }
   }
 }
 
