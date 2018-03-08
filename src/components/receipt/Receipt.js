@@ -10,7 +10,6 @@ import * as ReceiptActions from "../../actions/ReceiptActions";
 import Loading from "../common/loading/Loading";
 import Error from "../common/error/Error";
 import Formatter from '../../utils/CurrencyFormatter';
-import {getReceiptComplete} from "../../actions/ReceiptActions";
 
 class Receipt extends React.Component {
   constructor(props) {
@@ -40,14 +39,18 @@ class Receipt extends React.Component {
         shouldCloseOnOverlayClick={true}
         onRequestClose={() => {
           if (getReceipt.success || getReceipt.error) {
-            getReceiptComplete();
+            this.props.getReceiptComplete();
           }
           this.props.history.push('/activity');
           this.setState({ modalOpen: false });
         }}
       >
         <div className="Receipt">
-          <CloseButton/>
+          <CloseButton onClose={() => {
+            if (getReceipt.success || getReceipt.error) {
+              this.props.getReceiptComplete();
+            }
+          }}/>
           <h1>Receipt</h1>
           <div className="ReceiptHeaderItem">
             <p className="label">Order Number</p>
@@ -68,6 +71,7 @@ class Receipt extends React.Component {
     return (
       <table className="OrderItems">
         <h2>Order Items</h2>
+        <tbody>
         {
           items.length > 0 ? items.map((item, idx) => (
             <tr className="OrderItem" key={idx}>
@@ -81,6 +85,7 @@ class Receipt extends React.Component {
             </tr>
           )) : <p> Your billed items will be available here when they have been assessed.</p>
         }
+        </tbody>
       </table>
     )
   };

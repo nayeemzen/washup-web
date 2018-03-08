@@ -2,8 +2,16 @@ import React from 'react';
 import {withRouter} from "react-router-dom";
 import './CloseButton.css';
 
-const CloseButton = ({ history }) => (
-  <div className="CloseButton" onClick={() => history.goBack()}>⨉</div>
+const CloseButton = ({ history, onClose }) => (
+  <div className="CloseButton" onClick={() => onClick(history, onClose)}>⨉</div>
 );
+
+const onClick = (history, onClose) => {
+    if (onClose !== undefined) {
+      onClose();
+    }
+
+    history.goBack();
+};
 
 export default withRouter(CloseButton);

@@ -25,5 +25,5 @@ export const getReceiptError = (error) => {
 export const getReceiptComplete = () => {
   return {
     type: GET_RECEIPT_COMPLETE
-  }
+  };
 };
