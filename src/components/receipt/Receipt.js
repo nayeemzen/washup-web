@@ -49,7 +49,7 @@ class Receipt extends React.Component {
             <p className="label">Order Number</p>
             <p className="value">{this.orderToken}</p>
           </div>
-          <p className="description">{this.orderSummary()}</p>
+          <p className="description">{this.orderSummary(receipt)}</p>
           {
             !getReceipt.inFlight
               ? !getReceipt.error ? this.renderReceiptBody(receipt) : <Error imgSize="small"/>
@@ -115,7 +115,7 @@ class Receipt extends React.Component {
       : Formatter.format(receipt.total_amount_cents / 100);
   };
 
-  orderSummary = () => {
+  orderSummary = (receipt) => {
     switch(this.order.status.toUpperCase()) {
       case "PENDING":
         return `
@@ -130,12 +130,14 @@ class Receipt extends React.Component {
         `;
       case "DROPPED_OFF":
         return `
-          Your clothes have been delivered and your bill of $250.56 will show up on your card statement
-          in the next few days. Let us know if everything was to your liking at team@washup.io.
+          Your clothes have been delivered and your bill of ${Formatter.format(receipt.total_amount_cents/100)}
+          will show up on your card statement in the next few days. Let us know if everything
+          was to your liking at team@washup.io.
         `;
       case "BILLED":
         return `
-          Your clothes have been delivered and your card has been billed $250.56. Hope you enjoyed using WashUp.
+          Your clothes have been delivered and your card has been billed
+          ${Formatter.format(receipt.total_amount_cents/100)}. Hope you enjoyed using WashUp.
           Let us know if everything was to your liking at team@washup.io.
         `;
       case "CANCELED":

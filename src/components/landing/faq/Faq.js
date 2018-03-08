@@ -11,6 +11,16 @@ const Faq = () => (
     <DefaultNavigationBar/>
     <Header headerText="Frequently Asked Questions" />
     <div className="FaqItems">
+      <FaqItem question="What should I expect on my first order?">
+        <h3>It's super simple!</h3>
+        <ol>
+          <li>You place the order on our website.</li>
+          <li>You will get a text reminder an hour before your valet will arrive.</li>
+          <li>We will give you a complimentary WashUp laundry bag to put your clothes in.</li>
+          <li>For wash & fold your valet will measure the weight of the laundry load.</li>
+          <li>You will get another text reminder an hour prior to drop off.</li>
+        </ol>
+      </FaqItem>
       <FaqItem question="Is WashUp available in my city?">
         <p>
           We're only serving downtown Toronto and downtown Waterloo locations.
@@ -31,14 +41,14 @@ const Faq = () => (
 
       <FaqItem question="Is there a minimum order?">
         <p>
-          Wash & Fold minimum orders are 15lbs. We do accept orders that weigh less than 15lbs
-          but will be billed at the minimum order size of 15lbs.
+          Wash & Fold minimum orders are 10lbs. We do accept orders that weigh less than 15lbs
+          but will be billed at the minimum order size of 10lbs.
         </p>
 
         <p>
           Please note that any itemized
           pieces including comforters/duvets, blankets, bath mats, or kitchen mats included in
-          your Wash & Fold order do not count towards the 15 lb minimum order size.
+          your Wash & Fold order do not count towards the 10 lb minimum order size.
           These items are washed and dried separately to follow their specific care instructions.
         </p>
       </FaqItem>
@@ -48,17 +58,6 @@ const Faq = () => (
           That's fine! Just let us know beforehand by shooting an email to support@washup.io
           so we come prepared with more bags.
         </p>
-      </FaqItem>
-
-      <FaqItem question="What should I expect on my first order?">
-        <h3>It's super simple!</h3>
-        <ol>
-          <li>You place the order on our website.</li>
-          <li>You will get a text reminder an hour before your valet will arrive.</li>
-          <li>We will give you a complimentary WashUp laundry bag to put your clothes in.</li>
-          <li>For wash & fold your valet will measure the weight of the laundry load.</li>
-          <li>You will get another text reminder an hour prior to drop off.</li>
-        </ol>
       </FaqItem>
     </div>
     <Footer/>
