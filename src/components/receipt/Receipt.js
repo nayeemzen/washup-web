@@ -10,6 +10,7 @@ import * as ReceiptActions from "../../actions/ReceiptActions";
 import Loading from "../common/loading/Loading";
 import Error from "../common/error/Error";
 import Formatter from '../../utils/CurrencyFormatter';
+import {getReceiptComplete} from "../../actions/ReceiptActions";
 
 class Receipt extends React.Component {
   constructor(props) {
@@ -38,6 +39,9 @@ class Receipt extends React.Component {
         overlayClassName="ReceiptOverlay"
         shouldCloseOnOverlayClick={true}
         onRequestClose={() => {
+          if (getReceipt.success || getReceipt.error) {
+            getReceiptComplete();
+          }
           this.props.history.push('/activity');
           this.setState({ modalOpen: false });
         }}
@@ -162,7 +166,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getReceipt: (orderToken) => dispatch(ReceiptActions.getReceipt(`#${orderToken}`))
+    getReceipt: (orderToken) => dispatch(ReceiptActions.getReceipt(`#${orderToken}`)),
+    getReceiptComplete: () => dispatch(ReceiptActions.getReceiptComplete())
   }
 };
 

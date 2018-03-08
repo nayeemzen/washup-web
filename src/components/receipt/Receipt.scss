@@ -42,6 +42,10 @@
       .OrderItems {
         min-width: 100%;
 
+        h2 {
+          color: $color-gray-darker;
+        }
+
         p {
           color: $color-gray-dark;
         }
