@@ -16,6 +16,7 @@ import {NOT_AVAILABLE} from "../../utils/ServiceAvailabilityStates";
 import Loading from "../common/loading/Loading";
 import LocationImage from "../../resources/location.png";
 import PaymentCardImage from "../../resources/payment_card.png";
+import CloseButton from "../common/modal/CloseButton";
 
 class Order extends Component {
   constructor() {
@@ -82,7 +83,7 @@ class Order extends Component {
       overlayClassName="Overlay"
     >
       <div className="Order">
-        <Link className="closeButton" to="/activity">⨉</Link>
+        <CloseButton/>
         <OrderTypeSelector
           selectOption={this.selectOption}
           selectedOptions={this.state.selectedOptions}/>

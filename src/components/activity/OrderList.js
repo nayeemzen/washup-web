@@ -1,9 +1,12 @@
 import React from 'react';
 import './OrderList.css';
 import OrderListItem from "./OrderListItem";
+import {Route, withRouter} from "react-router-dom";
+import Receipt from "../receipt/Receipt";
 
-const OrderList = ({ orders }) => (
+const OrderList = ({ match, orders }) => (
   <div className="OrderList">
+    <Route exact path={`${match.path}/receipt/:orderToken`} component={Receipt}/>
     <div className="OrderListHeader">
       <div className="orderListHeader orderTypeHeader">Order</div>
       <div className="orderListHeader orderPickUpDateHeader">PickUp Date</div>
@@ -15,12 +18,13 @@ const OrderList = ({ orders }) => (
       orders.map((order, idx) => {
         return (
             <OrderListItem
-            key={idx}
-            type={order.order_type}
-            pickupDate={order.pickup_date}
-            deliveryDate={order.delivery_date}
-            status={order.status}
-            totalCostCents={order.total_cost_cents || "0"}
+              key={idx}
+              token={order.token.split("#")[1]}
+              type={order.order_type}
+              pickupDate={order.pickup_date}
+              deliveryDate={order.delivery_date}
+              status={order.status}
+              totalCostCents={order.total_cost_cents || "0"}
           />
         );
       })
@@ -28,4 +32,4 @@ const OrderList = ({ orders }) => (
   </div>
 );
 
-export default OrderList;
+export default withRouter(OrderList);

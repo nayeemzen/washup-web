@@ -1,0 +1,106 @@
+@import "../common/Common.scss";
+
+.Receipt {
+  font-family: $font-primary;
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  .CloseButton {
+    top: 10px;
+    right: 20px;
+  }
+
+  .ReceiptHeaderItem {
+    display: flex;
+    flex-direction: row;
+
+    .label {
+      padding-right: 15px;
+    }
+
+    .value {
+      font-weight: 500;
+    }
+  }
+
+  .ReceiptBodyItems {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .ReceiptBodyItem {
+      min-width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .value {
+        font-weight: 500;
+      }
+
+      .OrderItems {
+        min-width: 100%;
+
+        p {
+          color: $color-gray-dark;
+        }
+
+        .priceQuantity {
+          .multiply {
+            padding: 0 10px;
+          }
+        }
+
+        .name {
+          font-weight: 500;
+          font-size: 1.1em;
+        }
+      }
+    }
+  }
+
+  .description {
+    text-align: start;
+    font-size: 0.9em;
+    color: $color-gray-dark;
+    line-height: 22px;
+  }
+}
+
+.ReceiptModal {
+  background-color: $color-white;
+  position: absolute;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  outline: none;
+  padding: 20px;
+  border: 0;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 370px;
+  max-width: 400px;
+  top: 8%;
+  left: 40%;
+  right: 50%;
+  bottom: 5%;
+
+  @media only screen and (max-width: 600px) {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.ReceiptOverlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

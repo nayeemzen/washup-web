@@ -10,6 +10,7 @@ import connect from "react-redux/es/connect/connect";
 import AddressForm from "./AddressForm";
 import {Link} from "react-router-dom";
 import './SetAddress.css'
+import CloseButton from "../common/modal/CloseButton";
 
 class SetAddress extends Component {
   constructor() {
@@ -38,7 +39,7 @@ class SetAddress extends Component {
 
   renderForm = () => (
     <div className="SetAddress">
-      <Link className="closeButton" to="/activity">⨉</Link>
+      <CloseButton/>
       <AddressForm
         onSuccess={this.onSuccess}
         onError={this.onError}

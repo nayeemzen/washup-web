@@ -17,6 +17,7 @@ import SetAddress from "../../components/address/SetAddress";
 import Faq from "../../components/landing/faq/Faq";
 import ContactUs from "../../components/landing/contact/ContactUs";
 import PostalCodePricing from "../../components/landing/pricing/PostalCodePricing";
+import Receipt from "../../components/receipt/Receipt";
 
 const Content = ({ sidebarEnabled }) => (
   <div className={`Content ${sidebarEnabled ? "sidebar-enabled" : "sidebar-disabled"}`}>
@@ -26,7 +27,7 @@ const Content = ({ sidebarEnabled }) => (
       <AuthenticatedRoute exact path="/contact-us" component={ContactUs}/>
       <AuthenticatedRoute exact path="/login" component={Login}/>
       <AuthenticatedRoute exact path="/signup/:step?" component={SignUp}/>
-      <AuthenticatedRoute exact path="/activity" component={Activity}/>
+      <AuthenticatedRoute path="/activity" component={Activity}/>
       <AuthenticatedRoute exact path="/preferences" component={Preferences}/>
       <AuthenticatedRoute exact path="/pricing" component={UserPricing}/>
       <AuthenticatedRoute exact path="/public-pricing" component={PostalCodePricing}/>

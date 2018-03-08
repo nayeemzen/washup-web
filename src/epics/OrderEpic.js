@@ -7,7 +7,7 @@ export const placeOrderEpic = action$ =>
   action$.ofType(PLACE_ORDER)
     .switchMap(action => Observable
       .fromPromise(orderService.placeOrder(action.order))
-      .map(response => placeOrderSuccess(action.order))
+      .map(response => placeOrderSuccess(response.order))
       .catch(error => Observable.of(placeOrderError(error))));
 
 export const getOrdersEpic = action$ =>

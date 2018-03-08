@@ -1,9 +1,14 @@
 import {
-  PLACE_ORDER, PLACE_ORDER_SUCCESS, PLACE_ORDER_ERROR, GET_ORDERS_SUCCESS,
-  GET_ORDERS_ERROR, GET_ORDERS, PLACE_ORDER_COMPLETE
+  GET_ORDERS,
+  GET_ORDERS_ERROR,
+  GET_ORDERS_SUCCESS,
+  PLACE_ORDER,
+  PLACE_ORDER_COMPLETE,
+  PLACE_ORDER_ERROR,
+  PLACE_ORDER_SUCCESS
 } from "../actions/ActionTypes";
 
-export default (state = { orders: [] }, action) => {
+export default (state = {orders: []}, action) => {
   switch (action.type) {
     case PLACE_ORDER:
       return Object.assign({}, state, {
@@ -16,12 +21,12 @@ export default (state = { orders: [] }, action) => {
 
     case PLACE_ORDER_SUCCESS:
       return Object.assign({}, state, {
-          orders: [...state.orders, action.order],
-          placeOrder: {
-            inFlight: false,
-            success: true,
-            error: null
-          }
+        orders: [...state.orders, action.order],
+        placeOrder: {
+          inFlight: false,
+          success: true,
+          error: null
+        }
       });
 
     case PLACE_ORDER_ERROR:

@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
 import modalStyles from '../common/ModalStyles';
-import {Link, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import './PaymentCard.css';
 import {StripeProvider} from 'react-stripe-elements';
 import PaymentCardElements from './PaymentCardElements';
 import configuration from "../../config/Configuration";
+import CloseButton from "../common/modal/CloseButton";
 
 class PaymentCard extends Component {
   constructor() {
@@ -34,7 +35,7 @@ class PaymentCard extends Component {
     return (
       <Modal isOpen={this.state.modalOpen} style={modalStyles}>
         <div className="PaymentCard">
-          <Link className="closeButton" to="/activity">⨉</Link>
+          <CloseButton/>
           <h1>Credit Card</h1>
           <h3 style={{marginBottom: '40px'}}>Please add your credit card information</h3>
           <StripeProvider apiKey={configuration.stripe_key}>

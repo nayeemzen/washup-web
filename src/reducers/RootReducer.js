@@ -7,6 +7,7 @@ import SignUpReducer from "./SignUpReducer";
 import PaymentCardReducer from "./PaymentCardReducer";
 import PricingReducer from "./PricingReducer";
 import {SET_AUTHENTICATED} from "../actions/ActionTypes";
+import ReceiptReducer from "./ReceiptReducer";
 
 const appReducer = combineReducers({
   orders: OrderReducer,
@@ -15,7 +16,8 @@ const appReducer = combineReducers({
   preferences: PreferencesReducer,
   signup: SignUpReducer,
   paymentCard: PaymentCardReducer,
-  pricing: PricingReducer
+  pricing: PricingReducer,
+  receipts: ReceiptReducer,
 });
 
 const rootReducer = (state, action) => {
