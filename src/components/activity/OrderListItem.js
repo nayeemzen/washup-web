@@ -4,8 +4,9 @@ import DryCleanSelectedSvg from '../../resources/dryclean_selected.svg';
 import WashAndFoldSelectedSvg from '../../resources/washandfold_selected.svg';
 import {WASH_FOLD} from "../order/OrderType";
 import {withRouter} from "react-router-dom";
+import {getHumanReadableStatus, PENDING} from "../../utils/StatusMaps";
 
-const OrderListItem = ({ history, match, token, type, pickupDate, deliveryDate, status, totalCostCents}) => {
+const OrderListItem = ({ history, match, token, type, pickupDate, deliveryDate, status}) => {
   return (
     <div className="OrderItem" onClick={() => history.push(`${match.path}/receipt/${token}`)}>
       <div className="orderItemProp orderType">
@@ -14,10 +15,21 @@ const OrderListItem = ({ history, match, token, type, pickupDate, deliveryDate, 
           alt={ type }/>
         { type === WASH_FOLD ? 'Wash & Fold' : 'Dry Clean'}
       </div>
-      <span className="label">Pickup</span> <div className="orderItemProp orderDate">{moment.unix(pickupDate / 1000).format('LL')}</div>
-      <span className="label">Delivery</span> <div className="orderItemProp orderDate">{moment.unix(deliveryDate / 1000).format('LL')}</div>
-      <span className="label">Status</span> <div className="orderItemProp orderStatus">{status || 'PENDING'}</div>
-      <span className="label">Price</span> <div className="orderItemProp orderPrice">{!!totalCostCents ? 'PENDING' : totalCostCents}</div>
+      <div className="orderItemProp orderDate">
+        {moment.unix(pickupDate / 1000).format('LL')}
+      </div>
+
+      <div className="orderItemProp orderDate">
+        {moment.unix(deliveryDate / 1000).format('LL')}
+      </div>
+
+      <div className="orderItemProp orderStatus">
+        {getHumanReadableStatus(status || PENDING)}
+      </div>
+
+      <div className="orderItemProp">
+        <button className="receiptButton">Details</button>
+      </div>
     </div>
   );
 };

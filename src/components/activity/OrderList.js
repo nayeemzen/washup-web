@@ -12,7 +12,7 @@ const OrderList = ({ match, orders }) => (
       <div className="orderListHeader orderPickUpDateHeader">PickUp Date</div>
       <div className="orderListHeader orderDeliveryDateHeader">Delivery Date</div>
       <div className="orderListHeader orderStatusHeader">Status</div>
-      <div className="orderListHeader orderPriceHeader">Price</div>
+      <div className="orderListHeader orderStatusHeader"/>
     </div>
     {
       orders.map((order, idx) => {
@@ -24,7 +24,6 @@ const OrderList = ({ match, orders }) => (
               pickupDate={order.pickup_date}
               deliveryDate={order.delivery_date}
               status={order.status}
-              totalCostCents={order.total_cost_cents || "0"}
           />
         );
       })
