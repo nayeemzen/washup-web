@@ -11,6 +11,9 @@ import TopBar from "../../components/navigation/TopBar";
 
 class App extends Component {
   componentDidMount() {
+    window.Intercom("boot", {
+      app_id: "xa0wb7n6"
+    });
     const {isAuthenticated, setAuthenticated} = this.props;
     if (!isAuthenticated && Authenticator.isAuthenticated()) {
       setAuthenticated();

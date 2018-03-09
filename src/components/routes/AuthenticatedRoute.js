@@ -6,6 +6,7 @@ import Authenticator from "../../services/Authenticator";
 const whitelist = new Set(['/', '/login', '/faq', '/public-pricing', '/contact-us', '/signup/:step?']);
 
 const AuthenticatedRoute = ({component: Component, render, path, isAuthenticated, ...rest}) => {
+  window.Intercom("update");
   return <Route {...rest} render={props => {
     if (Authenticator.isAuthenticated() && !whitelist.has(path)) {
       return render ? render() : <Component {...props}/>;
