@@ -17,9 +17,9 @@ class IntroHero extends React.Component {
     render() {
       return (
         <section className="IntroHero">
-          <h1>Laundry & Dry Cleaning To Your Door</h1>
+          <h1>Dry Cleaning & Laundry To Your Door</h1>
           <div className="Order">
-            <p>So you can focus on things that really matter</p>
+            <p>Limited time - 50% off on your first order - try it now!</p>
             <div className="OrderForm">
               <input
                 id="email_input"

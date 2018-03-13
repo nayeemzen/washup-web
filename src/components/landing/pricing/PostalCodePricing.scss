@@ -29,6 +29,14 @@
       }
     }
 
+    p {
+      font-family: $font-primary;
+      color: $color-gray-darker;
+      font-size: 1em;
+      max-width: 700px;
+      padding-bottom: 15px;
+    }
+
     .PostalCodePricingInput {
       display: flex;
       align-items: flex-start;

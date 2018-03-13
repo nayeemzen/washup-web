@@ -59,6 +59,15 @@ const Faq = () => (
           so we come prepared with more bags.
         </p>
       </FaqItem>
+
+      <FaqItem question="What is the 50% discount offer?">
+        <p>
+          For a limited time, you can get 50% discount on your first order either it be
+          wash & fold or dry cleaning. First orders with minimum of $15 are eligible for
+          50% discount. Just sign up and place an order and that's it. Let WashUp do it's
+          magic.
+        </p>
+      </FaqItem>
     </div>
     <Footer/>
   </section>
