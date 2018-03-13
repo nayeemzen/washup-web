@@ -42,8 +42,7 @@ class PostalCodePricing extends React.Component {
         <Header headerText="Simple & Transparent Pricing" />
         <div className="PriceFinder">
           <p>
-            No contracts. No commitments. Only pay when you use our service.<br />
-            All services include free pickup & delivery right from your door.
+            No contracts. No commitments. Only pay when you use our service. All services include free pickup & delivery right from your door.
           </p>
           <p>Enter your postal code to find pricing in your area</p>
           <div className="PostalCodePricingInput">

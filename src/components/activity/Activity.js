@@ -17,6 +17,9 @@ class Activity extends React.Component {
     if (!getOrders.inFlight) {
       this.props.getOrders();
     }
+    const script = document.createElement("script");
+    script.innerHTML = "gtag('event', 'conversion', {'send_to': 'AW-814309103/4eP6CPXm034Q772lhAM'});";
+    document.head.appendChild(script);
   }
 
   render() {
