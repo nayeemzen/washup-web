@@ -21,6 +21,23 @@ const Faq = () => (
           <li>You will get another text reminder an hour prior to drop off.</li>
         </ol>
       </FaqItem>
+      
+      <FaqItem question="What is the 50% discount offer?">
+        <p>
+          For a limited time, you can get 50% discount on your first order either it be
+          wash & fold or dry cleaning. First orders with minimum of $15 are eligible for
+          50% discount upto a maximum of $20 total in discounts. Just place an order and
+          let washup do it's magic!
+        </p>
+	<p>
+	Example 1: Jack places an order for $30. He gets 50% discount that is $15.
+	</p>
+        <p>
+	Example 2: John places an order for $50. He only gets $20 in discount since that's
+	the max discount offered.
+        </p>
+      </FaqItem>
+
       <FaqItem question="Is WashUp available in my city?">
         <p>
           We're only serving downtown Toronto and downtown Waterloo locations.
@@ -60,15 +77,7 @@ const Faq = () => (
         </p>
       </FaqItem>
 
-      <FaqItem question="What is the 50% discount offer?">
-        <p>
-          For a limited time, you can get 50% discount on your first order either it be
-          wash & fold or dry cleaning. First orders with minimum of $15 are eligible for
-          50% discount. Just sign up and place an order and that's it. Let WashUp do it's
-          magic.
-        </p>
-      </FaqItem>
-    </div>
+     </div>
     <Footer/>
   </section>
 );

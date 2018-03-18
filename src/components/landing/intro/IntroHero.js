@@ -19,7 +19,7 @@ class IntroHero extends React.Component {
         <section className="IntroHero">
           <h1>Dry Cleaning & Laundry To Your Door</h1>
           <div className="Order">
-            <p>Limited time - 50% off on your first order - try it now!</p>
+            <p>Limited time - 50% off on your first order* - try it now!</p>
             <div className="OrderForm">
               <input
                 id="email_input"
