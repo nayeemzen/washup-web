@@ -6,6 +6,7 @@ const DefaultNavigationBar = () => (
   <NavigationBar>
     <Link to="/public-pricing">Pricing</Link>
     <Link to="/faq">FAQ</Link>
+    <Link to="/contact-us">Contact</Link>
     <Link to="/login">Login</Link>
     <Link to="/signup">Sign Up</Link>
   </NavigationBar>
