@@ -8,6 +8,7 @@ import ShirtButtoning from '../../resources/shirt_buttoning.jpg';
 import './Landing.css';
 import Footer from "./footer/Footer";
 import DefaultNavigationBar from "./navigation/DefaultNavigationBar";
+import DefaultPricing from "./pricing/DefaultPricing";
 
 const Landing = () => (
   <div className="Home">
@@ -40,6 +41,7 @@ const Landing = () => (
         "packed and folded. We even offer next day delivery services."
       }
     />
+    <DefaultPricing/>
     <Footer/>
   </div>
 );

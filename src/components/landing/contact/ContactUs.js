@@ -15,7 +15,10 @@ const Contact = () => (
       <p>Have a question? Feel free to contact us and we'll make sure its resolved!</p>
         <CardList
           categoryName=""
-          items={[{ name: "Email", value: "support@washup.io"}]}
+          items={[
+            { name: "Email", value: "support@washup.io"},
+            { name: "Phone", value: "(647)-494-2419"}
+          ]}
         />
     </div>
     <Footer/>

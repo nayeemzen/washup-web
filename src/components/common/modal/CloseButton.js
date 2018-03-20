@@ -11,7 +11,7 @@ const onClick = (history, onClose) => {
       onClose();
     }
 
-    history.goBack();
+    history.push('/');
 };
 
 export default withRouter(CloseButton);
