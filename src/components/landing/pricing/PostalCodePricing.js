@@ -4,6 +4,7 @@ import Header from "../header/Header";
 import InputField from "../../signup/InputField";
 import DefaultNavigationBar from "../navigation/DefaultNavigationBar";
 import {connect} from "react-redux";
+import isEmpty from 'lodash/isEmpty';
 import {getPostalCodePricing, getPostalCodePricingComplete} from "../../../actions/PricingActions";
 import Loading from "../../common/loading/Loading";
 import Error from "../../common/error/Error";
@@ -12,27 +13,21 @@ import Footer from "../footer/Footer";
 import ScrollToTop from "../../routes/ScrollToTop";
 
 class PostalCodePricing extends React.Component {
-  constructor() {
-    super();
-    this.state = { postal_code: "" };
-  }
-
-  componentWillMount() {
-    const {postalCodePricing: {postalCode = "" }} = this.props;
-    this.setState({
-      postal_code: postalCode
-    });
+  componentDidMount() {
+    const {pricing, getDefaultPricing} = this.props;
+    if (!pricing.inFlight) {
+      getDefaultPricing({ postal_code: 'M5' });
+    }
   }
 
   render() {
-    const {
-      getPostalCodePricingComplete,
-      postalCodePricing,
-      postalCodePricing: {pricing = {}}
-    } = this.props;
-
-    if (postalCodePricing.success) {
-      getPostalCodePricingComplete();
+    let pricing = this.props.pricing;
+    if (isEmpty(pricing) || pricing.inFlight) {
+      return (
+        <div className="DefaultPricing">
+          <Loading/>
+        </div>
+      );
     }
 
     return (
@@ -41,57 +36,33 @@ class PostalCodePricing extends React.Component {
         <DefaultNavigationBar/>
         <Header headerText="Simple & Transparent Pricing" />
         <div className="PriceFinder">
-          <p>
-            No contracts. No commitments. Only pay when you use our service. All services include free pickup & delivery right from your door.
-          </p>
-          <p>Enter your postal code to find pricing in your area</p>
-          <div className="PostalCodePricingInput">
-            <InputField
-              name="postalCode"
-              placeholder="Postal Code"
-              type="text"
-              icon="map-marker"
-              value={this.state.postal_code}
-              setValue={(postalCode) => this.setState({ postal_code: postalCode })}
-            />
-            <button onClick={this.getPostalCodePricing}>GET PRICING</button>
+          <div className="NoCommitment">
+            <p>
+              No contracts. No commitments. Only pay when you use our service. Free pickup & delivery right to your door.
+            </p>
           </div>
-          <Loading isLoading={!!postalCodePricing.inFlight}/>
-          {
-            !postalCodePricing.error
-              ? <Pricing pricing={pricing}/>
-              : <Error
-                  imgSize="small"
-                  horizontal={true}
-                  visible={!!postalCodePricing.error}
-                  message="Could not fetch prices. Try again later."
-                />
-          }
+          <div className="DefaultPricing">
+            <h2>Pricing for Toronto</h2>
+            <Pricing pricing={pricing.pricing}/>
+          </div>
         </div>
         <Footer/>
       </section>
     );
   }
-
-  getPostalCodePricing = () => {
-    const { postalCodePricing, getPostalCodePricing } = this.props;
-    if (!postalCodePricing.inFlight && this.state.postal_code.length > 0 ) {
-      getPostalCodePricing(this.state);
-    }
-  };
 }
 
 const mapStateToProps = (state) => {
   return {
-    postalCodePricing: state.pricing.postalCodePricing || {}
+    pricing: state.pricing.postalCodePricing || {}
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getPostalCodePricing: postalCode => dispatch(getPostalCodePricing(postalCode)),
-    getPostalCodePricingComplete: () => dispatch(getPostalCodePricingComplete())
-  }
+    getDefaultPricing: postalCode => dispatch(getPostalCodePricing(postalCode)),
+    getDefaultPricingComplete: () => dispatch(getPostalCodePricingComplete())
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostalCodePricing);

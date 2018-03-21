@@ -8,9 +8,10 @@
   .categoryName {
     font-family: $font-primary;
     text-transform: uppercase;
-    color: $color-gray-light;
-    font-weight: 500;
+    color: $color-gray-darker;
+    font-weight: 600;
     font-size: 1em;
+    text-align: center;
   }
 
   .CardList {

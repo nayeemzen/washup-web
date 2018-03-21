@@ -11,6 +11,13 @@
     font-weight: 300;
   }
 
+  h2 {
+    font-family: $font-primary;
+    font-size: 1.7em;
+    font-weight: 600;
+    color: $color-gray-darker;
+  }
+
   .PriceFinder {
     margin-top: 50px;
     display: flex;
@@ -29,6 +36,24 @@
       }
     }
 
+    .NoCommitment {
+      max-width: 500px;
+      background-color: $color-primary;
+      border-radius: 20px;
+      padding: 10px;
+      margin: 10px;
+      p {
+        font-family: $font-primary;
+        color: $color-white;
+        font-size: 1em;
+        max-width: 700px;
+        padding-left: 15px;
+        padding-right: 15px;
+        text-align: center;
+        font-weight: 600;
+      }
+    }
+
     p {
       font-family: $font-primary;
       color: $color-gray-darker;
@@ -37,6 +62,7 @@
       padding-left: 15px;
       padding-right: 15px;
       text-align: center;
+      font-weight: 600;
     }
 
     .PostalCodePricingInput {

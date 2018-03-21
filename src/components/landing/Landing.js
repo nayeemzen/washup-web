@@ -15,6 +15,7 @@ const Landing = () => (
     <DefaultNavigationBar/>
     <IntroHero/>
     <HowItWorksHero/>
+    <DefaultPricing/>
     <ImageWithText
       image={MomWithKidImage}
       title="Focus on things that really matter"
@@ -41,7 +42,6 @@ const Landing = () => (
         "packed and folded. We even offer next day delivery services."
       }
     />
-    <DefaultPricing/>
     <Footer/>
   </div>
 );

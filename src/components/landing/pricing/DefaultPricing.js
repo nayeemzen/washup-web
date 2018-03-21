@@ -26,7 +26,8 @@ class DefaultPricing extends React.Component {
 
     return (
       <div className="DefaultPricing">
-        <h2>Pricing for Downtown Toronto</h2>
+        <h2>Pricing for Toronto</h2>
+        <h3>Free Pickup & Delivery Right To Your Door</h3>
         <Pricing pricing={pricing.pricing}/>
       </div>
     );
